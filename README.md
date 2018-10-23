@@ -1,54 +1,5 @@
-# My Project Title
+# Airport Assistant
 
-This is a template for CA400 projects.  Please read these instructions carefully.
+Airport Assistant is an Android Application to help users, primarily those who suffer from anxiety, with dealing with passing through an airport. According to travelweekly.co.uk a study conducted by CPP found that one third of people find a working week to be less stressful that taking a flight and a quarter say it would be less stressful to move house than to take a flight. The purpose of this application is to take the stress out of air travel and make it more accessible to people who avoid travelling due to fear of the panic it will cause. Airport Assistant works by, instead of overloading users with information about the airport, bringing them through the process step by step, completing checks, giving advice and providing important information. It is almost like someone holding the user’s hand and being their assistant throughout the journey.
 
-This file is written in
-[markdown](https://guides.github.com/features/mastering-markdown/).  Markdown
-is a suitable format for documents stored in git repositories.
-
-## Instructions
-
-You *must* do the following:
-
-1 - Fork this repo.
-
-2 - Rename your fork using the format (all lower case letters)
-
-    2018-ca400-username
-
-replacing `username` with your School of Computing login name.
-
-For example, if Stephen Blott were to be doing a fourth-year project, he would rename
-his repo as:
-
- 2018-ca400-sblott
-
-You can rename your repo by selecting *Edit Project* from the drop-down menu
-(with a gear icon) on the top right of your project's home page.  Change the
-*Project name* field **and** the *Path*.
-
-You should also update the *Project description*.
-
-3 - This directory has two sub-directories.
-
-- All of your source code should be placed in the `src` sub-directory.
-
-- All of your documentation should be placed in the `docs` sub-directory.
-
-- Your project blog should be placed in the `blog` sub-directory. 
-
-
-4 - There is further important documentation in the `docs` directory.  Read that next.
-
-When you are have followed all of these instructions and are sure that you
-understand what is expected, you may replace the contents of this file with a
-brief description of your project (two or three paragraphs).
-
-## Additional Resources
-
-- Git [cheat sheet](https://gitlab.computing.dcu.ie/sblott/local-gitlab-documentation/blob/master/cheat-sheet.md)
-- Gitlab [CI environment](https://gitlab.computing.dcu.ie/sblott/docker-ci-environment) and it's [available software](https://gitlab.computing.dcu.ie/sblott/docker-ci-environment/blob/master/Dockerfile)
-- Example projects with CI configured:
-   * [Python](https://gitlab.computing.dcu.ie/sblott/test-project-python)
-   * [Java](https://gitlab.computing.dcu.ie/sblott/test-project-java)
-   * [MySql](https://gitlab.computing.dcu.ie/sblott/test-project-mysql)
+The primary feature of the application is the AR (Augmented Reality) functionality for measuring luggage sizes. This will help ease the worries of users who are concerned that their hand luggage may not meet the requirements of there airline before the leave home. Similarly, features such as security tips and walk times to gates will help make the entire process less stressful.
