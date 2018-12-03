@@ -16,6 +16,50 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".Home">
+        </activity>
+        <activity android:name=".QRJourneyUpload">
+        </activity>
+        <activity android:name=".HoldLuggageQues">
+        </activity>
+        <activity android:name=".ConfirmJourney">
+        </activity>
+        <activity android:name=".ARStart">
+        </activity>
+        <activity android:name=".ARCamera">
+        </activity>
+        <activity android:name=".ARResults">
+        </activity>
+        <activity android:name=".ARFail">
+        </activity>
+        <activity android:name=".TransportToAirport1">
+        </activity>
+        <activity android:name=".TransportToAirport2">
+        </activity>
+        <activity android:name=".CheckIn">
+        </activity>
+        <activity android:name=".Security">
+        </activity>
+        <activity android:name=".DutyFreeSearch">
+        </activity>
+        <activity android:name=".DutyFreeMap">
+        </activity>
+        <activity android:name=".DirectionsToGate1">
+        </activity>
+        <activity android:name=".DirectionsToGate2">
+        </activity>
+        <activity android:name=".DirectionsToGate3">
+        </activity>
+        <activity android:name=".BoardingPass">
+        </activity>
+        <activity android:name=".Onboard">
+        </activity>
+        <activity android:name=".Arrivals">
+        </activity>
+        <activity android:name=".ArrivalsTransport">
+        </activity>
+        <activity android:name=".JourneyComplete">
+        </activity>
     </application>
 
 </manifest>

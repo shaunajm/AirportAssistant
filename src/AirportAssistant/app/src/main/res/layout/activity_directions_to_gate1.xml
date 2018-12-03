@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.shaum.airportassistant.MainActivity">
+
+    <SeekBar
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="360dp"
+            android:layout_height="40dp"
+            android:max="10"
+            android:progress="6"
+            android:layout_marginTop="11dp" android:id="@+id/ProgressBar"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+    <TextView
+            android:text="Check Departures Board for:"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:id="@+id/CheckBoard"
+            android:layout_below="@+id/ProgressBar" android:layout_centerHorizontal="true"
+            android:layout_marginTop="52dp"/>
+
+    <TableRow
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="34dp"
+            android:id="@+id/BoardInfo" android:layout_below="@+id/CheckBoard" android:layout_alignParentStart="true">
+
+    </TableRow>
+    <TextView
+            android:text="Gate Number is:"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:id="@+id/textView"
+            android:layout_below="@+id/textView2" android:layout_alignStart="@+id/ProgressBar"
+            android:layout_marginTop="52dp"/>
+    <EditText
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText" android:layout_alignTop="@+id/textView"
+            android:layout_alignEnd="@+id/CheckBoard"/>
+
+    <Button
+            android:text="Progress To Next Stage"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="67dp"
+            android:id="@+id/ButtonProgress"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+    <TextView
+            android:text="FR227 France Ryanair 03/11/2019 17:02"
+            android:padding="5dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:id="@+id/textView2"
+            android:layout_alignTop="@+id/BoardInfo" android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
+
