@@ -1,84 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.shaum.airportassistant.MainActivity">
 
     <TextView
             android:text="Will you be checking in hold luggage?"
-            android:layout_width="150dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="54dp"
-            android:id="@+id/CheckLugaggeQuestion"
-            android:layout_marginTop="69dp" android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/checkLugaggeQuestion"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="64dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp"/>
+
     <RadioButton
             android:text="Yes"
-            android:layout_width= "80dp"
+            android:layout_width="80dp"
             android:layout_height="30dp"
-            android:layout_alignTop="@+id/CheckLugaggeQuestion"
-            android:layout_toEndOf="@+id/CheckLugaggeQuestion"
-            android:layout_marginStart="30dp"
-            android:id="@+id/radioYes"/>
+            android:id="@+id/radioYes"
+            android:layout_alignBaseline="@+id/checkLugaggeQuestion"
+            android:layout_alignBottom="@+id/checkLugaggeQuestion"
+            android:layout_alignEnd="@+id/btBeginJourney"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/checkLugaggeQuestion"
+            android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="72dp"
+            app:layout_constraintHorizontal_bias="0.268"/>
+
     <RadioButton
             android:text="No"
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:id="@+id/radioNo"
             android:layout_below="@+id/radioYes"
-            android:layout_alignStart="@+id/radioYes"/>
+            android:layout_alignStart="@+id/radioYes"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@+id/checkLugaggeQuestion" android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp" app:layout_constraintTop_toBottomOf="@+id/radioYes"
+            app:layout_constraintHorizontal_bias="0.268"/>
+
     <TextView
             android:text="Booked Weight?"
             android:layout_width="150dp"
             android:layout_height="80dp"
-            android:layout_marginTop="34dp"
-            android:id="@+id/BookedWeightQuestion"
-            android:layout_below="@+id/CheckLugaggeQuestion"
-            android:layout_alignStart="@+id/CheckLugaggeQuestion"/>
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/bookedWeightQuestion"
+            android:layout_below="@+id/checkLugaggeQuestion"
+            android:layout_alignStart="@+id/checkLugaggeQuestion"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/bookedWeightNumber"
+            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintTop_toBottomOf="@+id/checkLugaggeQuestion" android:layout_marginTop="36dp"/>
+
     <EditText
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="80dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/BookedWeightNumber"
-            android:layout_alignTop="@+id/BookedWeightQuestion"
-            android:layout_alignStart="@+id/radioNo"/>
+            android:id="@+id/bookedWeightNumber"
+            android:layout_above="@+id/actualWeightQuestion"
+            android:layout_alignStart="@+id/radioNo"
+            android:layout_alignTop="@+id/bookedWeightQuestion"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="64dp" android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/radioNo"/>
+
     <TextView
             android:text="Actual Weight?"
             android:layout_width="150dp"
             android:layout_height="80dp"
-            android:layout_marginTop="28dp"
-            android:id="@+id/ActualWeightQuestion"
-            android:layout_below="@+id/BookedWeightQuestion"
-            android:layout_alignStart="@+id/BookedWeightQuestion"/>
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/actualWeightQuestion"
+            android:layout_below="@+id/bookedWeightQuestion"
+            android:layout_alignStart="@+id/bookedWeightQuestion"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/bookedWeightQuestion"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/actualWeightNumber" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.432"/>
+
     <EditText
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="80dp"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:id="@+id/ActualWeightNumber"
-            android:layout_alignTop="@+id/ActualWeightQuestion"
-            android:layout_alignStart="@+id/BookedWeightNumber"/>
+            android:id="@+id/actualWeightNumber"
+            android:layout_alignBottom="@+id/actualWeightQuestion"
+            android:layout_alignStart="@+id/bookedWeightNumber"
+            android:layout_alignTop="@+id/actualWeightQuestion"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/bookedWeightNumber" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="56dp"/>
     <Button
             android:text="Save Journey For Later"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="36dp"
-            android:id="@+id/buttonSaveJourney"
+            android:background="@color/colorButton"
+            android:id="@+id/btSaveJourney"
             android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/ActualWeightQuestion"
-            android:layout_marginEnd="35dp"/>
+            android:layout_alignEnd="@+id/actualWeightQuestion"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/btBeginJourney"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="48dp"
+            app:layout_constraintHorizontal_bias="0.428" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintVertical_bias="1.0"/>
     <Button
             android:text="Begin Journey"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:id="@+id/buttonBeginJourney"
-            android:layout_alignTop="@+id/buttonSaveJourney"
-            android:layout_toEndOf="@+id/ActualWeightQuestion"
-            android:layout_marginStart="16dp"/>
+            android:background="@color/colorButton"
+            android:id="@+id/btBeginJourney"
+            android:layout_alignTop="@+id/btSaveJourney"
+            android:layout_toEndOf="@+id/actualWeightQuestion"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="32dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintVertical_bias="1.0"/>
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

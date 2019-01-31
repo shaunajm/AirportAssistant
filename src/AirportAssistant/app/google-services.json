@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "172852380296",
+    "firebase_url": "https://airport-assistan-1548434484646.firebaseio.com",
+    "project_id": "airport-assistan-1548434484646",
+    "storage_bucket": "airport-assistan-1548434484646.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172852380296:android:fb8abc474861db4c",
+        "android_client_info": {
+          "package_name": "com.example.shaum.airportassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172852380296-dhb2gbo1kp723n75j6nki8phs2ujd0ft.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shaum.airportassistant",
+            "certificate_hash": "1a81f568af3ebb99c1f5a7340c993964dd7958aa"
+          }
+        },
+        {
+          "client_id": "172852380296-b3jsslkgu5a0r2ovebgu6du10sh53io3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg90jKMY9k1Yt6OUf1y248t6tgH4CQzS8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172852380296-b3jsslkgu5a0r2ovebgu6du10sh53io3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

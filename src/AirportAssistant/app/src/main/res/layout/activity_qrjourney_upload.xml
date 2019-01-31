@@ -7,7 +7,15 @@
         android:layout_height="match_parent"
         tools:context="com.example.shaum.airportassistant.MainActivity">
 
-
+    <Button
+            android:text="Upload Journey"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:background="@color/colorButton"
+            android:layout_marginBottom="19dp"
+            android:id="@+id/btUploadJourney"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

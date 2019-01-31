@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.shaum.airportassistant.MainActivity">
@@ -13,22 +14,26 @@
             android:layout_height="40dp"
             android:max="10"
             android:progress="2"
-            android:layout_marginTop="11dp" android:id="@+id/ProgressBar"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="11dp"
+            android:id="@+id/progressBar"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
 
     <com.google.android.gms.maps.MapView
             android:layout_width="325dp"
             android:layout_height="350dp"
-            android:id="@+id/MapViewToAirport"
-            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+            android:id="@+id/mapViewToAirport"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
     <Button
             android:text="Progress To Next Stage"
             android:layout_width="130dp"
             android:layout_height="60dp"
+            android:background="@color/colorButton"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
-            android:id="@+id/ButtonProgress"/>
+            android:id="@+id/btProgress"/>
 
 
 </RelativeLayout>

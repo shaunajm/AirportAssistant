@@ -3,38 +3,50 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.shaum.airportassistant.MainActivity">
+
 
 
     <TextView
             android:text="Would you like to start the journey"
             android:layout_width="210dp"
             android:layout_height="80dp"
-            android:id="@+id/ConfirmStartJourney"
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/confirmStartJourney"
             android:layout_marginBottom="63dp"
-            android:layout_above="@+id/SelectedJourneyInfo" android:layout_centerHorizontal="true"/>
+            android:layout_above="@+id/selectedJourneyInfo" android:layout_centerHorizontal="true"/>
     <TextView
             android:text="FR227 France Ryanair 03/11/2019 17:02"
-            android:layout_width="310dp"
+            android:layout_width="360dp"
             android:layout_height="80dp"
-            android:id="@+id/SelectedJourneyInfo"
-            android:layout_above="@+id/buttonStartJourney" android:layout_centerHorizontal="true"
-            android:layout_marginBottom="47dp"/>
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/selectedJourneyInfo"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
     <Button
             android:text="Start Journey"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:id="@+id/buttonStartJourney"
-            android:layout_alignParentBottom="true" android:layout_alignStart="@+id/SelectedJourneyInfo"
-            android:layout_marginBottom="76dp"/>
+            android:id="@+id/btstartJourney"
+            android:background="@color/colorButton"
+            android:layout_marginStart="24dp"
+            android:layout_alignParentBottom="true" android:layout_alignStart="@+id/selectedJourneyInfo"
+            android:layout_marginBottom="50dp"/>
     <Button
             android:text="Cancel"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:id="@+id/buttonCancel"
-            android:layout_alignTop="@+id/buttonStartJourney" android:layout_alignEnd="@+id/SelectedJourneyInfo"/>
+            android:id="@+id/btCancel"
+            android:background="@color/colorButton"
+            android:layout_marginEnd="19dp"
+            android:layout_alignBottom="@+id/btstartJourney" android:layout_alignEnd="@+id/selectedJourneyInfo"
+            android:layout_alignTop="@+id/btstartJourney"/>
 
 
 </RelativeLayout>

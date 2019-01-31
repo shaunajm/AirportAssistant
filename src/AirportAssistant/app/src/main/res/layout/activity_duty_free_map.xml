@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.shaum.airportassistant.MainActivity">
@@ -13,24 +14,29 @@
             android:layout_height="40dp"
             android:max="10"
             android:progress="5"
-            android:layout_marginTop="11dp" android:id="@+id/ProgressBar"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="11dp"
+            android:id="@+id/progressBar"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
             android:inputType="textPersonName"
             android:text="Search Store"
             android:ems="10"
             android:layout_marginTop="17dp"
-            android:id="@+id/SearchStore"
-            android:layout_below="@+id/ProgressBar"
+            android:id="@+id/searchStore"
+            android:layout_below="@+id/progressBar"
             android:layout_centerHorizontal="true"/>
 
     <com.google.android.gms.maps.MapView
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:id="@+id/MapViewDutyFree"
-            android:layout_above="@+id/ButtonProgress"
+            android:id="@+id/mapViewDutyFree"
+            android:layout_above="@+id/btProgress"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="14dp"/>
 
@@ -38,10 +44,11 @@
             android:text="Progress To Next Stage"
             android:layout_width="130dp"
             android:layout_height="60dp"
+            android:background="@color/colorButton"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
-            android:id="@+id/ButtonProgress"/>
+            android:id="@+id/btProgress"/>
 
 </RelativeLayout>
 

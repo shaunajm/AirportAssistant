@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.shaum.airportassistant.MainActivity">
@@ -14,63 +15,91 @@
             android:layout_height="40dp"
             android:max="10"
             android:progress="2"
-            android:layout_marginTop="11dp" android:id="@+id/ProgressBar"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="11dp"
+            android:id="@+id/progressBar"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
     <TextView
             android:text="How are you planning on travelling to the airport?"
             android:layout_width="200dp"
             android:layout_height="80dp"
-            android:layout_marginTop="61dp" android:id="@+id/TravelAirportQuestion"
-            android:layout_below="@+id/ProgressBar" android:layout_alignStart="@+id/ProgressBar"
-            android:layout_marginStart="15dp"/>
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/travelAirportQuestion"
+            android:layout_below="@+id/radioDriving"
+            android:layout_alignStart="@+id/progressBar"/>
     <RadioButton
             android:text="Driving"
             android:layout_width="140dp"
             android:layout_height="30dp"
-            android:id="@+id/radioDriving" android:layout_alignTop="@+id/TravelAirportQuestion"
-            android:layout_alignEnd="@+id/ProgressBar" android:layout_marginEnd="15dp"/>
+            android:id="@+id/radioDriving"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/progressBar"
+            android:layout_alignEnd="@+id/progressBar"/>
     <RadioButton
             android:text="Public Transport"
             android:layout_width="140dp"
-            android:layout_height="30dp" android:layout_below="@+id/radioDriving"
-            android:layout_alignEnd="@+id/radioDriving" android:id="@+id/radioPublicTransport"/>
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioDriving"
+            android:layout_alignEnd="@+id/radioDriving"
+            android:id="@+id/radioPublicTransport"/>
     <RadioButton
             android:text="Cycling"
             android:layout_width="140dp"
-            android:layout_height="30dp" android:layout_below="@+id/radioPublicTransport"
-            android:layout_alignEnd="@+id/radioPublicTransport" android:id="@+id/radioCycling"/>
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioPublicTransport"
+            android:layout_alignEnd="@+id/radioPublicTransport"
+            android:id="@+id/radioCycling"/>
     <RadioButton
             android:text="Walking"
             android:layout_width="140dp"
-            android:layout_height="30dp" android:layout_below="@+id/radioCycling"
-            android:layout_alignEnd="@+id/radioCycling" android:id="@+id/radioWalking"/>
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioCycling"
+            android:layout_alignEnd="@+id/radioCycling"
+            android:id="@+id/radioWalking"/>
     <RadioButton
             android:text="Taxi"
             android:layout_width="140dp"
-            android:layout_height="30dp" android:layout_below="@+id/radioWalking"
-            android:layout_alignEnd="@+id/radioWalking" android:id="@+id/radioTaxi"/>
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioWalking"
+            android:layout_alignEnd="@+id/radioWalking"
+            android:id="@+id/radioTaxi"/>
     <TextView
             android:text="Would you like directions for your chosen method of transport?"
             android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="47dp"
-            android:id="@+id/DirectionsQuestion" android:layout_below="@+id/radioTaxi"
-            android:layout_alignStart="@+id/TravelAirportQuestion"/>
+            android:layout_height="120dp"
+            android:textColor="@color/colorDefaultText"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:id="@+id/directionsQuestion"
+            android:layout_marginTop="17dp"
+            android:layout_below="@+id/radioTaxi"
+            android:layout_alignStart="@+id/travelAirportQuestion"/>
     <RadioButton
             android:text="Yes"
             android:layout_width="140dp"
-            android:layout_height="30dp" android:layout_alignTop="@+id/DirectionsQuestion"
-            android:layout_toEndOf="@+id/DirectionsQuestion" android:id="@+id/radioYes"/>
+            android:layout_height="30dp"
+            android:id="@+id/radioYes"
+            android:layout_alignTop="@+id/directionsQuestion"
+            android:layout_alignStart="@+id/radioTaxi"
+            android:layout_marginTop="22dp"/>
     <RadioButton
             android:text="No"
             android:layout_width="140dp"
-            android:layout_height="30dp" android:layout_below="@+id/radioYes"
-            android:layout_alignEnd="@+id/radioYes" android:id="@+id/radioNo"/>
+            android:layout_height="30dp"
+            android:layout_below="@+id/radioYes"
+            android:layout_alignEnd="@+id/radioYes"
+            android:id="@+id/radioNo"/>
     <Button
             android:text="Progress to next stage"
             android:layout_width="130dp"
-            android:layout_height="60dp" android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" android:layout_marginBottom="32dp" android:id="@+id/ButtonProgress"/>
+            android:layout_height="60dp"
+            android:background="@color/colorButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:id="@+id/btProgress"/>
 
 
 </RelativeLayout>
