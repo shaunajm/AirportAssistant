@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">AirportAssistant</string>
+    <string name="app_name">""</string>
     <string name="title_activity_transport_to_airport_map">Map</string>
 </resources>

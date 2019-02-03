@@ -1,20 +1,20 @@
 package com.example.shaum.airportassistant;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-public class DutyFreeSearch extends AppCompatActivity {
+public class JourneyUpload extends AppCompatActivity {
 
-    public Button btProgress;
+    public Button btUploadJourney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_duty_free_search);
+        setContentView(R.layout.activity_journey_upload);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -24,21 +24,25 @@ public class DutyFreeSearch extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DutyFreeSearch.this, Security.class);
+              Intent i = new Intent(JourneyUpload.this, Home.class);
                 startActivity(i);
                 finish();
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
-        btProgress.setOnClickListener(new View.OnClickListener() {
+
+
+        btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
+        btUploadJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DutyFreeSearch.this, DutyFreeMap.class);
+                Intent i = new Intent(JourneyUpload.this, HoldLuggageQues.class);
+                //TAKE IN JOURNEY INFO FROM QR CODE//
                 startActivity(i);
                 finish();
             }
 
         });
+
     }
 }

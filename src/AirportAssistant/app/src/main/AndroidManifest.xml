@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".Home">
         </activity>
-        <activity android:name=".QRJourneyUpload">
+        <activity android:name=".JourneyUpload">
         </activity>
         <activity android:name=".HoldLuggageQues">
         </activity>
@@ -42,8 +42,6 @@
         </activity>
         <activity android:name=".TransportToAirport1">
         </activity>
-        <activity android:name=".TransportToAirport2">
-        </activity>
         <activity android:name=".CheckIn">
         </activity>
         <activity android:name=".Security">
@@ -58,15 +56,11 @@
         </activity>
         <activity android:name=".DirectionsToGate3">
         </activity>
-        <activity android:name=".BoardingPass">
-        </activity>
         <activity android:name=".Onboard">
         </activity>
         <activity android:name=".Arrivals">
         </activity>
         <activity android:name=".ArrivalsTransport">
-        </activity>
-        <activity android:name=".JourneyComplete">
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
