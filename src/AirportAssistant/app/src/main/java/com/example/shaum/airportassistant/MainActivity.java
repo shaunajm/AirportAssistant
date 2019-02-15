@@ -17,7 +17,11 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static int RC_SIGN_IN = 0; //Needs to be assigned a value
     private FirebaseAuth mAuth;
+    public DatabaseReference mRootRef;
 
 
 
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
+
+        mRootRef = FirebaseDatabase.getInstance().getReference();
 
         // ...
         // Initialize Firebase Auth
@@ -111,6 +118,13 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            DatabaseReference mUserRef = mRootRef.child("users").child(user.getUid());
+                            HashMap<String, String> userInfo = new HashMap<>();
+                            userInfo.put("email", user.getEmail());
+                            userInfo.put("name", user.getDisplayName());
+
+                            mUserRef.setValue(userInfo);
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

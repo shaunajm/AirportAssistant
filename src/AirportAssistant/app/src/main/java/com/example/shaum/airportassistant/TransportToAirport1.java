@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.*;
 import com.google.maps.model.TravelMode;
 
 
@@ -41,6 +39,15 @@ public class TransportToAirport1 extends AppCompatActivity {
             }
         });
 
+        SeekBar seekBar = (SeekBar) findViewById(R.id.progressBar);
+
+        seekBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
+
         modeOptions = (RadioGroup) findViewById(R.id.radioMode);
 
         selectMode = (Button) findViewById(R.id.btProgress);
@@ -61,7 +68,7 @@ public class TransportToAirport1 extends AppCompatActivity {
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TransportToAirport1.this, TransportToAirportMap.class);
+                Intent i = new Intent(TransportToAirport1.this, CheckIn.class);
                 //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
                 bundle.putSerializable("mode", travelMode);
                 i.putExtras(bundle);

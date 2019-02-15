@@ -47,18 +47,18 @@
             android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="116dp"
             app:layout_constraintHorizontal_bias="0.497"/>
     <TextView
-            android:text="FR227 France Ryanair 03/11/2019 17:02"
+            android:text=""
             android:layout_width="360dp"
-            android:layout_height="80dp"
+            android:layout_height="200dp"
             android:textColor="@color/colorDefaultText"
             android:gravity="center"
             android:textSize="20sp"
             android:id="@+id/selectedJourneyInfo"
             android:layout_centerVertical="true" android:layout_centerHorizontal="true"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/confirmStartJourney" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.771"/>
     <Button
             android:text="Start Journey"
             android:layout_width="130dp"
@@ -68,8 +68,8 @@
             android:layout_alignParentBottom="true" android:layout_alignStart="@+id/selectedJourneyInfo"
             android:layout_marginTop="156dp"
             app:layout_constraintTop_toBottomOf="@+id/selectedJourneyInfo" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="24dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.698"/>
+            android:layout_marginEnd="28dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.0"/>
     <Button
             android:text="Cancel"
             android:layout_width="130dp"
@@ -82,8 +82,8 @@
             app:layout_constraintTop_toBottomOf="@+id/selectedJourneyInfo"
             app:layout_constraintEnd_toStartOf="@+id/btstartJourney" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.189" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.698"/>
+            app:layout_constraintHorizontal_bias="0.243" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.0"/>
 
 
 </android.support.constraint.ConstraintLayout>

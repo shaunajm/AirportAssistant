@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 
 public class DirectionsToGate3 extends AppCompatActivity {
 
@@ -28,6 +30,15 @@ public class DirectionsToGate3 extends AppCompatActivity {
                 Intent i = new Intent(DirectionsToGate3.this,DirectionsToGate2.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        SeekBar seekBar = (SeekBar) findViewById(R.id.progressBar);
+
+        seekBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
             }
         });
 

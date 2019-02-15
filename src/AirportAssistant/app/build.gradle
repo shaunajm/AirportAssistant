@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.example.shaum.airportassistant"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -24,6 +24,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-firestore:17.1.5'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.firebase:firebase-client-android:2.5.2'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -34,8 +36,9 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
-    implementation 'com.google.android.gms:play-services:11.0.0'
+    //implementation 'com.google.android.gms:play-services:11.0.0'
     implementation 'com.android.support:design:26.1.0'
+    implementation 'org.jsoup:jsoup:1.11.3'
 
     testImplementation 'junit:junit:4.12'
     apply plugin: 'com.google.gms.google-services'
@@ -43,5 +46,4 @@ dependencies {
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
     //This is workaround. Error is due to version checks Google added in version 3.3.0 of their com.google.gms:google-services Gradle Plugin.
 }
-
 

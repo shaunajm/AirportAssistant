@@ -58,7 +58,9 @@
             android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@+id/progressBar" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.496"/>
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"/>
 
 
     <TextView
@@ -72,7 +74,9 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/checkBoard"
-            app:layout_constraintHorizontal_bias="0.466" android:id="@+id/flightDetails"/>
+            app:layout_constraintHorizontal_bias="0.466" android:id="@+id/flightDetails"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"/>
 
 
     <TextView
@@ -82,15 +86,15 @@
             android:textColor="@color/colorDefaultText"
             android:gravity="center"
             android:textSize="20sp"
-            android:layout_below="@+id/boardInfo"
             android:layout_centerHorizontal="true"
             android:id="@+id/progressToGate"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintTop_toBottomOf="@+id/flightDetails" android:layout_marginTop="32dp"
-            app:layout_constraintHorizontal_bias="0.493"/>
+            app:layout_constraintHorizontal_bias="0.493" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.01"/>
     <TextView
-            android:text="Your bag weighs Xkgs and expected weight is 10kg."
+            android:text=""
             android:layout_width="320dp"
             android:layout_height="60dp"
             android:textColor="@color/colorDefaultText"
@@ -101,7 +105,9 @@
             android:id="@+id/bagWeightVExpected"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/progressToGate" app:layout_constraintHorizontal_bias="0.493"/>
+            app:layout_constraintTop_toBottomOf="@+id/progressToGate" app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:text="WARNING: No batteries etc etc etc"
             android:layout_width="320dp"
@@ -115,7 +121,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/bagWeightVExpected"
-            app:layout_constraintHorizontal_bias="0.493"/>
+            app:layout_constraintHorizontal_bias="0.493" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.0"/>
 
     <Button
             android:text="Progress To Next Stage"
