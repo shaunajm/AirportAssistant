@@ -8,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,11 +29,18 @@ public class ConfirmJourney extends AppCompatActivity {
     public DatabaseReference mRootRef;
     public DataSnapshot data;
     public FirebaseAuth mAuth;
+    public DatabaseReference mFlightRef;
+    public String destination;
+    public String airline;
+    public String scheduledTime;
+    public ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_journey);
+
+        ProgressSpinner();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -46,6 +55,8 @@ public class ConfirmJourney extends AppCompatActivity {
                 finish();
             }
         });
+
+        mFlightRef = FirebaseDatabase.getInstance().getReference("flight");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -62,7 +73,6 @@ public class ConfirmJourney extends AppCompatActivity {
 
             }
         });
-
 
         btstartJourney = (Button) findViewById(R.id.btstartJourney);
         btstartJourney.setOnClickListener(new View.OnClickListener() {
@@ -89,10 +99,6 @@ public class ConfirmJourney extends AppCompatActivity {
 
     public class ScrapeTask extends AsyncTask<Void, Void, String> {
 
-        String destination;
-        String airline;
-        String scheduledTime;
-
         @Override
         protected String doInBackground(Void... params) {
             try {
@@ -107,9 +113,11 @@ public class ConfirmJourney extends AppCompatActivity {
                         airline = columns.get(2).text();
                         scheduledTime = columns.get(4).text();
 
+                        setFlightValues();
 
                         return null;
                     }
+
                 }
 
                 return null;
@@ -123,6 +131,7 @@ public class ConfirmJourney extends AppCompatActivity {
         protected void onPostExecute(String result) {
             //if you had a ui element, you could display the title
             //((TextView)findViewById (R.id.myTextView)).setText (result);
+            spinner.setVisibility(View.GONE);
             TextView tv = (TextView) findViewById(R.id.selectedJourneyInfo);
             tv.setText("Flight Number: " + flightNumber + "\n \n" +
                     "Airline: " + airline + "\n \n" +
@@ -140,4 +149,21 @@ public class ConfirmJourney extends AppCompatActivity {
         }
     }
 
+    public void setFlightValues(){
+        FirebaseUser user = mAuth.getCurrentUser();
+
+            mFlightRef.child(flightNumber).child("destination").setValue(destination);
+            mFlightRef.child(flightNumber).child("airline").setValue(airline);
+            mFlightRef.child(flightNumber).child("scheduledTime").setValue(scheduledTime);
+            mFlightRef.child(flightNumber).child("userID").setValue(user.getUid());
+        }
+
+    public void ProgressSpinner(){
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+
+        spinner.setVisibility(View.VISIBLE);
+
+    }
 }
+

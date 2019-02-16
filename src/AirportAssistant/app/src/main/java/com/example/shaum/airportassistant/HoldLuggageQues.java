@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -80,28 +77,26 @@ public class HoldLuggageQues extends AppCompatActivity {
             public void onClick(View v) {
                 if (modeOptions.getCheckedRadioButtonId() != 0) {
                     onRadioButtonClicked();
-                    if(checkBagChoice.equals("Yes")) {
+                    if (checkBagChoice.equals("Yes")) {
                         if (TextUtils.isEmpty(editBookedWeight.getText())) {
                             editBookedWeight.setError("Booked Weight is required!");
                         } else if (TextUtils.isEmpty(editActualWeight.getText())) {
                             editActualWeight.setError("Actual Weight is required!");
                             setWeightValues();
-                        }
-                        else{
+                        } else {
                             setWeightValues();
                             Intent i = new Intent(HoldLuggageQues.this, ConfirmJourney.class);
                             startActivity(i);
                             finish();
-                            }
-
                         }
-                    }
-                    else {
+
+                    } else {
                         Intent i = new Intent(HoldLuggageQues.this, ConfirmJourney.class);
                         startActivity(i);
                         finish();
                     }
                 }
+            }
 
 
         });

@@ -69,7 +69,6 @@ public class DirectionsToGate1 extends AppCompatActivity {
                 } else {
                     setGateNumber();
                     Intent i = new Intent(DirectionsToGate1.this, DirectionsToGate2.class);
-                    // NEED TO TAKE IN GATE NUMBER HERE//
                     startActivity(i);
                     finish();
                 }

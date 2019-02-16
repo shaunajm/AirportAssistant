@@ -101,4 +101,33 @@ Instead of getting bogged down with this error, I am going to move on and look a
 
 While researching my maps functionality and how much of this will be necessary in my project, I have decided that I will also implement the Google Places API in the duty free and arrivals sections of my application. This will allow users to see what is around them that they may be interested in as they pass through these two areas.
 
-I met with Ray briefly today to get my ethical approval documentation signed. I completed this documentation throughout the week and this morning uploaded it to my git for approval. 
+I met with Ray briefly today to get my ethical approval documentation signed. I completed this documentation throughout the week and this morning uploaded it to my git for approval.
+
+
+## Blog 13 - 15/02/2019
+#### Weekly Update
+
+A good amount of progress was made in developing my application this week considering that week 3 brought about assignment work from two of my other modules and results day.
+
+The focus of this week was...
+* writing and reading to and from the Firebase Database
+* web scraping
+* creating warning messages when a user hasn't filled in a field
+* use case testing
+* completing some pages such as the Security screen
+
+As I began use case testing this week I discovered a number of bugs throughout the application. I stepped through the application and tried clicking different options on each page. This resulted in the discovery of a number of bugs including the application crashing if a user didn't input certain fields. To resolve these issues I prevented the user from not entering these fields and popped up a message to alert them that certain fields had to be entered. An example of this can be seen here...
+
+![](../media/EmptyFieldError.png)  
+
+The main web scraping functionality implemented this week was that users could input their flight number and I then scraped the Dublin Airport website to get the flight time, destination and airline. The user later confirms their journey and then moves onto progressing through the journey.
+
+*Enter Flight Number*           | *Scraped Flight Information*
+:---------------------------------:|:-------------------------------------:
+![](../media/InputFlightNumber.png) |![](../media/ScrapedFlightInfo.png)
+
+All of this data is written to the Firebase Database where it can later be read from. This can be seen here....
+
+![](../media/FirebaseDataDisplay.png)
+
+Unfortunately, I did not get to work on the Maps functionality this week. I will be working on this over the next week and will hopefully make significant progress despite being busy with other assignments at the moment. I will also be working on other web scraping functionality.
