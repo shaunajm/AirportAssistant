@@ -8,10 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SeekBar;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -19,19 +18,18 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
+import com.google.maps.android.PolyUtil;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.TravelMode;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TransportToAirportMap extends FragmentActivity implements OnMapReadyCallback {
@@ -52,7 +50,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public Location mCurrentLocation;
     public CameraPosition mCameraPosition;
     private Bundle bundle = new Bundle();
-    public String mode;
     public ArrayList<LatLng> listpoints;
 
     @Override
@@ -64,23 +61,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
 
         bundle = getIntent().getExtras();
         if (bundle != null) {
-            mode = bundle.getString("mode");
-        }
-
-        if(mode == "TravelMode.DRIVING"){
-            travelMode = TravelMode.DRIVING;
-        }
-        if(mode == "TravelMode.BICYCLING"){
-            travelMode = TravelMode.BICYCLING;
-        }
-        if(mode == "TravelMode.WALKING"){
-            travelMode = TravelMode.TRANSIT;
-        }
-        if(mode == "TravelMode.BICYCLING"){
-            travelMode = TravelMode.WALKING;
-        }
-        else{
-            travelMode = TravelMode.UNKNOWN;
+            travelMode = (TravelMode) bundle.getSerializable("mode");
         }
 
         getLocationPermission();
@@ -91,14 +72,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
-        SeekBar seekBar = (SeekBar) findViewById(R.id.progressBar);
-
-        seekBar.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return true;
-            }
-        });
 
         btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
@@ -176,7 +149,9 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
 
     private GeoApiContext getGeoContext() {
         GeoApiContext geoApiContext = new GeoApiContext();
-        return geoApiContext.setQueryRateLimit(3).setApiKey(getString(R.string.directionsApiKey)).setConnectTimeout(1, TimeUnit.SECONDS).setReadTimeout(1, TimeUnit.SECONDS).setWriteTimeout(1, TimeUnit.SECONDS);
+        geoApiContext.setQueryRateLimit(3).setApiKey(getString(R.string.directionsApiKey)).setConnectTimeout(1, TimeUnit.SECONDS).setReadTimeout(1, TimeUnit.SECONDS).setWriteTimeout(1, TimeUnit.SECONDS);
+        Log.d("Map", "Geo context request");
+        return geoApiContext;
     }
 
 
@@ -187,17 +162,18 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
         com.google.maps.model.LatLng googleDestination = new com.google.maps.model.LatLng(destination.latitude, destination.longitude);
 
         try {
-            DirectionsResult dr = DirectionsApi.newRequest(getGeoContext())
+            getGeoContext();
+            Log.d("Map", "Geo context found");
+            DirectionsResult dr = DirectionsApi.getDirections(getGeoContext(), googleOrigin.toString(), googleDestination.toString())
                     .mode(travelMode)
-                    .origin(googleOrigin)
-                    .destination(googleDestination)
                     .departureTime(now)
                     .await();
             if (dr != null) {
-               // addPolyline(dr);
+                addPolyline(dr);
             }
             return dr;
         } catch (Exception e) {
+            e.printStackTrace();
             Toast.makeText(TransportToAirportMap.this, "EXCEPTION GURL",
                     Toast.LENGTH_LONG).show();
             return null;
@@ -209,12 +185,11 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
         return  "Time :"+ results.routes[0].legs[0].duration.humanReadable + " Distance :" + results.routes[0].legs[0].distance.humanReadable;
     }
 
-/*
+
     private void addPolyline(DirectionsResult results) {
         List<LatLng> decodedPath = PolyUtil.decode(results.routes[0].overviewPolyline.getEncodedPath());
         mMap.addPolyline(new PolylineOptions().addAll(decodedPath));
     }
-*/
 
     private void getLocationPermission(){
         /*

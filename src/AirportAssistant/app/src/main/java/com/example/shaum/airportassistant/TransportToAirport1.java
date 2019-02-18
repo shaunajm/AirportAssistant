@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.*;
@@ -50,59 +51,52 @@ public class TransportToAirport1 extends AppCompatActivity {
 
         modeOptions = (RadioGroup) findViewById(R.id.radioMode);
 
-        selectMode = (Button) findViewById(R.id.btProgress);
-        selectMode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Make sure that the user has selected a break length
-                if (modeOptions.getCheckedRadioButtonId() != 0) {
-                    onRadioButtonClicked(v);
-                } else {
-                    Toast.makeText(TransportToAirport1.this, "Please select a mode of transport.",
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
         btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TransportToAirport1.this, CheckIn.class);
-                //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
-                bundle.putSerializable("mode", travelMode);
-                i.putExtras(bundle);
-                startActivity(i);
-                finish();
+                if (modeOptions.getCheckedRadioButtonId() != 0) {
+                    onRadioButtonClicked();
+
+                    Intent i = new Intent(TransportToAirport1.this, TransportToAirportMap.class);
+                    //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
+
+                    Log.d("mode", travelMode.toString());
+                    bundle.putSerializable("mode", travelMode);
+                    i.putExtras(bundle);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Toast.makeText(TransportToAirport1.this, "Please select a mode of transport.",
+                            Toast.LENGTH_LONG).show();
+                }
             }
 
         });
 
     }
 
-    public void onRadioButtonClicked(View view) {
+    public void onRadioButtonClicked() {
         // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+        RadioButton checked = (RadioButton) findViewById(modeOptions.getCheckedRadioButtonId());
 
         // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radioDriving:
-                if (checked)
-                    travelMode = TravelMode.DRIVING;
-                    break;
-            case R.id.radioPublicTransport:
-                if (checked)
-                    travelMode = TravelMode.TRANSIT;
-                    break;
-            case R.id.radioWalking:
-                if (checked)
-                    travelMode = TravelMode.WALKING;
-                    break;
-            case R.id.radioCycling:
+        switch(checked.getText().toString()) {
+            case "Driving":
+                travelMode = TravelMode.DRIVING;
+                break;
+            case "Public Transport":
+                travelMode = TravelMode.TRANSIT;
+                break;
+            case "Walking":
+                travelMode = TravelMode.WALKING;
+                break;
+            case "Cycling":
                 travelMode = TravelMode.BICYCLING;
-                    break;
+                break;
             default:
-                travelMode = null;
+                travelMode = TravelMode.UNKNOWN;
+                break;
         }
     }
 }
