@@ -38,145 +38,171 @@
             android:layout_width="360dp"
             android:layout_height="40dp"
             android:max="10"
-            android:progress="9"
+            android:progress="2"
             android:id="@+id/progressBar"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="100dp"
-            app:layout_constraintHorizontal_bias="0.485"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="100dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.485"/>
+
 
     <TextView
-            android:text="Welcome to: XXXXXXXXXX"
-            android:layout_width="320dp"
-            android:layout_height="40dp"
+            android:text="Where are you travelling to?"
+            android:layout_width="173dp"
+            android:layout_height="103dp"
             android:textColor="@color/colorDefaultText"
             android:gravity="center"
             android:textSize="20sp"
-            android:id="@+id/welcomeTo"
-            android:layout_below="@+id/progressBar"
-            android:layout_centerHorizontal="true"
+            android:id="@+id/travelFromAirportQuestion"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.493"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.076" app:layout_constraintVertical_bias="0.035"/>
+
+    <EditText android:layout_width="170dp"
+              android:layout_height="80dp"
+              app:layout_constraintEnd_toEndOf="parent"
+              android:inputType="text"
+              android:id="@+id/address"
+              android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/travelFromAirportQuestion"
+              android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+              app:layout_constraintTop_toBottomOf="@+id/progressBar" app:layout_constraintHorizontal_bias="0.333"
+              app:layout_constraintVertical_bias="0.033"/>
 
     <TextView
-            android:text="How are you planning on travelling to the airport?"
-            android:layout_width="200dp"
-            android:layout_height="80dp"
+            android:text="How are you planning on travelling to your destination?"
+            android:layout_width="173dp"
+            android:layout_height="103dp"
             android:textColor="@color/colorDefaultText"
             android:gravity="center"
             android:textSize="20sp"
             android:id="@+id/travelAirportQuestion"
-            android:layout_below="@+id/radioDriving"
-            android:layout_alignStart="@+id/progressBar"
-            android:layout_marginTop="68dp"
-            app:layout_constraintTop_toBottomOf="@+id/welcomeTo" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="32dp" app:layout_constraintEnd_toStartOf="@+id/radioPublicTransport"
-            android:layout_marginEnd="8dp"/>
-    <RadioButton
-            android:text="Driving"
-            android:layout_width="140dp"
-            android:layout_height="36dp"
-            android:id="@+id/radioDriving"
-            android:layout_below="@+id/welcomeTo"
-            android:layout_alignEnd="@+id/progressBar"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/welcomeTo" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.929"/>
-    <RadioButton
-            android:text="Public Transport"
-            android:layout_width="140dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/radioDriving"
-            android:layout_alignEnd="@+id/radioDriving"
-            android:id="@+id/radioPublicTransport"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioTaxi" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.929"/>
-    <RadioButton
-            android:text="Cycling"
-            android:layout_width="140dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/radioPublicTransport"
-            android:layout_alignEnd="@+id/radioPublicTransport"
-            android:id="@+id/radioCycling"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/radioMode" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioWalking"
-            app:layout_constraintHorizontal_bias="0.929"/>
-    <RadioButton
-            android:text="Walking"
-            android:layout_width="140dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/radioCycling"
-            android:layout_alignEnd="@+id/radioCycling"
-            android:id="@+id/radioWalking"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioPublicTransport"
-            app:layout_constraintHorizontal_bias="0.929"/>
-    <RadioButton
-            android:text="Taxi"
-            android:layout_width="140dp"
-            android:layout_height="28dp"
-            android:layout_below="@+id/radioWalking"
-            android:layout_alignEnd="@+id/radioWalking"
-            android:id="@+id/radioTaxi" android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/travelFromAirportQuestion"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/directionsQuestion"/>
+
+    <RadioGroup
+            android:id="@+id/radioMode"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioDriving" app:layout_constraintHorizontal_bias="0.929"/>
+            app:layout_constraintBottom_toTopOf="@+id/radioDecision" app:layout_constraintHorizontal_bias="0.893"
+            android:layout_marginBottom="4dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" app:layout_constraintVertical_bias="0.848">
+
+        <RadioButton
+                android:text="Driving"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:id="@+id/radioDriving"
+                android:layout_below="@+id/progressBar"
+                android:layout_alignEnd="@+id/progressBar"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="2dp" app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                app:layout_constraintHorizontal_bias="0.968"/>
+        <RadioButton
+                android:text="Public Transport"
+                android:layout_width="140dp"
+                android:layout_height="26dp"
+                android:layout_below="@+id/radioDriving"
+                android:layout_alignEnd="@+id/radioDriving"
+                android:id="@+id/radioPublicTransport"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/radioDriving"
+                app:layout_constraintHorizontal_bias="0.968"/>
+        <RadioButton
+                android:text="Cycling"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/radioPublicTransport"
+                android:layout_alignEnd="@+id/radioPublicTransport"
+                android:id="@+id/radioCycling"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/radioWalking"
+                app:layout_constraintHorizontal_bias="0.968"/>
+        <RadioButton
+                android:text="Walking"
+                android:layout_width="140dp"
+                android:layout_height="26dp"
+                android:layout_below="@+id/radioCycling"
+                android:layout_alignEnd="@+id/radioCycling"
+                android:id="@+id/radioWalking"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                android:layout_marginEnd="5dp" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/radioPublicTransport"
+                app:layout_constraintHorizontal_bias="0.968"/>
+    </RadioGroup>
+
     <TextView
             android:text="Would you like directions for your chosen method of transport?"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
+            android:layout_width="170dp"
+            android:layout_height="120dp"
             android:textColor="@color/colorDefaultText"
             android:gravity="center"
             android:textSize="20sp"
             android:id="@+id/directionsQuestion"
-            android:layout_below="@+id/radioTaxi"
-            android:layout_alignStart="@+id/travelAirportQuestion"
-            android:layout_marginTop="52dp"
-            app:layout_constraintTop_toBottomOf="@+id/travelAirportQuestion"
+            app:layout_constraintEnd_toStartOf="@+id/radioDecision" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/radioYes" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.586"/>
-    <RadioButton
-            android:text="Yes"
-            android:layout_width="140dp"
-            android:layout_height="30dp"
-            android:id="@+id/radioYes"
-            android:layout_below="@+id/radioTaxi"
-            android:layout_alignStart="@+id/radioTaxi"
-            android:layout_marginTop="56dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioCycling" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.929"/>
-    <RadioButton
-            android:text="No"
-            android:layout_width="140dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/radioYes"
-            android:layout_alignEnd="@+id/radioYes"
-            android:id="@+id/radioNo" android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintHorizontal_bias="0.346" app:layout_constraintVertical_bias="0.767"/>
+
+    <RadioGroup
+            android:id="@+id/radioDecision"
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/btProgress"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/radioYes" app:layout_constraintHorizontal_bias="0.929"/>
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.934">
+        <RadioButton
+                android:text="Yes"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:id="@+id/radioYes"
+                android:layout_alignTop="@+id/directionsQuestion"
+                android:layout_alignStart="@+id/radioTaxi"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@+id/radioCycling"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.939"/>
+        <RadioButton
+                android:text="No"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/radioYes"
+                android:layout_alignEnd="@+id/radioYes"
+                android:id="@+id/radioNo" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/radioYes" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.968"/>
+    </RadioGroup>
+
     <Button
             android:text="Progress to next stage"
             android:layout_width="130dp"
             android:layout_height="60dp"
             android:background="@color/colorButton"
-            android:id="@+id/btProgress"
-            android:layout_below="@+id/directionsQuestion"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/directionsQuestion"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="32dp"
-            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="1.0"/>
+            android:id="@+id/btProgress" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/directionsQuestion" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.923"/>
+
 
 </android.support.constraint.ConstraintLayout>

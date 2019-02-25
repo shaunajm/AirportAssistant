@@ -42,8 +42,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     apply plugin: 'com.google.gms.google-services'
-    
+
     com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
     //This is workaround. Error is due to version checks Google added in version 3.3.0 of their com.google.gms:google-services Gradle Plugin.
 }
-

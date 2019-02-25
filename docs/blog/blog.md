@@ -131,3 +131,30 @@ All of this data is written to the Firebase Database where it can later be read 
 ![](../media/FirebaseDataDisplay.png)
 
 Unfortunately, I did not get to work on the Maps functionality this week. I will be working on this over the next week and will hopefully make significant progress despite being busy with other assignments at the moment. I will also be working on other web scraping functionality.
+
+
+## Blog 14 - 21/02/2019
+#### Ethical Approval Granted
+
+This morning I received an email to inform me that my Ethical Approval submission had been approved.  
+
+![](../media/EthicsApproved.png)
+
+I was delighted to have this completed as once I reach the user testing phase of my project I will need such approval. It is great to have this done early so that I can return to focussing on the developing and testing of my project.
+
+## Blog 15 - 22/02/2019
+#### Weekly Update
+
+I am very happy with the progress I have made this week. The biggest headway made this week was with the Google Maps functionality. I decided to face into the issue I was facing first thing on Monday morning and thankfully, I resolved it. It turned out that it was a simple issue with the API key which was easy to fix but difficult to discover. Once this was corrected my application now returned directions for a user's chosen method of transport. This can be seen here...
+
+*Driving*           | *Public Transport*         |  *Cycling*         | *Walking*        
+:---------------------------------:|:---------------------------------:|:---------------------------------:|:-------------------------------------:
+![](../media/DrivingToAirport.png) |![](../media/PublicTransportToAirport.png)|![](../media/CyclingToAirport.png) |![](../media/WalkingToAirport.png)
+
+Once I had this completed I started to organise myself to establish where I am in terms of my project. Thankfully, I have been keeping a journal of my project where I am consistently keeping track of what I have completed and what I have yet to do. I also track changes in the project and bugs I discover which I must return to. On Monday I am some small things to resolve to have the ability to mark pages as "Complete". Although these pages are not perfect, they are at a standard that can be further enhanced later if I have time. I must be conscious of the time constraint on these project and manage my time appropriately. As you can see, at this time I have "Completed" eight of the pages of my application. The majority of my remaining functionality is down to the Maps functionality, some minor fixes and of course AR. I am excited to tackle AR but have to ensure that I have an application I am confident with before I add on what is, in my opinion, the WOW factor.
+
+![](../media/ProjectJournal.png)
+
+As the map functionality for each of these sections is completely different, I have to spend some time working on the set up of each page. This was what the majority of this week doing. At the moment I have the Maps API, Current Location API and Directions API working on one of these pages, Transport to Airport, and am working on getting this working in Duty Free, Directions to Gate and Arrivals Directions. Once each of these are working I will progress onto adding the Distance Matrix API to all of these pages (as it gives the travel distance and time) and the Places API (which gives local points of interest) to the Duty Free and Arrivals pages. If I have time I will also implement the Roads API (gives information such as speed limits) to the Transport to Airport and Arrivals pages if I have the time.
+
+I also have a number of minor bug fixes and issues to work on over the next week. Finally, I will email Ray this week to organise a meeting.

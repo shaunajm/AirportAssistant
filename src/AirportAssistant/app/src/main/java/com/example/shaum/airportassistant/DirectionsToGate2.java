@@ -46,7 +46,7 @@ public class DirectionsToGate2 extends AppCompatActivity {
         btViewOnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DirectionsToGate2.this, DirectionsToGate3.class);
+                Intent i = new Intent(DirectionsToGate2.this, DirectionsToGateMap.class);
                 startActivity(i);
                 finish();
             }

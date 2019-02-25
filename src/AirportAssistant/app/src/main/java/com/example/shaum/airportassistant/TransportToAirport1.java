@@ -17,7 +17,9 @@ public class TransportToAirport1 extends AppCompatActivity {
     public Button btProgress;
     private Bundle bundle = new Bundle();
     public TravelMode travelMode;
-    private RadioGroup modeOptions ;
+    private RadioGroup modeOptions;
+    private RadioGroup yesnoOptions;
+    public String yesnoDecision;
     public Button selectMode;
 
 
@@ -50,33 +52,49 @@ public class TransportToAirport1 extends AppCompatActivity {
         });
 
         modeOptions = (RadioGroup) findViewById(R.id.radioMode);
+        yesnoOptions = (RadioGroup) findViewById(R.id.radioDecision);
 
         btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (modeOptions.getCheckedRadioButtonId() != 0) {
-                    onRadioButtonClicked();
+                if (yesnoOptions.getCheckedRadioButtonId() != -1) {
+                    onYesNoRadioButtonClicked();
+                    if (yesnoDecision.equals("Yes")) {
+                        if (modeOptions.getCheckedRadioButtonId() != -1) {
 
-                    Intent i = new Intent(TransportToAirport1.this, TransportToAirportMap.class);
-                    //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
+                            onTransportRadioButtonClicked();
 
-                    Log.d("mode", travelMode.toString());
-                    bundle.putSerializable("mode", travelMode);
-                    i.putExtras(bundle);
-                    startActivity(i);
-                    finish();
-                } else {
-                    Toast.makeText(TransportToAirport1.this, "Please select a mode of transport.",
+                            Intent i = new Intent(TransportToAirport1.this, TransportToAirportMap.class);
+                            //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
+
+                            Log.d("mode", travelMode.toString());
+                            bundle.putSerializable("mode", travelMode);
+                            i.putExtras(bundle);
+                            startActivity(i);
+                            finish();
+
+                        } else {
+                            Toast.makeText(TransportToAirport1.this, "Please select a mode of transport.",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Intent i = new Intent(TransportToAirport1.this, CheckIn.class);
+                        //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
+                        startActivity(i);
+                        finish();
+                    }
+                }
+                else{
+                    Toast.makeText(TransportToAirport1.this, "Please select whether you would like directions.",
                             Toast.LENGTH_LONG).show();
                 }
-            }
-
+           }
         });
 
     }
 
-    public void onRadioButtonClicked() {
+    public void onTransportRadioButtonClicked() {
         // Is the button now checked?
         RadioButton checked = (RadioButton) findViewById(modeOptions.getCheckedRadioButtonId());
 
@@ -99,4 +117,23 @@ public class TransportToAirport1 extends AppCompatActivity {
                 break;
         }
     }
+
+    public void onYesNoRadioButtonClicked() {
+        // Is the button now checked?
+        RadioButton checked = (RadioButton) findViewById(yesnoOptions.getCheckedRadioButtonId());
+
+        // Check which radio button was clicked
+        switch(checked.getText().toString()) {
+            case "Yes":
+                yesnoDecision = "Yes";
+                break;
+            case "No":
+                yesnoDecision = "No";
+                break;
+            default:
+                yesnoDecision = "No Selection";
+                break;
+        }
+    }
+
 }

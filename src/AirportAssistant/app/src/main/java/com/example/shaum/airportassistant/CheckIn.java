@@ -58,6 +58,7 @@ public class CheckIn extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
                 displayBaggageInfo();
+                displayFlightInfo();
             }
 
             @Override
@@ -86,8 +87,27 @@ public class CheckIn extends AppCompatActivity {
             String bookedWeight = user.child("bookedWeight").getValue(String.class);
 
             TextView tv = (TextView) findViewById(R.id.bagWeightVExpected);
-            tv.setText("Your bag weighs " + actualWeight +
-                       " and your booked weight is " + bookedWeight + ".");
+            tv.setText("Your bag's weight is: " + actualWeight + " kg" +"\n" +
+                       "Your booked weight is: " + bookedWeight + " kg");
+        }
+    }
+
+    public void displayFlightInfo(){
+        DataSnapshot user = data.child("users").child(mAuth.getUid());
+
+
+        if (user != null) {
+            String flightNumber = user.child("flightNumber").getValue(String.class);
+            DataSnapshot flight = data.child("flight").child(flightNumber);
+            String destination = flight.child("destination").getValue(String.class);
+            String airline = flight.child("airline").getValue(String.class);
+            String scheduledTime = flight.child("scheduledTime").getValue(String.class);
+
+            TextView tv = (TextView) findViewById(R.id.flightDetails);
+            tv.setText("Flight number: " + flightNumber + "\n" +
+                    "Destination: " + destination + "\n" +
+                    "Airline: " + airline + "\n" +
+                    "Flight Time: " + scheduledTime);
         }
     }
 }
