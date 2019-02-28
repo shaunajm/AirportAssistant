@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -25,6 +26,8 @@ import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.android.PolyUtil;
 import com.google.maps.model.DirectionsResult;
+import com.google.maps.model.Distance;
+import com.google.maps.model.Duration;
 import com.google.maps.model.TravelMode;
 import org.joda.time.DateTime;
 
@@ -37,8 +40,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     private GoogleMap mMap;
     public Button btProgress;
     public TravelMode travelMode;
-    //public static final String destination = "Dublin Airport";
-    //public String origin;
     public boolean mLocationPermissionGranted;
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     public Location mLastKnownLocation;
@@ -51,6 +52,9 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public CameraPosition mCameraPosition;
     private Bundle bundle = new Bundle();
     public ArrayList<LatLng> listpoints;
+    public Duration duration;
+    public Distance distance;
+    private static final String API_KEY = "AIzaSyDZxWk3GhKcTA_vwJqab_x_kiIDtWcaknQ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,21 +135,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-        // Get the current location of the device and set the position of the map.
-      //  getDeviceLocation();
-
-       // DirectionsResult dr = getDirectionsResult();
-
-
-        // Add a marker in Sydney and move the camera
-       // LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        //addMarkersToMap(dr, mMap);
-        //addPolyline(dr, mMap);
-
     }
-
 
     private GeoApiContext getGeoContext() {
         GeoApiContext geoApiContext = new GeoApiContext();
@@ -163,13 +153,15 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
 
         try {
             getGeoContext();
-            Log.d("Map", "Geo context found");
+            String[] origins = {googleOrigin.toString()};
+            String[] destinations = {googleDestination.toString()};
             DirectionsResult dr = DirectionsApi.getDirections(getGeoContext(), googleOrigin.toString(), googleDestination.toString())
                     .mode(travelMode)
                     .departureTime(now)
                     .await();
             if (dr != null) {
                 addPolyline(dr);
+                displayEndLocationTitle(dr);
             }
             return dr;
         } catch (Exception e) {
@@ -181,10 +173,17 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
 
     }
 
-    private String getEndLocationTitle(DirectionsResult results){
-        return  "Time :"+ results.routes[0].legs[0].duration.humanReadable + " Distance :" + results.routes[0].legs[0].distance.humanReadable;
-    }
+    private void displayEndLocationTitle(DirectionsResult results){
+        Duration duration = results.routes[0].legs[0].duration;
+        Distance distance = results.routes[0].legs[0].distance;
 
+        TextView tvDuration = (TextView) findViewById(R.id.timeDetails);
+        TextView tvDistance = (TextView) findViewById(R.id.distanceDetails);
+
+        tvDuration.setText("Duration: \n"+ duration.humanReadable);
+        tvDistance.setText("Distance: \n" + distance.humanReadable);
+
+    }
 
     private void addPolyline(DirectionsResult results) {
         List<LatLng> decodedPath = PolyUtil.decode(results.routes[0].overviewPolyline.getEncodedPath());
@@ -192,12 +191,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     }
 
     private void getLocationPermission(){
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
-
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -225,7 +218,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
                 }
             }
         }
-      //  updateLocationUI();
     }
 
     private void updateLocationUI() {
@@ -286,4 +278,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             super.onSaveInstanceState(outState);
         }
     }
+
+
 }

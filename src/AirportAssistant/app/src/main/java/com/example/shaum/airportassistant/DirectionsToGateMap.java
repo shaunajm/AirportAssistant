@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -19,15 +20,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
 import com.google.maps.android.PolyUtil;
-import com.google.maps.model.DirectionsResult;
-import com.google.maps.model.TravelMode;
+import com.google.maps.model.*;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
@@ -54,6 +56,9 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
     public FirebaseAuth mAuth;
     public String gateNumber;
     public String prepgateNumber;
+    public String address;
+    public double arrivallat;
+    public double arrivallng;
 
 
     @Override
@@ -123,10 +128,12 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
                     mMap.clear();
                 }
 
+                getLocationFromAddress(prepgateNumber);
+
                 LatLng currentLatLng = new LatLng(mLastKnownLocation.getLatitude(),
                         mLastKnownLocation.getLongitude());
 
-                LatLng destination = new LatLng(53.4264, -6.2499);
+                LatLng destination = new LatLng(arrivallat, arrivallng);
                 //Save first points select
                 listpoints.add(currentLatLng);
                 listpoints.add(destination);
@@ -174,6 +181,7 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
                     .await();
             if (dr != null) {
                 addPolyline(dr);
+                displayEndLocationTitle(dr);
             }
             return dr;
         } catch (Exception e) {
@@ -185,8 +193,15 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
 
     }
 
-    private String getEndLocationTitle(DirectionsResult results){
-        return  "Time :"+ results.routes[0].legs[0].duration.humanReadable + " Distance :" + results.routes[0].legs[0].distance.humanReadable;
+    private void displayEndLocationTitle(DirectionsResult results){
+        Duration duration = results.routes[0].legs[0].duration;
+        Distance distance = results.routes[0].legs[0].distance;
+
+        TextView tvDuration = (TextView) findViewById(R.id.timeDetails);
+        TextView tvDistance = (TextView) findViewById(R.id.distanceDetails);
+
+        tvDuration.setText("Duration: \n"+ duration.humanReadable);
+        tvDistance.setText("Distance: \n" + distance.humanReadable);
     }
 
 
@@ -298,5 +313,22 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
             gateNumber = user.child("gateNumber").getValue(String.class);
         }
         prepgateNumber = "Gate " + gateNumber + " Dublin Airport";
+    }
+
+    public void getLocationFromAddress(String strAddress) {
+        try {
+            Log.d("Address", strAddress);
+            GeoApiContext context = getGeoContext();
+            GeocodingResult[] result = GeocodingApi.geocode(context, strAddress).await();
+            //address = coder.getFromLocationName(strAddress, 1);
+            if (result == null) {
+                Log.d("GeoCoder", "Could Not Find " + strAddress);
+                return;
+            }
+            arrivallat = result[0].geometry.location.lat;
+            arrivallng = result[0].geometry.location.lng;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

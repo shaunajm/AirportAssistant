@@ -47,7 +47,7 @@ public class Security extends AppCompatActivity {
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Security.this, DutyFreeSearch.class);
+                Intent i = new Intent(Security.this, DutyFreeMap.class);
                 startActivity(i);
                 finish();
             }

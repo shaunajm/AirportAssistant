@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -15,13 +16,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.*;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.android.PolyUtil;
-import com.google.maps.model.DirectionsResult;
-import com.google.maps.model.GeocodingResult;
-import com.google.maps.model.TravelMode;
+import com.google.maps.model.*;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
@@ -146,14 +146,27 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
                     .await();
             if (dr != null) {
                 addPolyline(dr);
+                displayEndLocationTitle(dr);
             }
             return dr;
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(ArrivalsMap.this, "EXCEPTION GURL: " + address,
+            Toast.makeText(ArrivalsMap.this, "EXCEPTION: " + address,
                     Toast.LENGTH_LONG).show();
             return null;
         }
+
+    }
+
+    private void displayEndLocationTitle(DirectionsResult results){
+        Duration duration = results.routes[0].legs[0].duration;
+        Distance distance = results.routes[0].legs[0].distance;
+
+        TextView tvDuration = (TextView) findViewById(R.id.timeDetails);
+        TextView tvDistance = (TextView) findViewById(R.id.distanceDetails);
+
+        tvDuration.setText("Duration: \n"+ duration.humanReadable);
+        tvDistance.setText("Distance: \n" + distance.humanReadable);
 
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,6 +23,7 @@ public class Arrivals extends AppCompatActivity {
     public String yesnoDecision;
     public Button selectMode;
     public String address;
+    public EditText editAddress;
 
 
     @Override
@@ -45,6 +47,8 @@ public class Arrivals extends AppCompatActivity {
 
         SeekBar seekBar = (SeekBar) findViewById(R.id.progressBar);
 
+        editAddress = (EditText)findViewById(R.id.address);
+
         seekBar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -66,18 +70,22 @@ public class Arrivals extends AppCompatActivity {
 
                             onTransportRadioButtonClicked();
 
-                            EditText edit = (EditText)findViewById(R.id.address);
-                            address = edit.getText().toString();
+                            if( TextUtils.isEmpty(editAddress.getText())){
+                                editAddress.setError("Destination is required!");
+                            }
+                            else {
+                                address = editAddress.getText().toString();
 
-                            Intent i = new Intent(Arrivals.this, ArrivalsMap.class);
-                            //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
+                                Intent i = new Intent(Arrivals.this, ArrivalsMap.class);
+                                //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
 
-                            Log.d("mode", travelMode.toString());
-                            bundle.putSerializable("mode", travelMode);
-                            bundle.putString("address", address);
-                            i.putExtras(bundle);
-                            startActivity(i);
-                            finish();
+                                Log.d("mode", travelMode.toString());
+                                bundle.putSerializable("mode", travelMode);
+                                bundle.putString("address", address);
+                                i.putExtras(bundle);
+                                startActivity(i);
+                                finish();
+                            }
 
                         } else {
                             Toast.makeText(Arrivals.this, "Please select a mode of transport.",

@@ -31,12 +31,48 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/whiteToolbar"
+            android:layout_height="70dp"
+            android:layout_width="match_parent"
+            android:background="@color/colorMapsToolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="80dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text=" "
+                android:textSize="20dp"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:id="@+id/distanceDetails" />
+
+        <TextView
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:text=" "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorText"
+                android:textAlignment="center"
+                android:id="@+id/timeDetails" />
+
+    </android.support.v7.widget.Toolbar>
+
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               xmlns:map="http://schemas.android.com/apk/res-auto"
               android:layout_width="412dp"
-              android:layout_height="633dp"
+              android:layout_height="566dp"
               android:id="@+id/map"
               tools:context="com.example.shaum.airportassistant.TransportToAirportMap"
               android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -44,7 +80,7 @@
               map:layout_constraintTop_toTopOf="parent" map:layout_constraintBottom_toBottomOf="parent"
               map:layout_constraintVertical_bias="1.0"
               map:layout_constraintEnd_toEndOf="parent" map:layout_constraintStart_toStartOf="parent"
-              map:layout_constraintHorizontal_bias="0.0"/>
+              map:layout_constraintHorizontal_bias="1.0"/>
 
     <Button
             android:text="Progress To Next Stage"

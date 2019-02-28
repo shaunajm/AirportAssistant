@@ -45,13 +45,9 @@
         </activity>
         <activity android:name=".Security">
         </activity>
-        <activity android:name=".DutyFreeSearch">
-        </activity>
         <activity android:name=".DutyFreeMap">
         </activity>
         <activity android:name=".DirectionsToGate1">
-        </activity>
-        <activity android:name=".DirectionsToGate2">
         </activity>
         <activity android:name=".Onboard">
         </activity>
@@ -84,10 +80,6 @@
         <activity
                 android:name=".DirectionsToGateMap"
                 android:label="@string/title_activity_directions_to_gate_map">
-        </activity>
-        <activity
-                android:name=".DutyFreeMapDirections"
-                android:label="@string/title_activity_duty_free_map_directions">
         </activity>
     </application>
 

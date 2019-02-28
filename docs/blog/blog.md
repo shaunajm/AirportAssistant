@@ -158,3 +158,18 @@ Once I had this completed I started to organise myself to establish where I am i
 As the map functionality for each of these sections is completely different, I have to spend some time working on the set up of each page. This was what the majority of this week doing. At the moment I have the Maps API, Current Location API and Directions API working on one of these pages, Transport to Airport, and am working on getting this working in Duty Free, Directions to Gate and Arrivals Directions. Once each of these are working I will progress onto adding the Distance Matrix API to all of these pages (as it gives the travel distance and time) and the Places API (which gives local points of interest) to the Duty Free and Arrivals pages. If I have time I will also implement the Roads API (gives information such as speed limits) to the Transport to Airport and Arrivals pages if I have the time.
 
 I also have a number of minor bug fixes and issues to work on over the next week. Finally, I will email Ray this week to organise a meeting.
+
+## Blog 16 - 28/02/2019
+#### Meeting 4 with Ray
+
+I met with Ray this morning at 11:15 to discuss the progress of my project. I was proud of the work I had gotten through in the last 4 weeks so was excited to see what he would think of my progress. We discussed my progress and what I plan to complete in the next number of weeks. Ray mentioned that I should outline goals for the AR functionality I wish to add to the application.
+
+ We discussed that I firstly hope to achieve the functionality to measure hand luggage using my application. As the ARCore SDK is currently released in Beta only, this may be a difficult task to achieve. It was for this reason that I implemented the rest of the applications core functionality first so that I could dedicate a vast amount of time to this functionality.
+
+ If I am successful at achieving this functionality and still have some time remaining, I hope to adapt this functionality to possibly measure the containers of liquids which will be passing through security. This could possibly be achieved by getting the area of a container and calculating its rough measurement of millilitres. This would allow the application to warn users if there container is over a certain size.
+
+ I could also possibly explore the possibility of having the AR functionality used with the Google Maps functionality to give directions. I will have to look into the ARCore SDK to see if this functionality is feasible.
+
+ Below is a snippet from my project journal which displays the progress I have made in my project since my last meeting and my goals I wish to accomplish before my next one.
+
+![](../media/blogmeeting4progress.png)

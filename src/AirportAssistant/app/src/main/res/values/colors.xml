@@ -7,4 +7,6 @@
     <color name="colorButton">#438CAB</color>
     <color name="colorDefaultText">#414141</color>
     <color name="colorActionBar">#FFFFFF</color>
+    <color name="colorMapsToolbar">#FFFFFF</color>
+    <color name="colorText">#000000</color>
 </resources>

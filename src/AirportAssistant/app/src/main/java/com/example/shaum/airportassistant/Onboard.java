@@ -33,7 +33,7 @@ public class Onboard extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Onboard.this,DirectionsToGate2.class);
+                Intent i = new Intent(Onboard.this,DirectionsToGateMap.class);
                 startActivity(i);
                 finish();
             }

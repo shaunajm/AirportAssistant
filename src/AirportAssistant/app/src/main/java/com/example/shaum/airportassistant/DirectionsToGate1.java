@@ -87,7 +87,7 @@ public class DirectionsToGate1 extends AppCompatActivity {
                     editGateNumber.setError("Gate Number is required!");
                 } else {
                     setGateNumber();
-                    Intent i = new Intent(DirectionsToGate1.this, DirectionsToGate2.class);
+                    Intent i = new Intent(DirectionsToGate1.this, DirectionsToGateMap.class);
                     startActivity(i);
                     finish();
                 }
