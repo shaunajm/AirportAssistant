@@ -173,3 +173,32 @@ I met with Ray this morning at 11:15 to discuss the progress of my project. I wa
  Below is a snippet from my project journal which displays the progress I have made in my project since my last meeting and my goals I wish to accomplish before my next one.
 
 ![](../media/blogmeeting4progress.png)
+
+## Blog 17 - 01/03/2019
+#### Weekly Update
+
+A vast amount of functionality has been added over the last week. This includes adding the ability for users to input their destination when they arrive at the destination airport. The application then provides the user with directions to this location. As you can see in the screenshots below, these directions are given from Heathrow Airport. Ideally, I would use the users current location and direct from there, but as this would not be possible to demo in this project, I have implemented it in this manner. Similarly to directions to the airport, the user can select their desired mode of transport.
+
+*Arrivals Input*           | *Arrivals Zoom In*         |  *Arrivals Zoom Out*                
+:---------------------------------:|:---------------------------------:|:---------------------------------:|
+![](../media/ArrivalsDestinationInput.png) |![](../media/ArrivalsZoomIn.png)|![](../media/ArrivalsZoomOut.png)
+
+
+Secondly, I implemented the directions to gate functionality. As Dublin Airport to not openly provide gate information outside of the airport, users will have to manually input their gate number. They are instructured to check the departure board for their flight. Airport App displays the users flight information to aid in this process. Once the user inputs this gate number they are directed to this gate. In the screenshots below it can be seen that unfortunately this is not currently directing users exactly to their gate. This appears to be due to the number of floors in the airport. We can see that the application is directing the user to an elevator to access their gate's floor. I will have to look into this issue further and will hopefully be able to resolve it. The time taken to get to the gate is so long in this current example as the user is walkiing to their gate and the below screenshot is directing the user from Dublin Airport.
+
+
+*Gate Number Input*           | *Gate Directions Zoom In*         |  *Gate Directions Zoom Out*                
+:---------------------------------:|:---------------------------------:|:---------------------------------:|
+![](../media/GateNumberEntry.png) |![](../media/DirectionsToGateZoomIn.png)|![](../media/DirectionsToGateZoomOut.png)
+
+Users are also now presented with the time and the distance it will take to get to the user's goal. This can be seen for each of the four modes of transport below.
+
+
+*Driving*           | *Public Transport*         |  *Cycling*         | *Walking*        
+:---------------------------------:|:---------------------------------:|:---------------------------------:|:-------------------------------------:
+![](../media/TimeDrivingToAirport.png) |![](../media/TimePublicTransportToAirport.png)|![](../media/TimeCyclingToAirport.png) |![](../media/TimeWalkingToAirport.png)
+
+Finally, the places api has been added to the Duty Free screen. This allows users to see what is around them in terms of shops, bars, cafes and other services. This can be seen in the example below.
+
+
+![](../media/DutyFreePlaces.png)
