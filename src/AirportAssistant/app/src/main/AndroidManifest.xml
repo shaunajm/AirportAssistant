@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
           package="com.example.shaum.airportassistant">
 
     <!--
@@ -8,6 +8,12 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- Indicates that app requires ARCore ("AR Required"). Ensures app is only
+     visible in the Google Play Store on devices that support ARCore.
+     For "AR Optional" apps remove this line. -->
+    <uses-feature android:name="android.hardware.camera.ar"/>
 
     <application
             android:allowBackup="true"
@@ -63,7 +69,8 @@
         -->
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key"/>
+                android:value="@string/google_maps_key"
+                tools:replace="android:value"/>
 
         <activity
                 android:name=".TransportToAirportMap"
@@ -81,6 +88,9 @@
                 android:name=".DirectionsToGateMap"
                 android:label="@string/title_activity_directions_to_gate_map">
         </activity>
+
+        <meta-data android:name="com.google.ar.core" android:value="required"/>
+
     </application>
 
 </manifest>

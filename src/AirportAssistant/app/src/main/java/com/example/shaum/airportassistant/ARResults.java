@@ -36,7 +36,7 @@ public class ARResults extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ARResults.this, ARCamera.class);
+                Intent i = new Intent(ARResults.this, ARStart.class);
                 startActivity(i);
                 finish();
             }
