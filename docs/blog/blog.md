@@ -202,3 +202,24 @@ Finally, the places api has been added to the Duty Free screen. This allows user
 
 
 ![](../media/DutyFreePlaces.png)
+
+## Blog 18 - 08/03/2019
+#### Weekly Update
+
+This week has been paticularly difficult. I have been trying to  make progress with the AR functionality of the application but unfortunately, due to my lack of experience in the area, it has been tough to make sense of. I started off by reading the Google ARCore SDK documentation.
+
+I learned a number of things from this including
+* hardware requirements for using ARCore
+* software requirements for using ARCore
+* how to use the Sceneform project
+* steps to set up ARCore
+
+I began setting up my project and immediately noticed some issues I would face throughout the process. The most prominent of these being the API level required to run ARCore on an android device. I have a Samsung S8 which is currently at API level 25. Although the basic functionality of ARCore requires API level 25, using the Google Sceneform project requires API level 27. Unfortunately, my laptop is unable to run an emulator. This means I must use a device with the latest form of android. This has been released in Ireland on the Samsung S9 but not yet on the S8. It is expected to be released in the next month. 
+
+I have decided to use the Google Sceneform project as I believe it's the best way to progress with my project as it assists with certain aspects of working with ARCore. Therefore, to combat this issue I will be testing my application on a friend's phone for the time being. This will limit me to running my application at certain times. I will spend other times working on testing and documentation so that I am not wasting time.
+
+Once this issue was dealt with, I began integrating the Google Sceneform project into Airport Assistant. Once again this process threw up a number of issues. The first of these appeared to be an issue in the gradle. In the end I had to git stash and begin integrating the project again as I was dedicating too much time into trying to patch the problem as I could not find the root cause.
+
+I began this set up again and yet again ran into issues. As the Google ARCore SDK is in beta I was always destined to experience issues with it. I am delighted that I got around to this functionality early in the process of developing my application. I am currently facing an issue with the AR functionality crashing. I am currently working on combatting this.
+
+I hope to make some progress on this functionality in the next week. I also aim to set up my testing pipeline and make some progress on both my user manual and technical manual.
