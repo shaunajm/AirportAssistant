@@ -214,7 +214,7 @@ I learned a number of things from this including
 * how to use the Sceneform project
 * steps to set up ARCore
 
-I began setting up my project and immediately noticed some issues I would face throughout the process. The most prominent of these being the API level required to run ARCore on an android device. I have a Samsung S8 which is currently at API level 25. Although the basic functionality of ARCore requires API level 25, using the Google Sceneform project requires API level 27. Unfortunately, my laptop is unable to run an emulator. This means I must use a device with the latest form of android. This has been released in Ireland on the Samsung S9 but not yet on the S8. It is expected to be released in the next month. 
+I began setting up my project and immediately noticed some issues I would face throughout the process. The most prominent of these being the API level required to run ARCore on an android device. I have a Samsung S8 which is currently at API level 25. Although the basic functionality of ARCore requires API level 25, using the Google Sceneform project requires API level 27. Unfortunately, my laptop is unable to run an emulator. This means I must use a device with the latest form of android. This has been released in Ireland on the Samsung S9 but not yet on the S8. It is expected to be released in the next month.
 
 I have decided to use the Google Sceneform project as I believe it's the best way to progress with my project as it assists with certain aspects of working with ARCore. Therefore, to combat this issue I will be testing my application on a friend's phone for the time being. This will limit me to running my application at certain times. I will spend other times working on testing and documentation so that I am not wasting time.
 
@@ -223,3 +223,33 @@ Once this issue was dealt with, I began integrating the Google Sceneform project
 I began this set up again and yet again ran into issues. As the Google ARCore SDK is in beta I was always destined to experience issues with it. I am delighted that I got around to this functionality early in the process of developing my application. I am currently facing an issue with the AR functionality crashing. I am currently working on combatting this.
 
 I hope to make some progress on this functionality in the next week. I also aim to set up my testing pipeline and make some progress on both my user manual and technical manual.
+
+## Blog 19 - 15/03/2019
+#### Weekly Update
+
+After much debugging, deleting and starting again I finally combatted my issue with setting up the basics of the AR functionality. As you can see in the below screenshot, users are asked to move their phone by the icon below so that the device can begin to get an idea of the area around it. The application then begins to map out the planes it sees using a collection of points.
+
+*Technical Specification*           | *User Manual*
+:---------------------------------:|:-------------------------------------:
+![](../media/ARScan1.jpg) |![](../media/ARScan2.jpg)
+
+When workig with new, difficult to use software it is hard to feel as if we are always making sufficient progress. But I must remember that I have dedicated a vast amount of time to work on this functionality. As I couldn't work on developing my application at all times, due to the fact that I had to run it on a friends phone, I began working on other aspects of the project such as the documentation.
+
+My technical and user manuals are just about completed. They still need work on aspects such as writing about functionality that has yet to be completed. But I am happy with the progress I have made in this area of my project.
+
+*Technical Specification*           | *User Manual*
+:---------------------------------:|:-------------------------------------:
+![](../media/techspeccover.png) |![](../media/usermanualcover.png)
+
+I have also been working on testing on over the last week. I spent a good bit of time looking into unit testing. At the current moment, due to the functionality of my application, I am not sure how this or even if this could be applied to this project. I have started working on system testing and if I feel unit testing can be applied at a later date I will work on it then.
+
+Unfortunately, it has been difficult to make a large amount of progress on my project this week due to having a lab exam and two assignments for other modules completed. I have been dedicating as much time as possible into the project and hopefully will be able to further progress next week.
+
+Finally, at the end of the week I got good news. Android Pie was now available on the Samsung S8. I downloaded the update and can now thankfully run my application on my own phone.
+
+
+*Device Updated*           | *Update Information*
+:---------------------------------:|:-------------------------------------:
+![](../media/UpdateCompleted1.jpg) |![](../media/PieUpdateEdited.jpg)
+
+In the next week I will work on further developing the AR functionality of the application and begin working on system tests.
