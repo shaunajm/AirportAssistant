@@ -64,3 +64,16 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.0'
 }
 apply plugin: 'com.google.ar.sceneform.plugin'
+
+
+
+
+sceneform.asset('sampledata/luggage.obj',
+        'default',
+        'sampledata/luggage.sfa',
+        'src/main/assets/luggage')
+
+sceneform.asset('sampledata/yellowLuggage.obj',
+        'default',
+        'sampledata/yellowLuggage.sfa',
+        'src/main/assets/yellowLuggage')
