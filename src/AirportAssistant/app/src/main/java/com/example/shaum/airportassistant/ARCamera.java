@@ -40,6 +40,7 @@ public class ARCamera extends AppCompatActivity {
     public Button btComplete;
     public Button btQuit;
     public AnchorNode baseNode;
+    public int n = 0;
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -99,7 +100,7 @@ public class ARCamera extends AppCompatActivity {
                         model.setParent(baseNode);
                         model.setRenderable(modelRenderable);
                         model.select();
-                    } else {
+                    } else if (n < 3) {
                         AnchorNode node = new AnchorNode(anchor);
                         node.setParent(arFragment.getArSceneView().getScene());
                         TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
@@ -122,6 +123,7 @@ public class ARCamera extends AppCompatActivity {
                                     n.setWorldPosition(Vector3.add(baseNode.getWorldPosition(), node.getWorldPosition()).scaled(.5f));
                                     n.setWorldRotation(rotation);
                                 });
+                        n++;
                     }
                 });
 
