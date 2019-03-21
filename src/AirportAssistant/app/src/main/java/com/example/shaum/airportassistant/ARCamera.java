@@ -20,7 +20,12 @@ import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.Node;
+import com.google.ar.sceneform.math.Quaternion;
+import com.google.ar.sceneform.math.Vector3;
+import com.google.ar.sceneform.rendering.Color;
+import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.ModelRenderable;
+import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
@@ -33,6 +38,9 @@ public class ARCamera extends AppCompatActivity {
     private ModelRenderable modelRenderable;
     public Button btComplete;
     public Button btQuit;
+    public ModelRenderable cube;
+    public float distanceMeters;
+    public AnchorNode baseNode;
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -71,19 +79,47 @@ public class ARCamera extends AppCompatActivity {
 
                     // Create the Anchor.
                     Anchor anchor = hitResult.createAnchor();
-                    AnchorNode anchorNode = new AnchorNode(anchor);
-                    anchorNode.setParent(arFragment.getArSceneView().getScene());
 
-                    // Create the transformable andy and add it to the anchor.
-                    TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
-                    model.setParent(anchorNode);
-                    model.setRenderable(modelRenderable);
-                    model.select();
+                    if (baseNode == null) {
+                        baseNode = new AnchorNode(anchor);
+                        baseNode.setParent(arFragment.getArSceneView().getScene());
+                        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
+                        model.setParent(baseNode);
+                        model.setRenderable(modelRenderable);
+                        model.select();
+                    } else {
+                        AnchorNode node = new AnchorNode(anchor);
+                        node.setParent(arFragment.getArSceneView().getScene());
+                        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
+                        model.setParent(node);
+                        model.setRenderable(modelRenderable);
+                        model.select();
+
+                        // CALL FUNCTION THAT DRAWS LINE
+                        final Vector3 diff = Vector3.subtract(baseNode.getWorldPosition(), node.getWorldPosition())
+                                                    .normalized();
+                        final Quaternion rotation = Quaternion.lookRotation(diff, Vector3.up());
+                        MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(0, 255, 244))
+                                .thenAccept(material -> {
+                                    ModelRenderable mr = ShapeFactory.makeCube(
+                                            new Vector3(.01f, .01f, diff.length()),
+                                            Vector3.zero(), material);
+                                    Log.d("lineBetweenPoints", "distance: " + diff.length());
+                                    Node n = new Node();
+                                    n.setParent(node);
+                                    n.setRenderable(mr);
+                                    n.setWorldPosition(Vector3.add(baseNode.getWorldPosition(), node.getWorldPosition()).scaled(.5f));
+                                    n.setWorldRotation(rotation);
+                                });
+                    }
                 });
 
-        Node node = new Node();
-        node.setParent(arFragment.getArSceneView().getScene());
-        node.setRenderable(modelRenderable);
+        //Node node = new Node();
+        //node.setParent(arFragment.getArSceneView().getScene());
+        //node.setRenderable(modelRenderable);
+
+
+        //lineBetweenPoints(anchorNode, lookRotation, distanceMeters);
 
         btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
@@ -104,9 +140,7 @@ public class ARCamera extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-
         });
-
     }
 
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
@@ -131,4 +165,25 @@ public class ARCamera extends AppCompatActivity {
     }
 
 
+    //To add a line between two anchors, not working yet!
+    //Line not appearing, needs further work
+    /*
+    public void lineBetweenPoints(AnchorNode anchorNode, Quaternion lookRotation, float distanceMeters) {
+        MaterialFactory.makeOpaqueWithColor(this, new Color((android.graphics.Color.WHITE)))
+                .thenAccept(
+                        material -> {
+                            Log.d("lineBetweenPoints", "distance: " + distanceMeters);
+                            Vector3 size = new Vector3(.01f, .01f, distanceMeters);
+                            Vector3 center = new Vector3(.01f/2, .01f/2, distanceMeters/2);
+                            cube = ShapeFactory.makeCube(size, center, material);
+                            Node lineNode = new Node();
+                            final Quaternion rotationFromAToB = lookRotation;
+
+                            lineNode.setParent(anchorNode);
+                            lineNode.setRenderable(cube);
+                            lineNode.setWorldRotation(rotationFromAToB);
+                            arFragment.getArSceneView().getScene().addChild(anchorNode);
+                        });
+    }
+    */
 }
