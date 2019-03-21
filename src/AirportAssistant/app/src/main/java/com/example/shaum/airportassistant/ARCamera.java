@@ -108,8 +108,7 @@ public class ARCamera extends AppCompatActivity {
                         model.select();
 
                         // CALL FUNCTION THAT DRAWS LINE
-                        final Vector3 diff = Vector3.subtract(baseNode.getWorldPosition(), node.getWorldPosition())
-                                                    .normalized();
+                        final Vector3 diff = Vector3.subtract(baseNode.getWorldPosition(), node.getWorldPosition());
                         final Quaternion rotation = Quaternion.lookRotation(diff, Vector3.up());
                         MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(0, 255, 244))
                                 .thenAccept(material -> {
