@@ -28,6 +28,13 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class ARCamera extends AppCompatActivity {
@@ -40,7 +47,11 @@ public class ARCamera extends AppCompatActivity {
     public Button btComplete;
     public Button btQuit;
     public AnchorNode baseNode;
+    public DatabaseReference mUserRef;
+    private FirebaseAuth mAuth;
     public int n = 0;
+    public ArrayList<Float> distlist = new ArrayList<Float>();
+
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -48,6 +59,10 @@ public class ARCamera extends AppCompatActivity {
     // FutureReturnValueIgnored is not valid
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mUserRef = FirebaseDatabase.getInstance().getReference("users");
+
+        mAuth = FirebaseAuth.getInstance();
 
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
@@ -116,7 +131,11 @@ public class ARCamera extends AppCompatActivity {
                                     ModelRenderable mr = ShapeFactory.makeCube(
                                             new Vector3(.01f, .01f, diff.length()),
                                             Vector3.zero(), material);
+                                    Float distance = diff.length();
+                                    Float distcm = distance * 100;
+                                    distlist.add(distcm);
                                     Log.d("lineBetweenPoints", "distance: " + diff.length());
+                                    Log.d("distlist", "distanceList: " + distlist);
                                     Node n = new Node();
                                     n.setParent(node);
                                     n.setRenderable(mr);
@@ -125,7 +144,15 @@ public class ARCamera extends AppCompatActivity {
                                 });
                         n++;
                     }
+                    Collections.sort(this.distlist);
+                    Log.d("sorteddistlist", "sorteddistanceList: " + distlist);
+
                 });
+
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        mUserRef.child(user.getUid()).child("handluggage").setValue(distlist);
 
         btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
