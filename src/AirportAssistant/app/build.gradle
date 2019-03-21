@@ -77,3 +77,13 @@ sceneform.asset('sampledata/yellowLuggage.obj',
         'default',
         'sampledata/yellowLuggage.sfa',
         'src/main/assets/yellowLuggage')
+
+sceneform.asset('sampledata/blueBall.obj',
+        'default',
+        'sampledata/blueBall.sfa',
+        'src/main/assets/blueBall')
+
+sceneform.asset('sampledata/redBall.obj',
+        'default',
+        'sampledata/redBall.sfa',
+        'src/main/assets/redBall')

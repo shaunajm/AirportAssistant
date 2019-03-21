@@ -36,10 +36,9 @@ public class ARCamera extends AppCompatActivity {
 
     private ArFragment arFragment;
     private ModelRenderable modelRenderable;
+    private ModelRenderable secondaryModel;
     public Button btComplete;
     public Button btQuit;
-    public ModelRenderable cube;
-    public float distanceMeters;
     public AnchorNode baseNode;
 
     @Override
@@ -59,9 +58,22 @@ public class ARCamera extends AppCompatActivity {
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
         ModelRenderable.builder()
-                .setSource(this, Uri.parse("yellowLuggage.sfb"))
+                .setSource(this, Uri.parse("redBall.sfb"))
                 .build()
-                .thenAccept(renderable -> modelRenderable= renderable)
+                .thenAccept(renderable -> modelRenderable = renderable)
+                .exceptionally(
+                        throwable -> {
+                            Toast toast =
+                                    Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
+                            return null;
+                        });
+
+        ModelRenderable.builder()
+                .setSource(this, Uri.parse("blueBall.sfb"))
+                .build()
+                .thenAccept(renderable -> secondaryModel = renderable)
                 .exceptionally(
                         throwable -> {
                             Toast toast =
@@ -92,7 +104,7 @@ public class ARCamera extends AppCompatActivity {
                         node.setParent(arFragment.getArSceneView().getScene());
                         TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
                         model.setParent(node);
-                        model.setRenderable(modelRenderable);
+                        model.setRenderable(secondaryModel);
                         model.select();
 
                         // CALL FUNCTION THAT DRAWS LINE
@@ -113,13 +125,6 @@ public class ARCamera extends AppCompatActivity {
                                 });
                     }
                 });
-
-        //Node node = new Node();
-        //node.setParent(arFragment.getArSceneView().getScene());
-        //node.setRenderable(modelRenderable);
-
-
-        //lineBetweenPoints(anchorNode, lookRotation, distanceMeters);
 
         btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
@@ -163,27 +168,4 @@ public class ARCamera extends AppCompatActivity {
         }
         return true;
     }
-
-
-    //To add a line between two anchors, not working yet!
-    //Line not appearing, needs further work
-    /*
-    public void lineBetweenPoints(AnchorNode anchorNode, Quaternion lookRotation, float distanceMeters) {
-        MaterialFactory.makeOpaqueWithColor(this, new Color((android.graphics.Color.WHITE)))
-                .thenAccept(
-                        material -> {
-                            Log.d("lineBetweenPoints", "distance: " + distanceMeters);
-                            Vector3 size = new Vector3(.01f, .01f, distanceMeters);
-                            Vector3 center = new Vector3(.01f/2, .01f/2, distanceMeters/2);
-                            cube = ShapeFactory.makeCube(size, center, material);
-                            Node lineNode = new Node();
-                            final Quaternion rotationFromAToB = lookRotation;
-
-                            lineNode.setParent(anchorNode);
-                            lineNode.setRenderable(cube);
-                            lineNode.setWorldRotation(rotationFromAToB);
-                            arFragment.getArSceneView().getScene().addChild(anchorNode);
-                        });
-    }
-    */
 }
