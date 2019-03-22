@@ -147,12 +147,13 @@ public class ARCamera extends AppCompatActivity {
                     Collections.sort(this.distlist);
                     Log.d("sorteddistlist", "sorteddistanceList: " + distlist);
 
+                    FirebaseUser user = mAuth.getCurrentUser();
+
+                    mUserRef.child(user.getUid()).child("handluggage").setValue(distlist);
                 });
 
 
-        FirebaseUser user = mAuth.getCurrentUser();
 
-        mUserRef.child(user.getUid()).child("handluggage").setValue(distlist);
 
         btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
