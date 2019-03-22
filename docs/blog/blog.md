@@ -253,3 +253,41 @@ Finally, at the end of the week I got good news. Android Pie was now available o
 ![](../media/UpdateCompleted1.jpg) |![](../media/PieUpdateEdited.jpg)
 
 In the next week I will work on further developing the AR functionality of the application and begin working on system tests.
+
+
+## Blog 20 - 22/03/2019
+#### Weekly Update
+
+This week I decided to face into further developing the AR aspect of the application. I came up with a plan A and a plan B. Plan A would be that I have the application measuring the luggage and returning the dimensions of the suitcase. Plan B would involve projecting a box of the correct dimensions, a user could then check if their bag fixs within this box.
+
+I began by projecting a 3D model of a suitcase. This suitcase could later be resized to match each airlines specific dimensions. With this pushed to git as my basis for what I wanted to develop I began looking into plan A. I decided to implement this I would follow the idea from the below diagram.  
+
+![](../media/DirectionsIdea.png)
+
+As you can see above, a user firstly marks the red point. This is the top left front corner of the bag. This will be clearly explained to users in the screen before the AR Camera. This will act as the central point for the measurements. They then mark the three blue points. One on the bottom left hand corner of the bag, one of the front left hand corner and finally one of the back right corner. The application will then draw a line from the red (central) point to each of these points. This allows us to see the length, width and depth of the hand luggage.
+
+I had a number of issues implementing due to the functionality. I believe this is primarily down to the fact that ARCore is still in Beta and therefore a number of the bugs present in the software have not been dealt with. It is also difficult to work with the technology due to the fact that there is a limited number of documentation.
+
+One of the most problematic issues I faced during this development can be seen below. When I was mapping the points I could see that the lines were not measuring correctly. The line was stretching far beyond both the red and blue coloured balls. To investigate this issue further I logged the length of the lines. Here I noticed that the lines were all measuring at a length of 1 no matter where I placed them. It is also important to note that the measurement unit here is metres. This will be converted into centimetres later. I could tell from this that the values were being round at some point. Once I removed this issue, the correct values were returned and the lines were properly drawn. This can also be seen below.
+
+*Not measuring correctly*           | *Measuring correctly*
+:---------------------------------:|:-------------------------------------:
+![](../media/DirectionsARTestFail.jpg) |![](../media/DirectionsARTestSuccess.jpg)
+
+***Not measuring correctly***  
+![](../media/DirectionsARTestResultFail.png)
+
+***Measuring correctly***
+![](../media/DirectionsARTestResultSuccess.png)
+
+With this functionality added, I then had to take these values and compare then to an airlines permitted hand luggage size. I added a number of airlines to my Firebase database to compare my values to. To do this, I went through Dublin Airport's departures for the day to check what airlines appeared to be departing most often. These ten were added to my database and can been seen below. Within the airline I store their permitted hand luggage size. This is a snippet from my database.
+
+![](../media/DatabaseAirline.png)
+
+I then compare the permitted hand luggage dimensions with a user's measured hand luggage dimensions. This was displayed on the AR Results page with a user's pass/fail result. An example of this screen when a user's luggage passes and fails can be seen below.
+
+*Pass*           | *Fail*
+:---------------------------------:|:-------------------------------------:
+![](../media/PassARTest.png) |![](../media/FailARTest.png)
+
+I am now moving onto adding the option for users to clear the points they have put down if they enter them incorrectly. I am also hoping to add the measurements for each line on the line themselves. I will also work on the AR tutorial screen which comes before the AR functionality. Here I will step users through how to use the AR aspect of the application. 
