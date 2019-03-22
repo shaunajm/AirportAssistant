@@ -37,7 +37,7 @@
     file: 'sampledata/redBall.obj',
     name: 'redBall',
     recenter: 'root',
-    scale: 0.187423,
+    scale: 0.077423,
   },
   version: '0.54:2',
 }

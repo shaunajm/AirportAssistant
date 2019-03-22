@@ -37,7 +37,7 @@
     file: 'sampledata/blueBall.obj',
     name: 'blueBall',
     recenter: 'root',
-    scale: 0.427423,
+    scale: 0.227423,
   },
   version: '0.54:2',
 }
