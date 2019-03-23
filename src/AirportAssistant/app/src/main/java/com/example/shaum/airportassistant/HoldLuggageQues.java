@@ -14,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class HoldLuggageQues extends AppCompatActivity {
 
-    public Button btSaveJourney;
     public Button btBeginJourney;
     private FirebaseAuth mAuth;
     public EditText editBookedWeight;
@@ -53,22 +52,6 @@ public class HoldLuggageQues extends AppCompatActivity {
         editBookedWeight = (EditText)findViewById(R.id.bookedWeightNumber);
         editActualWeight = (EditText)findViewById(R.id.actualWeightNumber);
 
-
-
-        btSaveJourney = (Button) findViewById(R.id.btSaveJourney);
-        btSaveJourney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HoldLuggageQues.this, Home.class);
-                //Take in attributes about hold luggage//
-
-                //add if statement for if radio button no
-                setWeightValues();
-                startActivity(i);
-                finish();
-            }
-
-        });
 
 
         btBeginJourney = (Button) findViewById(R.id.btBeginJourney);

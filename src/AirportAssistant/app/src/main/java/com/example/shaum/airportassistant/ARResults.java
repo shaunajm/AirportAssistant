@@ -29,10 +29,7 @@ public class ARResults extends AppCompatActivity {
     public float airlinehandLuggage2;
     public float airlinehandLuggage3;
     public String flightNumber;
-    public DatabaseReference mFlightRef;
-    public DatabaseReference mAirlineRef;
     public String airline;
-    public Float airlinehandluggage1;
     public String result;
 
     @Override
