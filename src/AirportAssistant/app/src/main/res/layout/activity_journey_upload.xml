@@ -28,9 +28,16 @@
             android:layout_height="wrap_content"
             android:text="Airport Assistant"
             android:textAppearance="@style/Toolbar.TitleText"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:textColor="@color/colorActionBar"
             android:id="@+id/toolbar_title" />
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/smalllogo"
+                android:id="@+id/logo" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="30dp"/>
 
 
     </android.support.v7.widget.Toolbar>
