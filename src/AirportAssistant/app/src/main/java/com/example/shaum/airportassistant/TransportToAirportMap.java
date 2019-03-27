@@ -22,6 +22,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.*;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.android.PolyUtil;
@@ -55,6 +57,10 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public Duration duration;
     public Distance distance;
     private static final String API_KEY = "AIzaSyDZxWk3GhKcTA_vwJqab_x_kiIDtWcaknQ";
+    public DatabaseReference mRootRef;
+    public DataSnapshot data;
+    public FirebaseAuth mAuth;
+    public String checkInChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,16 +82,38 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
+        mAuth = FirebaseAuth.getInstance();
+
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data = dataSnapshot;
+                getCheckInInfo();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(TransportToAirportMap.this, CheckIn.class);
-                startActivity(i);
-                finish();
-            }
+                if( checkInChoice.equals("True")) {
+                    Intent i = new Intent(TransportToAirportMap.this, CheckIn.class);
+                    startActivity(i);
+                    finish();
+                }
+                else {
+                    Intent i = new Intent(TransportToAirportMap.this, Security.class);
+                    startActivity(i);
+                    finish();
 
+                }
+            }
         });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -267,6 +295,13 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             }
         } catch(SecurityException e)  {
             System.out.println("Error: " + e);
+        }
+    }
+
+    public void getCheckInInfo(){
+        DataSnapshot user = data.child("users").child(mAuth.getUid());
+        if (user != null) {
+            checkInChoice = user.child("checkInChoice").getValue(String.class);
         }
     }
 

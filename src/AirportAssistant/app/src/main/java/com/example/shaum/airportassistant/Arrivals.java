@@ -12,7 +12,6 @@ import android.widget.*;
 import com.google.maps.model.TravelMode;
 
 
-
 public class Arrivals extends AppCompatActivity {
 
     public Button btProgress;
@@ -24,6 +23,9 @@ public class Arrivals extends AppCompatActivity {
     public Button selectMode;
     public String address;
     public EditText editAddress;
+    public TextView tvWhereTravelling;
+    public TextView tvHowTravelling;
+    public EditText etWhereTravelling;
 
 
     @Override
@@ -57,7 +59,21 @@ public class Arrivals extends AppCompatActivity {
         });
 
         modeOptions = (RadioGroup) findViewById(R.id.radioMode);
+        modeOptions.setVisibility(View.INVISIBLE);
         yesnoOptions = (RadioGroup) findViewById(R.id.radioDecision);
+        tvWhereTravelling = (TextView) findViewById(R.id.travelFromAirportQuestion);
+        tvWhereTravelling.setVisibility(View.INVISIBLE);
+        etWhereTravelling = (EditText) findViewById(R.id.address);
+        etWhereTravelling.setVisibility(View.INVISIBLE);
+        tvHowTravelling = (TextView) findViewById(R.id.travelAirportQuestion);
+        tvHowTravelling.setVisibility(View.INVISIBLE);
+
+        yesnoOptions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                onRadioButtonClicked(i);
+            }
+        });
 
         btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
@@ -138,9 +154,17 @@ public class Arrivals extends AppCompatActivity {
         // Check which radio button was clicked
         switch(checked.getText().toString()) {
             case "Yes":
+                modeOptions.setVisibility(View.VISIBLE);
+                tvWhereTravelling.setVisibility(View.VISIBLE);
+                etWhereTravelling.setVisibility(View.VISIBLE);
+                tvHowTravelling.setVisibility(View.VISIBLE);
                 yesnoDecision = "Yes";
                 break;
             case "No":
+                modeOptions.setVisibility(View.INVISIBLE);
+                tvWhereTravelling.setVisibility(View.INVISIBLE);
+                etWhereTravelling.setVisibility(View.INVISIBLE);
+                tvHowTravelling.setVisibility(View.INVISIBLE);
                 yesnoDecision = "No";
                 break;
             default:
@@ -148,5 +172,28 @@ public class Arrivals extends AppCompatActivity {
                 break;
         }
     }
+    public void onRadioButtonClicked(int id) {
+        // Is the button now checked?
+        RadioButton checked = (RadioButton) findViewById(yesnoOptions.getCheckedRadioButtonId());
 
+        // Check which radio button was clicked
+        switch (checked.getText().toString()) {
+            case "Yes":
+                modeOptions.setVisibility(View.VISIBLE);
+                tvWhereTravelling.setVisibility(View.VISIBLE);
+                etWhereTravelling.setVisibility(View.VISIBLE);
+                tvHowTravelling.setVisibility(View.VISIBLE);
+                break;
+            case "No":
+                modeOptions.setVisibility(View.INVISIBLE);
+                tvWhereTravelling.setVisibility(View.INVISIBLE);
+                etWhereTravelling.setVisibility(View.INVISIBLE);
+                tvHowTravelling.setVisibility(View.INVISIBLE);
+                break;
+            default:
+                break;
+
+        }
+
+    }
 }
