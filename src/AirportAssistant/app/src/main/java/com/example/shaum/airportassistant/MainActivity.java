@@ -1,8 +1,8 @@
 package com.example.shaum.airportassistant;
 
-import android.support.annotation.NonNull;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     //public Button btLogin;
     public GoogleSignInClient mGoogleSignInClient;

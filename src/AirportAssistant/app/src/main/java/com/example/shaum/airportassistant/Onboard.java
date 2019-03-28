@@ -19,6 +19,11 @@ public class Onboard extends AppCompatActivity {
     public DatabaseReference mRootRef;
     public DataSnapshot data;
     public FirebaseAuth mAuth;
+    public DatabaseReference mUserRef;
+    public String flightNumber;
+    public String airline;
+    public String inflightLink;
+    public String destination;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,24 @@ public class Onboard extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 return true;
+            }
+        });
+
+        mUserRef = FirebaseDatabase.getInstance().getReference("users");
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mRootRef = FirebaseDatabase.getInstance().getReference();
+        mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data = dataSnapshot;
+                    getFlightNumber();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
@@ -79,7 +102,6 @@ public class Onboard extends AppCompatActivity {
     public void displayFlightTime(){
         DataSnapshot user = data.child("users").child(mAuth.getUid());
 
-
         if (user != null) {
             String flightNumber = user.child("flightNumber").getValue(String.class);
             DataSnapshot flight = data.child("flight").child(flightNumber);
@@ -87,6 +109,38 @@ public class Onboard extends AppCompatActivity {
 
             TextView tv = (TextView) findViewById(R.id.flightTime);
             tv.setText("Flight Time: " + scheduledTime);
+            TextView tv2 = (TextView) findViewById(R.id.destination);
+            tv2.setText("Destination: " + destination);
         }
+    }
+
+    public void getFlightNumber(){
+        DataSnapshot user = data.child("users").child(mAuth.getUid());
+        if (user != null) {
+            flightNumber = user.child("flightNumber").getValue(String.class);
+            getAirline();
+        }
+    }
+
+    public void getAirline() {
+        DataSnapshot flight = data.child("flight").child(flightNumber);
+        if (flight != null) {
+            airline = flight.child("airline").getValue(String.class);
+            destination = flight.child("destination").getValue(String.class);
+            getInflightLink();
+        }
+    }
+
+    public void getInflightLink(){
+        DataSnapshot airlineInfo = data.child("airline").child(airline);
+        if (airlineInfo != null) {
+            inflightLink = airlineInfo.child("inflightlink").getValue(String.class);
+            displayInflightLink();
+        }
+    }
+
+    public void displayInflightLink(){
+        TextView tv = (TextView) findViewById(R.id.onboardInfoLink);
+        tv.setText(inflightLink);
     }
 }
