@@ -4,12 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
 
     public Button btUploadJourney;
+    public Button btSignOut;
+    public GoogleSignInClient mGoogleSignInClient;
+    private FirebaseAuth mAuth;
+    public String logoutPress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +28,15 @@ public class Home extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        mAuth = FirebaseAuth.getInstance();
 
         btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
         btUploadJourney.setOnClickListener(new View.OnClickListener() {
@@ -31,5 +49,27 @@ public class Home extends AppCompatActivity {
 
         });
 
+
+        btSignOut = (Button) findViewById(R.id.button_sign_out);
+        btSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.button_sign_out:
+                        logoutPress = "True";
+                        Log.d("logOutPressHeard", "logOutPress");
+                        signOut();
+                        break;
+                }
+            }
+
+            private void signOut() {
+                mAuth.signOut();
+                mGoogleSignInClient.signOut();
+                    Intent intent = new Intent(Home.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+            }
+        });
     }
 }
