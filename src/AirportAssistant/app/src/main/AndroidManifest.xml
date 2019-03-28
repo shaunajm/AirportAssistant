@@ -46,8 +46,6 @@
         </activity>
         <activity android:name=".ARResults">
         </activity>
-        <activity android:name=".ARFail">
-        </activity>
         <activity android:name=".TransportToAirport1">
         </activity>
         <activity android:name=".CheckIn">

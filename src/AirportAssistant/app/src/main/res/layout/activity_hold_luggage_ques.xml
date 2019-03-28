@@ -188,6 +188,8 @@
             android:layout_height="60dp"
             android:background="@color/colorButton"
             android:id="@+id/btBeginJourney"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textStyle="bold"
             android:layout_toEndOf="@+id/actualWeightQuestion"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
