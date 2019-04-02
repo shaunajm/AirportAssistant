@@ -290,4 +290,56 @@ I then compare the permitted hand luggage dimensions with a user's measured hand
 :---------------------------------:|:-------------------------------------:
 ![](../media/PassARTest.png) |![](../media/FailARTest.png)
 
-I am now moving onto adding the option for users to clear the points they have put down if they enter them incorrectly. I am also hoping to add the measurements for each line on the line themselves. I will also work on the AR tutorial screen which comes before the AR functionality. Here I will step users through how to use the AR aspect of the application. 
+I am now moving onto adding the option for users to clear the points they have put down if they enter them incorrectly. I am also hoping to add the measurements for each line on the line themselves. I will also work on the AR tutorial screen which comes before the AR functionality. Here I will step users through how to use the AR aspect of the application.
+
+## Blog 21 - 27/03/2019
+#### Meeting 5 with Ray
+
+Today I met with Ray to discuss the progress I had making on the project. I had primarily worked on the AR functionality, documentation and testing. I have explained each of these areas in further detaill in the last number of blogs. Ray was happy with my progress. I explained how I branched into documentation when I was waiting on the latest Android update to be available on my phone.
+
+![](../media/blogmeeting_5.jpg)
+
+We discussed my planned work. Ray believes I should look into the AR for liquids functionality in further detail. He recommended that instead of only factoring in cuboids and cyclinders as I had intended, I should investigate using items such as cones for toothpaste bottles. I will have to look into this in before I begin developing the functionality. I will also look into touching up the AR functionality I have already designed, redesigning my user interface, adding some minor functionality such as web scraping and pop ups, the google drive functionality I had previously discussed, documentation, testing and general code refactoring.
+
+Ray said I should also begin looking into my video walkthrough and presentation.
+
+## Blog 22 - 29/03/2019
+#### Weekly Update
+
+The primary focus of the last week was yet again the AR functionality of the application. I have been looking into perfecting the measurements, adding the AR tutorial screen and finally displaying the results. Alongside this, I have worked on certain aspects of the User Interface such as making certain options become invisible unless the user selects a radio button to activate them, adding the security wait time functionality, adding the onboard screen and adding sign out functionality.
+
+I will firstly delve into the AR Tutorial screen. This screen comes before the AR functionality and guides the user on how to use it. A screenshot can be seen below. The user is shown an image of how to scan their baggage and also provided with step by step instructions. From this screen the user can decide to skip the AR baggage scan or can progress to the bag scan.
+
+![](../media/ARTutorial2.jpg)
+
+Once a user progresses to the baggage scan, they will map out there points as instructed. Once the user has placed these points they will stay in place. I plan to add the functionality for a user to clear the points they have placed later. Below we can see three screenshots of the points placed on a suitcase from a number of different angles.
+
+*AR Scan Front*           | *AR Scan Side* |*AR Scan from above*
+:---------------------------------:|:-------------------------------------:|:-------------------------------------:
+![](../media/measureFront.jpg) |![](../media/measureSide.jpg)|![](../media/measureTop.jpg)
+
+Once a user is happy with the points they have placed the can progress into the next screen. Here they will be provided with the measurements of their hand luggage compared to the dimensions allowed by their airline. They are then informed whether their bag has passed or failed this AR check. As you can see below, this AR measurement estimates the length of the bag is 49cm. When the bag was measured with a measuring tape we can also see that measurement is in fact 49cm.
+
+Here we can also see that our bag's dimensions are 49cm x 26cm x 17cm and the airline's bag dimensions are 55cm x 40cm x 24cm. As our bag is smaller than the maximum dimensions our bag has passed the AR check.
+
+*Bag with measuring tape*           | *AR Results*
+:---------------------------------:|:-------------------------------------:
+![](../media/measureTapeLength1.jpg) |![](../media/measureResults.jpg)
+
+As Dublin Airport does not provide security wait time information I decided to scrape this information from a different airport as a proof of concept. This will show how the functionality would work if this information was available. I ended up scraping this information from Stuttgart Airport. This screen can be seen below.
+
+![](../media/securityWaitTime.jpg)
+
+I also added the onboard screen. This displays the user's destination and flight time. It also displays a link to the user's airline's onboard information. I investigated scraping this information and displaying it on this screen but as there is a vast amount of information, including food menus, entertainment and much more, it would not be practical to display it.  
+
+![](../media/onboardScreen.jpg)
+
+Here we can see the sign out button which is now present on the home screen. Here a user can click this button to log out of the application.
+
+![](../media/signOutButton.jpg)
+
+Finally I have added the functionality that certain fields remain invisible until the user selects an option that would deem them necessary. An example of this is the transport to airport screen which can be seen below. If a user wants directions to the airport the next field becomes available. If a user does not want directions then this field remains hidden. This is as this is unnecessary for the user to see if they do not want directions. This has been implemented on a number of screens in an attempt to benefit the usability of the app.
+
+*Information invisible*           | *Information now visible*
+:---------------------------------:|:-------------------------------------:
+![](../media/radioNoClick.jpg) |![](../media/radioYesClick.jpg)
