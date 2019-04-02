@@ -343,3 +343,18 @@ Finally I have added the functionality that certain fields remain invisible unti
 *Information invisible*           | *Information now visible*
 :---------------------------------:|:-------------------------------------:
 ![](../media/radioNoClick.jpg) |![](../media/radioYesClick.jpg)
+
+## Blog 23 - 05/04/2019
+#### Weekly Update
+
+The beginning of this week was spent redesigning the UI of the application. I had initially designed the bare bones of the app so the UI was extremely plain and needed more work. The general idea behind this design was to add icons and make the UI as readable, easy to use and visually appealing as possible. As an example we can see below the AR Results page before and after I redesigned my UI.
+
+*Old AR Results Screen*           | *New AR Results Screen*
+:---------------------------------:|:-------------------------------------:
+![](../media/measureResults.jpg) |![](../media/arResultsNew.jpg)
+
+Below are some screenshots of the new design of a number of these pages.
+
+*New Confirm Journey Screen*           | *New Check-In Luggage Screen*|*New Arrivals Directions Screen*
+:---------------------------------:|:-------------------------------------:|:---------------------------------:
+![](../media/confirmJourney.jpg) |![](../media/checkInQuestion.jpg)|![](../media/destinationDirections.jpg)
