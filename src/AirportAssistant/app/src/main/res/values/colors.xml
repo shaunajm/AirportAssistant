@@ -9,4 +9,6 @@
     <color name="colorActionBar">#FFFFFF</color>
     <color name="colorMapsToolbar">#FFFFFF</color>
     <color name="colorText">#000000</color>
+    <color name="colorDarkOutline">#357088</color>
+    <color name="lightgrey">#FFC1C0C0</color>
 </resources>

@@ -26,12 +26,13 @@
                 android:textAppearance="@style/Toolbar.TitleText"
                 android:layout_gravity="left"
                 android:text="Airport Assistant"
+                android:textSize="32dp"
                 android:textColor="@color/colorActionBar"
                 android:id="@+id/toolbar_title" />
 
         <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 app:srcCompat="@drawable/smalllogo"
                 android:id="@+id/logo" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="30dp"/>
@@ -57,9 +58,11 @@
             android:text=""
             android:layout_width="350dp"
             android:layout_height="80dp"
-            android:textColor="@color/colorDefaultText"
+            android:textColor="@color/colorActionBar"
+            android:textStyle="bold"
             android:gravity="center"
             android:textSize="20sp"
+            android:background="@drawable/textview_border_bb"
             android:id="@+id/yourBagDimensions"
             android:layout_below="@+id/progressBar"
             android:layout_centerHorizontal="true"
@@ -72,9 +75,11 @@
             android:text=""
             android:layout_width="350dp"
             android:layout_height="80dp"
-            android:textColor="@color/colorDefaultText"
+            android:textColor="@color/colorActionBar"
+            android:textStyle="bold"
             android:gravity="center"
             android:textSize="20sp"
+            android:background="@drawable/textview_border_bb"
             android:id="@+id/airlineBagDimensions"
             android:layout_below="@+id/yourBagDimensions"
             android:layout_alignStart="@+id/yourBagDimensions"
@@ -85,9 +90,11 @@
 
     <TextView
             android:text=""
-            android:layout_width="250dp"
+            android:layout_width="350dp"
             android:layout_height="80dp"
             android:textColor="@color/colorDefaultText"
+            android:background="@drawable/textview_border_b"
+            android:textStyle="bold"
             android:gravity="center"
             android:textSize="20sp"
             android:id="@+id/passFailStatus"
@@ -96,7 +103,8 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
             android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/airlineBagDimensions"
-            app:layout_constraintHorizontal_bias="0.496"/>
+            app:layout_constraintHorizontal_bias="0.496" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.0"/>
 
     <Button
             android:text="Progress to next stage"

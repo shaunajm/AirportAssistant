@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Toolbar.TitleText"
                 android:layout_gravity="left"
+                android:textSize="32dp"
                 android:text="Airport Assistant"
                 android:textColor="@color/colorActionBar"
                 android:id="@+id/toolbar_title"/>
