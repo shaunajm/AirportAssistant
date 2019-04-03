@@ -46,22 +46,20 @@ public class ARCamera extends AppCompatActivity {
     private ModelRenderable secondaryModel;
     public Button btComplete;
     public Button btQuit;
+    public Button btClearPoints;
     public AnchorNode baseNode;
     public DatabaseReference mUserRef;
     private FirebaseAuth mAuth;
     public int n = 0;
     public ArrayList<Float> distlist = new ArrayList<Float>();
-
+    public ArrayList<AnchorNode> nodes = new ArrayList<AnchorNode>();
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
-    // CompletableFuture requires api level 24
-    // FutureReturnValueIgnored is not valid
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mUserRef = FirebaseDatabase.getInstance().getReference("users");
-
         mAuth = FirebaseAuth.getInstance();
 
         if (!checkIsSupportedDeviceOrFinish(this)) {
@@ -71,8 +69,57 @@ public class ARCamera extends AppCompatActivity {
         setContentView(R.layout.activity_arcamera);
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
-        // When you build a Renderable, Sceneform loads its resources in the background while returning
-        // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
+        arFragment.setOnTapArPlaneListener(
+                (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
+                    if (modelRenderable == null) {
+                        return;
+                    }
+
+                    Anchor anchor = hitResult.createAnchor();
+
+                    if (baseNode == null) {
+                        baseNode = new AnchorNode(anchor);
+                        baseNode.setParent(arFragment.getArSceneView().getScene());
+                        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
+                        model.setParent(baseNode);
+                        model.setRenderable(modelRenderable);
+                        model.select();
+                    } else if (n < 3) {
+                        AnchorNode node = new AnchorNode(anchor);
+                        node.setParent(arFragment.getArSceneView().getScene());
+                        nodes.add(node);
+                        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
+                        model.setParent(node);
+                        model.setRenderable(secondaryModel);
+                        model.select();
+
+                        final Vector3 diff = Vector3.subtract(baseNode.getWorldPosition(), node.getWorldPosition());
+                        final Quaternion rotation = Quaternion.lookRotation(diff, Vector3.up());
+                        MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(0, 255, 244))
+                                .thenAccept(material -> {
+                                    ModelRenderable mr = ShapeFactory.makeCube(
+                                            new Vector3(.01f, .01f, diff.length()),
+                                            Vector3.zero(), material);
+                                    Float distance = diff.length();
+                                    Float distcm = distance * 100;
+                                    distlist.add(distcm);
+                                    Log.d("lineBetweenPoints", "distance: " + diff.length());
+                                    Log.d("distlist", "distanceList: " + distlist);
+                                    Node n = new Node();
+                                    n.setParent(node);
+                                    n.setRenderable(mr);
+                                    n.setWorldPosition(Vector3.add(baseNode.getWorldPosition(), node.getWorldPosition()).scaled(.5f));
+                                    n.setWorldRotation(rotation);
+                                });
+                        n++;
+                    }
+                    Collections.sort(distlist);
+                    Log.d("sorteddistlist", "sorteddistanceList: " + distlist);
+
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    mUserRef.child(user.getUid()).child("handluggage").setValue(distlist);
+                });
+
         ModelRenderable.builder()
                 .setSource(this, Uri.parse("redBall.sfb"))
                 .build()
@@ -99,62 +146,6 @@ public class ARCamera extends AppCompatActivity {
                             return null;
                         });
 
-        arFragment.setOnTapArPlaneListener(
-                (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
-                    if (modelRenderable == null) {
-                        return;
-                    }
-
-                    // Create the Anchor.
-                    Anchor anchor = hitResult.createAnchor();
-
-                    if (baseNode == null) {
-                        baseNode = new AnchorNode(anchor);
-                        baseNode.setParent(arFragment.getArSceneView().getScene());
-                        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
-                        model.setParent(baseNode);
-                        model.setRenderable(modelRenderable);
-                        model.select();
-                    } else if (n < 3) {
-                        AnchorNode node = new AnchorNode(anchor);
-                        node.setParent(arFragment.getArSceneView().getScene());
-                        TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
-                        model.setParent(node);
-                        model.setRenderable(secondaryModel);
-                        model.select();
-
-                        // CALL FUNCTION THAT DRAWS LINE
-                        final Vector3 diff = Vector3.subtract(baseNode.getWorldPosition(), node.getWorldPosition());
-                        final Quaternion rotation = Quaternion.lookRotation(diff, Vector3.up());
-                        MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(0, 255, 244))
-                                .thenAccept(material -> {
-                                    ModelRenderable mr = ShapeFactory.makeCube(
-                                            new Vector3(.01f, .01f, diff.length()),
-                                            Vector3.zero(), material);
-                                    Float distance = diff.length();
-                                    Float distcm = distance * 100;
-                                    distlist.add(distcm);
-                                    Log.d("lineBetweenPoints", "distance: " + diff.length());
-                                    Log.d("distlist", "distanceList: " + distlist);
-                                    Node n = new Node();
-                                    n.setParent(node);
-                                    n.setRenderable(mr);
-                                    n.setWorldPosition(Vector3.add(baseNode.getWorldPosition(), node.getWorldPosition()).scaled(.5f));
-                                    n.setWorldRotation(rotation);
-                                });
-                        n++;
-                    }
-                    Collections.sort(this.distlist);
-                    Log.d("sorteddistlist", "sorteddistanceList: " + distlist);
-
-                    FirebaseUser user = mAuth.getCurrentUser();
-
-                    mUserRef.child(user.getUid()).child("handluggage").setValue(distlist);
-                });
-
-
-
-
         btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +166,24 @@ public class ARCamera extends AppCompatActivity {
                 finish();
             }
         });
+
+        btClearPoints = (Button) findViewById(R.id.btClearPoints);
+        btClearPoints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetAR();
+            }
+        });
+    }
+
+    public void resetAR() {
+        baseNode.setParent(null);
+        baseNode = null;
+        for (AnchorNode node : nodes) {
+            node.setParent(null);
+        }
+        distlist = new ArrayList<Float>();
+        n = 0;
     }
 
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {

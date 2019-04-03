@@ -102,7 +102,7 @@
             android:text="Upload Journey"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:background="@color/colorButton"
+            android:background="@drawable/buttons_general"
             android:id="@+id/btUploadJourney"
             android:fontFamily="sans-serif-smallcaps"
             android:textStyle="bold"

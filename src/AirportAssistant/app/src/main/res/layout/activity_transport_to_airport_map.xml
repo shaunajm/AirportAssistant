@@ -96,7 +96,7 @@
             android:text="Progress To Next Stage"
             android:layout_width="130dp"
             android:layout_height="60dp"
-            android:background="@color/colorButton"
+            android:background="@drawable/buttons_general"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-smallcaps"
