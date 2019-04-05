@@ -347,7 +347,7 @@ Finally I have added the functionality that certain fields remain invisible unti
 ## Blog 23 - 05/04/2019
 #### Weekly Update
 
-The beginning of this week was spent redesigning the UI of the application. I had initially designed the bare bones of the app so the UI was extremely plain and needed more work. The general idea behind this design was to add icons and make the UI as readable, easy to use and visually appealing as possible. As an example we can see below the AR Results page before and after I redesigned my UI.
+The beginning of this week was spent redesigning the UI of the application. I had initially designed the bare bones of the app so the UI was plain and needed more work. The general idea behind this design was to add icons and make the UI as readable, easy to use and visually appealing as possible. As an example we can see below the AR Results page before and after I redesigned my UI.
 
 *Old AR Results Screen*           | *New AR Results Screen*
 :---------------------------------:|:-------------------------------------:
@@ -358,3 +358,17 @@ Below are some screenshots of the new design of a number of these pages.
 *New Confirm Journey Screen*           | *New Check-In Luggage Screen*|*New Arrivals Directions Screen*
 :---------------------------------:|:-------------------------------------:|:---------------------------------:
 ![](../media/confirmJourney.jpg) |![](../media/checkInQuestion.jpg)|![](../media/destinationDirections.jpg)
+
+Following on from this, I began working on testing. I began writing my testing document and deciding what methods of testing I wish to implement over the next number of weeks. I aim to implement
+
+* Unit testing
+* Use Case testing
+* Integration testing
+* Manual Instrumented testing
+* Heuristic testing
+* Accessibility testing
+* User Testing
+
+I will also hope to implement a git pipeline. I will devise a plan in the next week for how I will go about finishing off my project. There are a number of loose ends to tie and I also must finish off developing some minor aspects of the functionality. I am hoping to complete the project in the next two weeks so that I can dedicate time to study for and then complete my final exams.
+
+Unfortunately, I am working on an assignment for another module at the moment so I could not dedicate as much time as I would have wished to the project this weekend. I am hoping to have this assignment completed by the beginning of the week at the latest so that I can dedicate all of my time to completing the project. 
