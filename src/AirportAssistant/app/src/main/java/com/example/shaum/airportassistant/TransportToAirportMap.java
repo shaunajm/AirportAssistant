@@ -108,7 +108,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
                     finish();
                 }
                 else {
-                    Intent i = new Intent(TransportToAirportMap.this, Security.class);
+                    Intent i = new Intent(TransportToAirportMap.this, SecurityARCheck.class);
                     startActivity(i);
                     finish();
 

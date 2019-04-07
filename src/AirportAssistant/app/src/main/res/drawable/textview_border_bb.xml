@@ -7,4 +7,15 @@
             android:color="@color/colorButton"/>
     <solid
             android:color="@color/colorButton"/>
+
+    // The desired corner radius. reduce it to keep it less rounded
+    <corners android:radius="9dp" />
+
+    // Add your desired padding
+    <padding
+            android:left="10dp"
+            android:top="5dp"
+            android:right="10dp"
+            android:bottom="5dp"    >
+    </padding>
 </shape>

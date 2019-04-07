@@ -94,6 +94,28 @@
                 android:name="com.google.ar.core"
                 android:value="required"/>
 
+        <activity android:name=".SecurityARCheck">
+        </activity>
+        <activity android:name=".SecurityARShapeCheck">
+        </activity>
+        <activity android:name=".SecurityARCubeGuide">
+        </activity>
+        <activity
+                android:name=".SecurityARCyclinderGuide"
+                android:label="@string/title_activity_security_arcyclinder_guide"
+                android:theme="@style/AppTheme">
+        </activity>
+        <activity
+                android:name=".SecurityARCubeScan"
+                android:label="@string/title_activity_security_arcube_scan"
+                android:theme="@style/AppTheme">
+        </activity>
+        <activity android:name=".SecurityARCubeResults">
+        </activity>
+        <activity android:name=".SecurityARCyclinderScan">
+        </activity>
+        <activity android:name=".SecurityARCyclinderResults">
+        </activity>
     </application>
 
 </manifest>

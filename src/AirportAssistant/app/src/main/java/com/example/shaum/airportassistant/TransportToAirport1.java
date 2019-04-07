@@ -124,7 +124,7 @@ public class TransportToAirport1 extends AppCompatActivity {
                             finish();
                         }
                         else{
-                            Intent i = new Intent(TransportToAirport1.this, Security.class);
+                            Intent i = new Intent(TransportToAirport1.this, SecurityARCheck.class);
                             startActivity(i);
                             finish();
                         }

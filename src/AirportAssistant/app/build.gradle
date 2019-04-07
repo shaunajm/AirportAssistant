@@ -85,3 +85,14 @@ sceneform.asset('sampledata/redBall.obj',
         'default',
         'sampledata/redBall.sfa',
         'src/main/assets/redBall')
+
+
+sceneform.asset('sampledata/smallerRedBall.obj',
+        'default',
+        'sampledata/smallerRedBall.sfa',
+        'src/main/assets/smallerRedBall')
+
+sceneform.asset('sampledata/smallerBlueBall.obj',
+        'default',
+        'sampledata/smallerBlueBall.sfa',
+        'src/main/assets/smallerBlueBall')

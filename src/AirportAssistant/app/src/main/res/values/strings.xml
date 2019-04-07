@@ -4,4 +4,6 @@
     <string name="title_activity_to_map_gate">Map</string>
     <string name="title_activity_arrivals_map">Map</string>
     <string name="title_activity_directions_to_gate_map">Map</string>
+    <string name="title_activity_security_arcyclinder_guide">SecurityARCyclinderGuide</string>
+    <string name="title_activity_security_arcube_scan">SecurityARCubeScan</string>
 </resources>
