@@ -31,14 +31,10 @@ import java.util.concurrent.TimeUnit;
 public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    public Button btProgress;
     public TravelMode travelMode;
-    public FusedLocationProviderClient mFusedLocationProviderClient;
     private static final int DEFAULT_ZOOM = 9;
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
-    public Location mCurrentLocation;
-    public CameraPosition mCameraPosition;
     private Bundle bundle = new Bundle();
     public ArrayList<LatLng> listpoints;
     public String address;
@@ -51,7 +47,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arrivals_map);
 
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        FusedLocationProviderClient mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -60,12 +56,12 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
         }
 
         if (savedInstanceState != null) {
-            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+            Location mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+            CameraPosition mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

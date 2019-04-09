@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 
-public class SecurityARCyclinderGuide extends AppCompatActivity {
+public class SecurityARCylinderGuide extends AppCompatActivity {
 
     public Button btProgressScan;
     public Button btSkipStage;
@@ -37,7 +37,7 @@ public class SecurityARCyclinderGuide extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderGuide.this, SecurityARShapeCheck.class);
+                Intent i = new Intent(SecurityARCylinderGuide.this, SecurityARShapeCheck.class);
                 startActivity(i);
                 finish();
             }
@@ -47,7 +47,7 @@ public class SecurityARCyclinderGuide extends AppCompatActivity {
         btProgressScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderGuide.this, SecurityARCyclinderScan.class);
+                Intent i = new Intent(SecurityARCylinderGuide.this, SecurityARCylinderScan.class);
                 startActivity(i);
                 finish();
             }
@@ -58,7 +58,7 @@ public class SecurityARCyclinderGuide extends AppCompatActivity {
         btSkipStage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderGuide.this, Security.class);
+                Intent i = new Intent(SecurityARCylinderGuide.this, Security.class);
                 startActivity(i);
                 finish();
             }

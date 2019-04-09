@@ -19,15 +19,10 @@ import com.google.firebase.database.*;
 public class CheckIn extends AppCompatActivity {
 
 
-    public Button btProgress;
-    public DatabaseReference mRootRef;
     public DataSnapshot data;
-    public FirebaseAuth mAuth;
-    public Button btLogo;
-    public String scheduledTime;
-    public String flightNumber;
-    public String destination;
     public Toast toast;
+    public FirebaseAuth mAuth;
+    public DatabaseReference mRootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +59,19 @@ public class CheckIn extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
-                displayBaggageInfo();
-                displayFlightInfo();
+                DataSnapshot user = data.child("users").child(mAuth.getUid());
+                if (user != null) {
+                    String actualWeight = user.child("actualWeight").getValue(String.class);
+                    String bookedWeight = user.child("bookedWeight").getValue(String.class);
+                    String flightNumber = user.child("flightNumber").getValue(String.class);
+                    DataSnapshot flight = data.child("flight").child(flightNumber);
+                    String destination = flight.child("destination").getValue(String.class);
+                    String airline = flight.child("airline").getValue(String.class);
+                    String scheduledTime = flight.child("scheduledTime").getValue(String.class);
+
+                    displayBaggageInfo(actualWeight, bookedWeight);
+                    displayFlightInfo(flightNumber, destination, airline, scheduledTime);
+                }
             }
 
             @Override
@@ -74,8 +80,7 @@ public class CheckIn extends AppCompatActivity {
             }
         });
 
-
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +91,10 @@ public class CheckIn extends AppCompatActivity {
 
         });
 
-
-
-        btLogo = (Button) findViewById(R.id.btlogo);
+        Button btLogo = (Button) findViewById(R.id.btlogo);
         btLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toast = Toast.makeText(CheckIn.this, "Flight Time: " + scheduledTime + "\nDestination: " + destination + "\nFlight Number: " + flightNumber,
-                        Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER, Gravity.CENTER, Gravity.CENTER);
                 toast.show();
             }
@@ -101,34 +102,18 @@ public class CheckIn extends AppCompatActivity {
 
     }
 
-    public void displayBaggageInfo(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-        if (user != null) {
-            String actualWeight = user.child("actualWeight").getValue(String.class);
-            String bookedWeight = user.child("bookedWeight").getValue(String.class);
-
-            TextView tv = (TextView) findViewById(R.id.bagWeightVExpected);
-            tv.setText("Your bag's weight is: " + actualWeight + " kg" +"\n" +
-                       "Your booked weight is: " + bookedWeight + " kg");
+    public void displayBaggageInfo(String actualWeight, String bookedWeight){
+        TextView tv = (TextView) findViewById(R.id.bagWeightVExpected);
+        tv.setText("Your bag's weight is: " + actualWeight + " kg" +"\n" +
+                   "Your booked weight is: " + bookedWeight + " kg");
         }
-    }
 
-    public void displayFlightInfo(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-
-
-        if (user != null) {
-            flightNumber = user.child("flightNumber").getValue(String.class);
-            DataSnapshot flight = data.child("flight").child(flightNumber);
-            destination = flight.child("destination").getValue(String.class);
-            String airline = flight.child("airline").getValue(String.class);
-            scheduledTime = flight.child("scheduledTime").getValue(String.class);
-
+    public void displayFlightInfo(String flightNumber, String destination, String airline, String scheduledTime){
             TextView tv = (TextView) findViewById(R.id.flightDetails);
             tv.setText("Flight number: " + flightNumber + "\n" +
                     "Destination: " + destination + "\n" +
                     "Airline: " + airline + "\n" +
                     "Flight Time: " + scheduledTime);
-        }
+            toast = Toast.makeText(CheckIn.this, "Flight Time: " + scheduledTime + "\nDestination: " + destination + "\nFlight Number: " + flightNumber, Toast.LENGTH_LONG);
     }
 }

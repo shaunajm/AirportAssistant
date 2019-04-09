@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
 import com.example.shaum.airportassistant.util.ARUtil;
 
-public class SecurityARCyclinderResults extends AppCompatActivity {
+public class SecurityARCylinderResults extends AppCompatActivity {
 
     public Button btProgress;
     public Button btRepeatScan;
@@ -71,7 +71,7 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderResults.this, SecurityARCyclinderGuide.class);
+                Intent i = new Intent(SecurityARCylinderResults.this, SecurityARCylinderGuide.class);
                 startActivity(i);
                 finish();
             }
@@ -82,7 +82,7 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderResults.this, Security.class);
+                Intent i = new Intent(SecurityARCylinderResults.this, Security.class);
                 startActivity(i);
                 finish();
             }
@@ -93,7 +93,7 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
         btRepeatScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderResults.this, SecurityARCyclinderScan.class);
+                Intent i = new Intent(SecurityARCylinderResults.this, SecurityARCylinderScan.class);
                 startActivity(i);
                 finish();
             }

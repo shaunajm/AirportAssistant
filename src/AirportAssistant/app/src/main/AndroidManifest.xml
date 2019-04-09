@@ -101,7 +101,7 @@
         <activity android:name=".SecurityARCubeGuide">
         </activity>
         <activity
-                android:name=".SecurityARCyclinderGuide"
+                android:name=".SecurityARCylinderGuide"
                 android:label="@string/title_activity_security_arcyclinder_guide"
                 android:theme="@style/AppTheme">
         </activity>
@@ -112,9 +112,9 @@
         </activity>
         <activity android:name=".SecurityARCubeResults">
         </activity>
-        <activity android:name=".SecurityARCyclinderScan">
+        <activity android:name=".SecurityARCylinderScan">
         </activity>
-        <activity android:name=".SecurityARCyclinderResults">
+        <activity android:name=".SecurityARCylinderResults">
         </activity>
     </application>
 

@@ -47,7 +47,7 @@ public class SecurityARShapeCheck extends AppCompatActivity {
         btCyclinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARShapeCheck.this, SecurityARCyclinderGuide.class);
+                Intent i = new Intent(SecurityARShapeCheck.this, SecurityARCylinderGuide.class);
                 startActivity(i);
                 finish();
             }

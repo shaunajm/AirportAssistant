@@ -39,7 +39,6 @@ import java.util.concurrent.TimeUnit;
 public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    public Button btProgress;
     public boolean mLocationPermissionGranted;
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     public Location mLastKnownLocation;
@@ -51,7 +50,6 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
     public Location mCurrentLocation;
     public CameraPosition mCameraPosition;
     public ArrayList<LatLng> listpoints;
-    public DatabaseReference mRootRef;
     public DataSnapshot data;
     public FirebaseAuth mAuth;
     public String gateNumber;
@@ -59,6 +57,7 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
     public String address;
     public double arrivallat;
     public double arrivallng;
+    public DatabaseReference mRootRef;
 
 
     @Override
@@ -96,7 +95,7 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
         }
 
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

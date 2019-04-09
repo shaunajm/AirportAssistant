@@ -14,13 +14,12 @@ import com.google.maps.model.TravelMode;
 
 public class Arrivals extends AppCompatActivity {
 
-    public Button btProgress;
+
     private Bundle bundle = new Bundle();
     public TravelMode travelMode;
     private RadioGroup modeOptions;
     private RadioGroup yesnoOptions;
     public String yesnoDecision;
-    public Button selectMode;
     public String address;
     public EditText editAddress;
     public TextView tvWhereTravelling;
@@ -75,7 +74,7 @@ public class Arrivals extends AppCompatActivity {
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

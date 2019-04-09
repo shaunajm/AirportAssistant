@@ -36,7 +36,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 
-public class SecurityARCyclinderScan extends AppCompatActivity {
+public class SecurityARCylinderScan extends AppCompatActivity {
     private static final String TAG = ARCamera.class.getSimpleName();
     private static final double MIN_OPENGL_VERSION = 3.0;
 
@@ -148,7 +148,7 @@ public class SecurityARCyclinderScan extends AppCompatActivity {
         btComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderScan.this, SecurityARCyclinderResults.class);
+                Intent i = new Intent(SecurityARCylinderScan.this, SecurityARCylinderResults.class);
                 startActivity(i);
                 finish();
             }
@@ -159,7 +159,7 @@ public class SecurityARCyclinderScan extends AppCompatActivity {
         btQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderScan.this, SecurityARCyclinderGuide.class);
+                Intent i = new Intent(SecurityARCylinderScan.this, SecurityARCylinderGuide.class);
                 startActivity(i);
                 finish();
             }

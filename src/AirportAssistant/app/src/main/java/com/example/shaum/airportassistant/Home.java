@@ -14,11 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
 
-    public Button btUploadJourney;
-    public Button btSignOut;
-    public GoogleSignInClient mGoogleSignInClient;
-    private FirebaseAuth mAuth;
-    public String logoutPress;
+    public FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +31,11 @@ public class Home extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
 
-        btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
+        Button btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
         btUploadJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,13 +47,13 @@ public class Home extends AppCompatActivity {
         });
 
 
-        btSignOut = (Button) findViewById(R.id.button_sign_out);
+        Button btSignOut = (Button) findViewById(R.id.button_sign_out);
         btSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_sign_out:
-                        logoutPress = "True";
+                        String logoutPress = "True";
                         Log.d("logOutPressHeard", "logOutPress");
                         signOut();
                         break;

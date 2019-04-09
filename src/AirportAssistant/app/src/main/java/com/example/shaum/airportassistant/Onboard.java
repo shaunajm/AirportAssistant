@@ -15,7 +15,6 @@ import com.google.firebase.database.*;
 
 public class Onboard extends AppCompatActivity {
 
-    public Button btProgress;
     public DatabaseReference mRootRef;
     public DataSnapshot data;
     public FirebaseAuth mAuth;
@@ -62,7 +61,25 @@ public class Onboard extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
-                    getFlightNumber();
+                DataSnapshot user = data.child("users").child(mAuth.getUid());
+
+                if (user != null) {
+                    String flightNumber = user.child("flightNumber").getValue(String.class);
+
+                    DataSnapshot flight = data.child("flight").child(flightNumber);
+                    if (flight != null) {
+                        String scheduledTime = flight.child("scheduledTime").getValue(String.class);
+                        String airline = flight.child("airline").getValue(String.class);
+                        String destination = flight.child("destination").getValue(String.class);
+
+                        DataSnapshot airlineInfo = data.child("airline").child(airline);
+                        if (airlineInfo != null) {
+                            inflightLink = airlineInfo.child("inflightlink").getValue(String.class);
+                            displayFlightTime(scheduledTime, destination);
+                            displayInflightLink(inflightLink);
+                        }
+                    }
+                }
             }
 
             @Override
@@ -71,7 +88,7 @@ public class Onboard extends AppCompatActivity {
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +106,7 @@ public class Onboard extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
-                displayFlightTime();
+
             }
 
             @Override
@@ -99,47 +116,16 @@ public class Onboard extends AppCompatActivity {
         });
     }
 
-    public void displayFlightTime(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-
-        if (user != null) {
-            String flightNumber = user.child("flightNumber").getValue(String.class);
-            DataSnapshot flight = data.child("flight").child(flightNumber);
-            String scheduledTime = flight.child("scheduledTime").getValue(String.class);
-
+    public void displayFlightTime(String scheduledTime, String destination){
             TextView tv = (TextView) findViewById(R.id.flightTime);
             tv.setText("Flight Time: " + scheduledTime);
             TextView tv2 = (TextView) findViewById(R.id.destination);
             tv2.setText("Destination: " + destination);
-        }
     }
 
-    public void getFlightNumber(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-        if (user != null) {
-            flightNumber = user.child("flightNumber").getValue(String.class);
-            getAirline();
-        }
-    }
 
-    public void getAirline() {
-        DataSnapshot flight = data.child("flight").child(flightNumber);
-        if (flight != null) {
-            airline = flight.child("airline").getValue(String.class);
-            destination = flight.child("destination").getValue(String.class);
-            getInflightLink();
-        }
-    }
 
-    public void getInflightLink(){
-        DataSnapshot airlineInfo = data.child("airline").child(airline);
-        if (airlineInfo != null) {
-            inflightLink = airlineInfo.child("inflightlink").getValue(String.class);
-            displayInflightLink();
-        }
-    }
-
-    public void displayInflightLink(){
+    public void displayInflightLink(String inflightLink){
         TextView tv = (TextView) findViewById(R.id.onboardInfoLink);
         tv.setText(inflightLink);
     }

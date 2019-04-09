@@ -1,5 +1,7 @@
 package com.example.shaum.airportassistant.util;
 
+import android.util.Log;
+
 public class ARUtil {
 
     public ARUtil() { }
@@ -11,7 +13,10 @@ public class ARUtil {
     public double getCylinderVolume(double d1, double d2) {
         double radius = d1/2;
         double radiussquared = Math.pow(radius, 2);
+        double result = (3.14159*radiussquared*d2);
+        Log.d("CylinderDimensions", "cylinder" + result);
         return (3.14159*radiussquared*d2);
+
     }
 
     public boolean passFailResult(double volume){

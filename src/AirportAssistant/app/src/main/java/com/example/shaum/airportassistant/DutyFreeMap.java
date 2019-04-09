@@ -36,12 +36,7 @@ import static com.example.shaum.airportassistant.TransportToAirportMap.PERMISSIO
 
 public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback {
 
-    public Button btProgress;
     public FusedLocationProviderClient mFusedLocationProviderClient;
-    private Bundle bundle = new Bundle();
-    public String address;
-    public Location mCurrentLocation;
-    public CameraPosition mCameraPosition;
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
     public boolean mLocationPermissionGranted;
@@ -59,14 +54,14 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            address = bundle.getString("address");
+            String address = bundle.getString("address");
         }
 
         if (savedInstanceState != null) {
-            mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+            Location mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+            CameraPosition mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
 
@@ -74,7 +69,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
         getDeviceLocation();
 
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,11 +146,6 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
 
 
     private void getLocationPermission(){
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -206,10 +196,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
     }
 
     private void getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
+
         try {
             if (mLocationPermissionGranted) {
                 Task locationResult = mFusedLocationProviderClient.getLastLocation();

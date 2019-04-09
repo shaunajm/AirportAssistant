@@ -25,7 +25,6 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity{
 
-    //public Button btLogin;
     public GoogleSignInClient mGoogleSignInClient;
     private Bundle bundle = new Bundle();
     private static final String TAG = "MainActivity";
@@ -43,8 +42,6 @@ public class MainActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        // Access a Cloud Firestore instance from your Activity
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -54,13 +51,9 @@ public class MainActivity extends AppCompatActivity{
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
-        // ...
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
 
         SignInButton signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +130,6 @@ public class MainActivity extends AppCompatActivity{
                     }
                 });
     }
-
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {

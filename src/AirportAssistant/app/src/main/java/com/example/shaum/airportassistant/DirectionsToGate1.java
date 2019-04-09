@@ -19,12 +19,8 @@ import com.google.firebase.database.*;
 
 public class DirectionsToGate1 extends AppCompatActivity {
 
-    public Button btProgress;
     public DatabaseReference mUserRef;
     private FirebaseAuth mAuth;
-    public EditText editGateNumber;
-    public String resultGateNumber;
-    public DatabaseReference mRootRef;
     public DataSnapshot data;
 
     @Override
@@ -49,7 +45,7 @@ public class DirectionsToGate1 extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        editGateNumber = (EditText) findViewById(R.id.gateNumberEnter);
+        EditText editGateNumber = (EditText) findViewById(R.id.gateNumberEnter);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,12 +61,20 @@ public class DirectionsToGate1 extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        mRootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
         mRootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
-                displayFlightInfo();
+                DataSnapshot user = data.child("users").child(mAuth.getUid());
+                if (user != null) {
+                    String flightNumber = user.child("flightNumber").getValue(String.class);
+                    DataSnapshot flight = data.child("flight").child(flightNumber);
+                    String destination = flight.child("destination").getValue(String.class);
+                    String airline = flight.child("airline").getValue(String.class);
+                    String scheduledTime = flight.child("scheduledTime").getValue(String.class);
+                    displayFlightInfo(flightNumber, destination, airline, scheduledTime);
+                }
             }
 
             @Override
@@ -79,7 +83,7 @@ public class DirectionsToGate1 extends AppCompatActivity {
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,35 +96,23 @@ public class DirectionsToGate1 extends AppCompatActivity {
                     finish();
                 }
 
-
             }
 
             public void setGateNumber() {
                 FirebaseUser user = mAuth.getCurrentUser();
 
-                resultGateNumber = editGateNumber.getText().toString();
+                String resultGateNumber = editGateNumber.getText().toString();
 
                 mUserRef.child(user.getUid()).child("gateNumber").setValue(resultGateNumber);
             }
         });
     }
 
-    public void displayFlightInfo(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-
-
-        if (user != null) {
-            String flightNumber = user.child("flightNumber").getValue(String.class);
-            DataSnapshot flight = data.child("flight").child(flightNumber);
-            String destination = flight.child("destination").getValue(String.class);
-            String airline = flight.child("airline").getValue(String.class);
-            String scheduledTime = flight.child("scheduledTime").getValue(String.class);
-
+    public void displayFlightInfo(String flightNumber, String destination, String airline, String scheduledTime){
             TextView tv = (TextView) findViewById(R.id.flightDetails);
             tv.setText("Flight number: " + flightNumber + "\n" +
                     "Destination: " + destination + "\n" +
                     "Airline: " + airline + "\n" +
                     "Flight Time: " + scheduledTime);
-        }
     }
 }

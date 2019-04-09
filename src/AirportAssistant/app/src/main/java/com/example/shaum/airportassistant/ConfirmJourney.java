@@ -22,11 +22,8 @@ import java.io.IOException;
 
 public class ConfirmJourney extends AppCompatActivity {
 
-    public Button btstartJourney;
-    public Button btCancel;
-    public Document document;
+
     public String flightNumber;
-    public DatabaseReference mRootRef;
     public DataSnapshot data;
     public FirebaseAuth mAuth;
     public DatabaseReference mFlightRef;
@@ -34,6 +31,7 @@ public class ConfirmJourney extends AppCompatActivity {
     public String airline;
     public String scheduledTime;
     public ProgressBar spinner;
+    public DatabaseReference mRootRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,11 @@ public class ConfirmJourney extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
-                passFlightNumber();
+                DataSnapshot user = data.child("users").child(mAuth.getUid());
+                if (user != null) {
+                    flightNumber = user.child("flightNumber").getValue(String.class);
+                    new ScrapeTask().execute();
+                }
             }
 
             @Override
@@ -74,7 +76,7 @@ public class ConfirmJourney extends AppCompatActivity {
             }
         });
 
-        btstartJourney = (Button) findViewById(R.id.btstartJourney);
+        Button btstartJourney = (Button) findViewById(R.id.btstartJourney);
         btstartJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +87,7 @@ public class ConfirmJourney extends AppCompatActivity {
             }
         });
 
-        btCancel = (Button) findViewById(R.id.btCancel);
+        Button btCancel = (Button) findViewById(R.id.btCancel);
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,22 +143,15 @@ public class ConfirmJourney extends AppCompatActivity {
     }
 
 
-    public void passFlightNumber(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-        if (user != null) {
-            flightNumber = user.child("flightNumber").getValue(String.class);
-            new ScrapeTask().execute();
-        }
-    }
 
     public void setFlightValues(){
         FirebaseUser user = mAuth.getCurrentUser();
-
             mFlightRef.child(flightNumber).child("destination").setValue(destination);
             mFlightRef.child(flightNumber).child("airline").setValue(airline);
             mFlightRef.child(flightNumber).child("scheduledTime").setValue(scheduledTime);
             mFlightRef.child(flightNumber).child("userID").setValue(user.getUid());
         }
+
 
     public void ProgressSpinner(){
 

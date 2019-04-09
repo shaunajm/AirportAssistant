@@ -15,11 +15,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class JourneyUpload extends AppCompatActivity {
 
-    public Button btUploadJourney;
     public DatabaseReference mUserRef;
     private FirebaseAuth mAuth;
     public EditText editFlightNumber;
-    public String resultFlightNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +36,7 @@ public class JourneyUpload extends AppCompatActivity {
         editFlightNumber = (EditText)findViewById(R.id.flightNumber);
 
 
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class JourneyUpload extends AppCompatActivity {
 
 
 
-        btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
+        Button btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
         btUploadJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,7 @@ public class JourneyUpload extends AppCompatActivity {
     public void setFlightNumber(){
         FirebaseUser user = mAuth.getCurrentUser();
 
-        resultFlightNumber = editFlightNumber.getText().toString();
+        String resultFlightNumber = editFlightNumber.getText().toString();
 
         mUserRef.child(user.getUid()).child("flightNumber").setValue(resultFlightNumber);
         }

@@ -14,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class HoldLuggageQues extends AppCompatActivity {
 
-    public Button btBeginJourney;
     private FirebaseAuth mAuth;
     public EditText editBookedWeight;
     public EditText editActualWeight;
@@ -53,6 +52,7 @@ public class HoldLuggageQues extends AppCompatActivity {
 
         modeOptions = (RadioGroup) findViewById(R.id.radioMode);
         modeOptions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 onRadioButtonClicked(i);
@@ -72,7 +72,7 @@ public class HoldLuggageQues extends AppCompatActivity {
         tvAKG = (TextView)findViewById(R.id.bookedWeightKG2);
         tvAKG.setVisibility(View.INVISIBLE);
 
-        btBeginJourney = (Button) findViewById(R.id.btBeginJourney);
+        Button btBeginJourney = (Button) findViewById(R.id.btBeginJourney);
         btBeginJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

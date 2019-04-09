@@ -40,16 +40,9 @@ import java.util.Collections;
 public class ARCamera extends AppCompatActivity {
     private static final String TAG = ARCamera.class.getSimpleName();
     private static final double MIN_OPENGL_VERSION = 3.0;
-
-    private ArFragment arFragment;
     private ModelRenderable modelRenderable;
     private ModelRenderable secondaryModel;
-    public Button btComplete;
-    public Button btQuit;
-    public Button btClearPoints;
     public AnchorNode baseNode;
-    public DatabaseReference mUserRef;
-    private FirebaseAuth mAuth;
     public int n = 0;
     public ArrayList<Float> distlist = new ArrayList<Float>();
     public ArrayList<AnchorNode> nodes = new ArrayList<AnchorNode>();
@@ -59,15 +52,15 @@ public class ARCamera extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mUserRef = FirebaseDatabase.getInstance().getReference("users");
-        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference mUserRef = FirebaseDatabase.getInstance().getReference("users");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
         }
 
         setContentView(R.layout.activity_arcamera);
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+        ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
@@ -146,7 +139,7 @@ public class ARCamera extends AppCompatActivity {
                             return null;
                         });
 
-        btComplete = (Button) findViewById(R.id.btCompleteScan);
+        Button btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,7 +150,7 @@ public class ARCamera extends AppCompatActivity {
 
         });
 
-        btQuit = (Button) findViewById(R.id.btQuitScan);
+        Button btQuit = (Button) findViewById(R.id.btQuitScan);
         btQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,7 +160,7 @@ public class ARCamera extends AppCompatActivity {
             }
         });
 
-        btClearPoints = (Button) findViewById(R.id.btClearPoints);
+        Button btClearPoints = (Button) findViewById(R.id.btClearPoints);
         btClearPoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
