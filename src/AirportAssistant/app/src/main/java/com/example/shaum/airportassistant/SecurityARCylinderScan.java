@@ -43,9 +43,6 @@ public class SecurityARCylinderScan extends AppCompatActivity {
     private ArFragment arFragment;
     private ModelRenderable modelRenderable;
     private ModelRenderable secondaryModel;
-    public Button btComplete;
-    public Button btQuit;
-    public Button btClearPoints;
     public AnchorNode baseNode;
     public DatabaseReference mUserRef;
     private FirebaseAuth mAuth;
@@ -144,7 +141,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
                             return null;
                         });
 
-        btComplete = (Button) findViewById(R.id.btCompleteScan);
+        Button btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +152,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
 
         });
 
-        btQuit = (Button) findViewById(R.id.btQuitScan);
+        Button btQuit = (Button) findViewById(R.id.btQuitScan);
         btQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +162,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
             }
         });
 
-        btClearPoints = (Button) findViewById(R.id.btClearPoints);
+        Button btClearPoints = (Button) findViewById(R.id.btClearPoints);
         btClearPoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

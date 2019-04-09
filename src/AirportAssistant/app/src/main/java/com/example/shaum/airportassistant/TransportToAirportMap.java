@@ -40,7 +40,6 @@ import java.util.concurrent.TimeUnit;
 public class TransportToAirportMap extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    public Button btProgress;
     public TravelMode travelMode;
     public boolean mLocationPermissionGranted;
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -54,8 +53,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public CameraPosition mCameraPosition;
     private Bundle bundle = new Bundle();
     public ArrayList<LatLng> listpoints;
-    public Duration duration;
-    public Distance distance;
     private static final String API_KEY = "AIzaSyDZxWk3GhKcTA_vwJqab_x_kiIDtWcaknQ";
     public DatabaseReference mRootRef;
     public DataSnapshot data;
@@ -98,7 +95,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,7 +113,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             }
         });
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -160,7 +156,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
                 //addPolyline(dr);
             }
         });
-
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
     }
@@ -268,10 +263,6 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     }
 
     private void getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
         try {
             if (mLocationPermissionGranted) {
                 Task locationResult = mFusedLocationProviderClient.getLastLocation();
@@ -313,6 +304,4 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             super.onSaveInstanceState(outState);
         }
     }
-
-
 }

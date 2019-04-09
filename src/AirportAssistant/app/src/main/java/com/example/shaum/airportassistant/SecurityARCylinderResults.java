@@ -16,15 +16,12 @@ import com.example.shaum.airportassistant.util.ARUtil;
 
 public class SecurityARCylinderResults extends AppCompatActivity {
 
-    public Button btProgress;
-    public Button btRepeatScan;
     public DatabaseReference mUserRef;
     private FirebaseAuth mAuth;
     public DatabaseReference mRootRef;
     public DataSnapshot data;
     public String result;
     public ARUtil arHelper = new ARUtil();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +74,7 @@ public class SecurityARCylinderResults extends AppCompatActivity {
             }
         });
 
-
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +85,7 @@ public class SecurityARCylinderResults extends AppCompatActivity {
 
         });
 
-        btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
+        Button btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
         btRepeatScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +102,6 @@ public class SecurityARCylinderResults extends AppCompatActivity {
         boolean checkResult = arHelper.passFailResult(total);
         displayToScreen(checkResult);
     }
-
 
     public void displayToScreen(boolean checkResult){
         TextView tv3 = (TextView) findViewById(R.id.tvARResults);

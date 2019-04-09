@@ -20,7 +20,6 @@ import java.io.IOException;
 
 public class Security extends AppCompatActivity {
 
-    public Button btProgress;
     public ProgressBar spinner;
     public int waitTime;
 
@@ -56,7 +55,7 @@ public class Security extends AppCompatActivity {
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

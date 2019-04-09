@@ -17,13 +17,11 @@ import com.google.maps.model.TravelMode;
 
 public class TransportToAirport1 extends AppCompatActivity {
 
-    public Button btProgress;
     private Bundle bundle = new Bundle();
     public TravelMode travelMode;
     private RadioGroup modeOptions;
     private RadioGroup yesnoOptions;
     public String yesnoDecision;
-    public Button selectMode;
     public DatabaseReference mRootRef;
     public DataSnapshot data;
     public FirebaseAuth mAuth;
@@ -93,7 +91,7 @@ public class TransportToAirport1 extends AppCompatActivity {
             }
         });
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +103,6 @@ public class TransportToAirport1 extends AppCompatActivity {
                             onTransportRadioButtonClicked();
 
                             Intent i = new Intent(TransportToAirport1.this, TransportToAirportMap.class);
-                            //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
 
                             Log.d("mode", travelMode.toString());
                             bundle.putSerializable("mode", travelMode);
@@ -192,7 +189,6 @@ public class TransportToAirport1 extends AppCompatActivity {
 
         RadioButton checkedButton = (RadioButton) findViewById(id);
 
-        // Check which radio button was clicked
         switch(checkedButton.getText().toString()) {
             case "Yes":
                 tvAirportQuestion.setVisibility(View.VISIBLE);

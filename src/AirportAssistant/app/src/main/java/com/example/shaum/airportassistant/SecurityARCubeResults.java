@@ -16,8 +16,6 @@ import com.example.shaum.airportassistant.util.ARUtil;
 
 public class SecurityARCubeResults extends AppCompatActivity {
 
-    public Button btProgress;
-    public Button btRepeatScan;
     public DatabaseReference mUserRef;
     public FirebaseAuth mAuth;
     public DatabaseReference mRootRef;
@@ -77,7 +75,7 @@ public class SecurityARCubeResults extends AppCompatActivity {
         });
 
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +86,7 @@ public class SecurityARCubeResults extends AppCompatActivity {
 
         });
 
-        btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
+        Button btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
         btRepeatScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

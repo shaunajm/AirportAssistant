@@ -37,7 +37,6 @@ import java.util.concurrent.TimeUnit;
 public class ToGateMap extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    public Button btProgress;
     public TravelMode travelMode;
     public boolean mLocationPermissionGranted;
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -89,7 +88,7 @@ public class ToGateMap extends FragmentActivity implements OnMapReadyCallback {
         });
 
 
-        btProgress = (Button) findViewById(R.id.btProgress);
+        Button btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,25 +140,9 @@ public class ToGateMap extends FragmentActivity implements OnMapReadyCallback {
                 mMap.addMarker(destinationOptions);
 
                 DirectionsResult dr = getDirectionsResult(currentLatLng, destination);
-                //addPolyline(dr);
             }
         });
-
-        // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-        // Get the current location of the device and set the position of the map.
-        //  getDeviceLocation();
-
-        // DirectionsResult dr = getDirectionsResult();
-
-
-        // Add a marker in Sydney and move the camera
-        // LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        //addMarkersToMap(dr, mMap);
-        //addPolyline(dr, mMap);
-
     }
 
 
@@ -208,11 +191,6 @@ public class ToGateMap extends FragmentActivity implements OnMapReadyCallback {
     }
 
     private void getLocationPermission(){
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -241,7 +219,6 @@ public class ToGateMap extends FragmentActivity implements OnMapReadyCallback {
                 }
             }
         }
-        //  updateLocationUI();
     }
 
     private void updateLocationUI() {
@@ -264,10 +241,7 @@ public class ToGateMap extends FragmentActivity implements OnMapReadyCallback {
     }
 
     private void getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
+
         try {
             if (mLocationPermissionGranted) {
                 Task locationResult = mFusedLocationProviderClient.getLastLocation();
