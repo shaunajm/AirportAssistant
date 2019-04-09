@@ -104,9 +104,8 @@ public class SecurityARCubeResults extends AppCompatActivity {
     public void passLiquidSize(){
         DataSnapshot user = data.child("users").child(mAuth.getUid());
         if (user != null) {
-            liquiddimensions1 = user.child("liquiddimensions/2").getValue(Float.class);
-            liquiddimensions2= user.child("liquiddimensions/1").getValue(Float.class);
-            liquiddimensions3 = user.child("liquiddimensions/0").getValue(Float.class);
+            liquiddimensions1= user.child("liquiddimensions/1").getValue(Float.class);
+            liquiddimensions2 = user.child("liquiddimensions/0").getValue(Float.class);
             liquiddimensionstotal = liquiddimensions1*liquiddimensions2*liquiddimensions3;
             Log.d("totalmeasure", "totalmeasureval"+ liquiddimensionstotal);
             passfailResult();

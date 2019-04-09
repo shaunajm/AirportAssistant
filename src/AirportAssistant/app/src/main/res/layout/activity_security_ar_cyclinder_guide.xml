@@ -57,9 +57,9 @@
 
     <ImageView
             android:id="@+id/tutorialScreenshot"
-            android:layout_width="170dp"
-            android:layout_height="210dp"
-            android:src="@drawable/tutorialscreenshot"
+            android:layout_width="150dp"
+            android:layout_height="220dp"
+            android:src="@drawable/cyclinderguide"
             android:background="@drawable/textview_border_b"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -88,7 +88,7 @@
             app:layout_constraintVertical_bias="0.689" android:id="@+id/scrollView2">
 
         <TextView
-                android:text="• Here you will be guided through using the AR functionality of the application. \n \n• Move the camera slowly as instructed to allow the application to register your bag. \n \n• You will now place four coloured balls on your luggage. \n \n• Place the red ball in the top left corner as shown above. \n \n• Place the remaining three blue coloured balls on the bottom left, top right and back left points as shown above"
+                android:text="• Here you will be guided through using the AR functionality to measure your liquid's container. \n \n• Lay down the container to allow the camera to pick up the item's plane.\n \n• Move the camera slowly as instructed to allow the application to register your container.\n \n• Place the red ball on the top left corner as shown above. \n \n• Place your first blue ball on the front top right corner of the container.\n \n• Place your second blue ball on the front bottom left corner of the container. \n \n• Click the complete scan button."
                 android:layout_width="306dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorDefaultText"

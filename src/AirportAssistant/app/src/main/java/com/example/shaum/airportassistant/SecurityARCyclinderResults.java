@@ -24,11 +24,13 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
     public DataSnapshot data;
     public float liquiddimensions1;
     public float liquiddimensions2;
-    public float liquiddimensions3;
-    public float liquiddimensionstotal;
+    public double liquiddimensionstotal;
+    public float liquid1over2;
+    public double liquidover2sq;
     public String flightNumber;
     public String airline;
     public String result;
+    public String gateNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
             }
         });
 
+
         mUserRef = FirebaseDatabase.getInstance().getReference("users");
 
         mAuth = FirebaseAuth.getInstance();
@@ -57,6 +60,7 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
+
                 passLiquidSize();
             }
 
@@ -104,11 +108,14 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
     public void passLiquidSize(){
         DataSnapshot user = data.child("users").child(mAuth.getUid());
         if (user != null) {
-            liquiddimensions1 = user.child("liquiddimensions/2").getValue(Float.class);
-            liquiddimensions2= user.child("liquiddimensions/1").getValue(Float.class);
-            liquiddimensions3 = user.child("liquiddimensions/0").getValue(Float.class);
-            liquiddimensionstotal = liquiddimensions1*liquiddimensions2*liquiddimensions3;
-            Log.d("totalmeasure", "totalmeasureval"+ liquiddimensionstotal);
+            liquiddimensions1= user.child("liquiddimensions/1").getValue(Float.class);
+            Log.d("totalmeasure1", "totalmeasureval1: "+ liquiddimensions1);
+            liquiddimensions2 = user.child("liquiddimensions/0").getValue(Float.class);
+            Log.d("totalmeasure2", "totalmeasureval2: "+ liquiddimensions2);
+            liquid1over2 = liquiddimensions1/2;
+            liquidover2sq = Math.pow(liquid1over2, 2);
+            liquiddimensionstotal = (2*3.14159*liquid1over2*liquiddimensions2)+(2*3.14159*liquidover2sq);
+            Log.d("totalmeasure3", "totalmeasureval3: "+ liquiddimensionstotal);
             passfailResult();
         }
 
@@ -117,11 +124,11 @@ public class SecurityARCyclinderResults extends AppCompatActivity {
 
 
     public void passfailResult(){
-        if(liquiddimensionstotal<= 200) {
-            result = "Pass";
+        if(liquiddimensionstotal>= 200) {
+            result = "Fail";
         }
         else{
-            result = "Fail";
+            result = "Pass";
         }
         displayToScreen();
 

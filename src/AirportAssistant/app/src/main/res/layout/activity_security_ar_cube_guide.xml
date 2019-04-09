@@ -88,7 +88,7 @@
             app:layout_constraintVertical_bias="0.689" android:id="@+id/scrollView2">
 
         <TextView
-                android:text="• Here you will be guided through using the AR functionality of the application. \n \n• Move the camera slowly as instructed to allow the application to register your bag. \n \n• You will now place four coloured balls on your luggage. \n \n• Place the red ball in the top left corner as shown above. \n \n• Place the remaining three blue coloured balls on the bottom left, top right and back left points as shown above"
+                android:text="• Here you will be guided through using the AR functionality for measuring liquids. \n \n• Move the camera slowly as instructed to allow the application to register your liquid's container. \n \n• You will now place four coloured balls on your container. \n \n• Place the red ball in the top left corner as shown above. \n \n• Place the remaining three blue coloured balls on the bottom left, top right and back left points as shown above"
                 android:layout_width="306dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorDefaultText"

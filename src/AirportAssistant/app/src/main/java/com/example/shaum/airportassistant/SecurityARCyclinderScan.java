@@ -34,7 +34,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class SecurityARCyclinderScan extends AppCompatActivity {
@@ -84,7 +83,7 @@ public class SecurityARCyclinderScan extends AppCompatActivity {
                         model.setParent(baseNode);
                         model.setRenderable(modelRenderable);
                         model.select();
-                    } else if (n < 3) {
+                    } else if (n < 2) {
                         AnchorNode node = new AnchorNode(anchor);
                         node.setParent(arFragment.getArSceneView().getScene());
                         nodes.add(node);
@@ -113,7 +112,6 @@ public class SecurityARCyclinderScan extends AppCompatActivity {
                                 });
                         n++;
                     }
-                    Collections.sort(distlist);
                     Log.d("sorteddistlist", "sorteddistanceList: " + distlist);
 
                     FirebaseUser user = mAuth.getCurrentUser();
@@ -150,7 +148,7 @@ public class SecurityARCyclinderScan extends AppCompatActivity {
         btComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SecurityARCyclinderScan.this, SecurityARCubeResults.class);
+                Intent i = new Intent(SecurityARCyclinderScan.this, SecurityARCyclinderResults.class);
                 startActivity(i);
                 finish();
             }

@@ -5,6 +5,7 @@
     <color name="colorAccent">#C3423F</color>
     <color name="colorBackground">#D8D8D8</color>
     <color name="colorButton">#438CAB</color>
+    <color name= "colorDarkerBlue">#1a5489</color>
     <color name="colorDefaultText">#414141</color>
     <color name="colorActionBar">#FFFFFF</color>
     <color name="colorMapsToolbar">#FFFFFF</color>
