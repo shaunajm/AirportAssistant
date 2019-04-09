@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -13,22 +12,17 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.*;
+import com.example.shaum.airportassistant.util.ARUtil;
 
 public class SecurityARCubeResults extends AppCompatActivity {
 
     public Button btProgress;
     public Button btRepeatScan;
     public DatabaseReference mUserRef;
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
     public DatabaseReference mRootRef;
     public DataSnapshot data;
-    public float liquiddimensions1;
-    public float liquiddimensions2;
-    public float liquiddimensions3;
-    public float liquiddimensionstotal;
-    public String flightNumber;
-    public String airline;
-    public String result;
+    public ARUtil arHelper = new ARUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +43,6 @@ public class SecurityARCubeResults extends AppCompatActivity {
         });
 
         mUserRef = FirebaseDatabase.getInstance().getReference("users");
-
         mAuth = FirebaseAuth.getInstance();
 
         mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -57,7 +50,13 @@ public class SecurityARCubeResults extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 data = dataSnapshot;
-                passLiquidSize();
+                DataSnapshot user = data.child("users").child(mAuth.getUid());
+                if (user != null) {
+                    double liquiddimensions1 = user.child("liquiddimensions/2").getValue(Double.class);
+                    double liquiddimensions2 = user.child("liquiddimensions/1").getValue(Double.class);
+                    double liquiddimensions3 = user.child("liquiddimensions/0").getValue(Double.class);
+                    passLiquidSize(liquiddimensions1, liquiddimensions2, liquiddimensions3);
+                }
             }
 
             @Override
@@ -101,38 +100,21 @@ public class SecurityARCubeResults extends AppCompatActivity {
         });
     }
 
-    public void passLiquidSize(){
-        DataSnapshot user = data.child("users").child(mAuth.getUid());
-        if (user != null) {
-            liquiddimensions1= user.child("liquiddimensions/1").getValue(Float.class);
-            liquiddimensions2 = user.child("liquiddimensions/0").getValue(Float.class);
-            liquiddimensionstotal = liquiddimensions1*liquiddimensions2*liquiddimensions3;
-            Log.d("totalmeasure", "totalmeasureval"+ liquiddimensionstotal);
-            passfailResult();
-        }
-
+    public void passLiquidSize(double d1, double d2, double d3) {
+        double total = arHelper.getCubeVolume(d1, d2, d3);
+        boolean checkResult = arHelper.passFailResult(total);
+        displayToScreen(checkResult);
     }
 
-
-
-    public void passfailResult(){
-        if(liquiddimensionstotal<= 200) {
-            result = "Pass";
-        }
-        else{
-            result = "Fail";
-        }
-        displayToScreen();
-
-    }
-
-    public void displayToScreen(){
-
-
+    public void displayToScreen(boolean checkResult){
         TextView tv3 = (TextView) findViewById(R.id.tvARResults);
-        tv3.setText("Your AR Result: " + result);
+        String result;
+        if (checkResult) {
+            result = "Pass";
+            tv3.setText("Your AR Result: " + result);
+        } else {
+            result = "Fail";
+            tv3.setText("Your AR Result: " + result);
+        }
     }
-
-
-
 }

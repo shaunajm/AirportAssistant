@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity{
                 .requestEmail()
                 .build();
 
-
         mRootRef = FirebaseDatabase.getInstance().getReference();
 
         // ...
