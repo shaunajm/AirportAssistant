@@ -118,6 +118,9 @@
         <activity android:name=".PopUpJourneyComplete"
                   android:theme="@style/AppTheme.CustomTheme">
         </activity>
+        <activity android:name=".PopUpBagOverweight"
+                  android:theme="@style/AppTheme.CustomTheme">
+        </activity>
     </application>
 
 </manifest>

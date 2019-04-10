@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+
+    <TextView android:layout_width="324dp"
+              android:layout_height="305dp"
+              android:id="@+id/popuptext"
+              android:gravity="center|top"
+              android:text="Your baggage is overweight! \n\nYou can choose to continue with this or remove some items from this bag and reweigh it."
+              android:textSize="23dp"
+              android:background="@drawable/textview_border_bluepop"
+              android:textColor="@color/colorText"
+              android:textStyle="bold" app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="87dp"
+              app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_marginBottom="351dp" app:layout_constraintHorizontal_bias="0.0"
+              app:layout_constraintVertical_bias="0.0"/>
+
+    <Button
+            android:text="Continue with current baggage"
+            android:layout_width="213dp"
+            android:layout_height="60dp"
+            android:id="@+id/btContinue"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textStyle="bold"
+            android:background="@drawable/buttons_general"
+            app:layout_constraintEnd_toEndOf="@+id/popuptext" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="@+id/popuptext" android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@+id/popuptext" android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/popuptext" android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.536" app:layout_constraintVertical_bias="0.942"/>
+
+
+</android.support.constraint.ConstraintLayout>

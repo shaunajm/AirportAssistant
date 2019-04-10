@@ -27,6 +27,9 @@ public class HoldLuggageQues extends AppCompatActivity {
     public TextView tvBKG;
     public TextView tvAKG;
     public Button btBeginJourney;
+    public int actual;
+    public int booked;
+    public boolean overweight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,7 @@ public class HoldLuggageQues extends AppCompatActivity {
         tvAKG = (TextView)findViewById(R.id.bookedWeightKG2);
         tvAKG.setVisibility(View.INVISIBLE);
 
+
         btBeginJourney = (Button) findViewById(R.id.btBeginJourney);
         btBeginJourney.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,13 +89,19 @@ public class HoldLuggageQues extends AppCompatActivity {
                             editBookedWeight.setError("Booked Weight is required!");
                         } else if (TextUtils.isEmpty(editActualWeight.getText())) {
                             editActualWeight.setError("Actual Weight is required!");
-                            setWeightValues();
                         } else {
                             setWeightValues();
                             setCheckInChoice();
-                            Intent i = new Intent(HoldLuggageQues.this, ConfirmJourney.class);
-                            startActivity(i);
-                            finish();
+                            checkBaggageSizes();
+                            if(actual <= booked){
+                                Intent i = new Intent(HoldLuggageQues.this, ConfirmJourney.class);
+                                startActivity(i);
+                                finish();
+                            }
+                            else{
+                                startActivity(new Intent(HoldLuggageQues.this, PopUpBagOverweight.class));
+
+                            }
                         }
 
                     } else {
@@ -113,10 +123,11 @@ public class HoldLuggageQues extends AppCompatActivity {
     public void setWeightValues(){
         FirebaseUser user = mAuth.getCurrentUser();
 
+        resultBookedWeight = editBookedWeight.getText().toString();
+        resultActualWeight = editActualWeight.getText().toString();
+
         //add ifs
         if (checkBagChoice.equals("Yes")) {
-            resultBookedWeight = editBookedWeight.getText().toString();
-            resultActualWeight = editActualWeight.getText().toString();
             mUserRef.child(user.getUid()).child("bookedWeight").setValue(resultBookedWeight);
             mUserRef.child(user.getUid()).child("actualWeight").setValue(resultActualWeight);
         }
@@ -160,5 +171,11 @@ public class HoldLuggageQues extends AppCompatActivity {
             default:
                 checkBagChoice = null;
         }
+    }
+
+    public void checkBaggageSizes(){
+        actual = Integer.parseInt(resultActualWeight);
+        booked = Integer.parseInt(resultBookedWeight);
+
     }
 }
