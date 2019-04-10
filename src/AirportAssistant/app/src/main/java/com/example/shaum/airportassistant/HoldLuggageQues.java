@@ -26,6 +26,7 @@ public class HoldLuggageQues extends AppCompatActivity {
     public TextView tvActualWeight;
     public TextView tvBKG;
     public TextView tvAKG;
+    public Button btBeginJourney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class HoldLuggageQues extends AppCompatActivity {
         tvAKG = (TextView)findViewById(R.id.bookedWeightKG2);
         tvAKG.setVisibility(View.INVISIBLE);
 
-        Button btBeginJourney = (Button) findViewById(R.id.btBeginJourney);
+        btBeginJourney = (Button) findViewById(R.id.btBeginJourney);
         btBeginJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

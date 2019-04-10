@@ -78,10 +78,6 @@
                 android:label="@string/title_activity_transport_to_airport_map">
         </activity>
         <activity
-                android:name=".ToGateMap"
-                android:label="@string/title_activity_to_map_gate">
-        </activity>
-        <activity
                 android:name=".ArrivalsMap"
                 android:label="@string/title_activity_arrivals_map">
         </activity>

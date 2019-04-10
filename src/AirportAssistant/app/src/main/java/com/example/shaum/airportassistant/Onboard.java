@@ -23,6 +23,7 @@ public class Onboard extends AppCompatActivity {
     public String airline;
     public String inflightLink;
     public String destination;
+    public Button btProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class Onboard extends AppCompatActivity {
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

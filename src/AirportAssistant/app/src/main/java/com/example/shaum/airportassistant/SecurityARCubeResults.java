@@ -21,6 +21,8 @@ public class SecurityARCubeResults extends AppCompatActivity {
     public DatabaseReference mRootRef;
     public DataSnapshot data;
     public ARUtil arHelper = new ARUtil();
+    public Button btProgress;
+    public Button btRepeatScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +77,7 @@ public class SecurityARCubeResults extends AppCompatActivity {
         });
 
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +88,7 @@ public class SecurityARCubeResults extends AppCompatActivity {
 
         });
 
-        Button btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
+        btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
         btRepeatScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -12,6 +12,8 @@ import android.widget.SeekBar;
 
 public class SecurityARShapeCheck extends AppCompatActivity {
 
+    public Button btCyclinder;
+    public Button btCuboid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class SecurityARShapeCheck extends AppCompatActivity {
             }
         });
 
-        Button btCyclinder = (Button) findViewById(R.id.btCyclinder);
+        btCyclinder = (Button) findViewById(R.id.btCyclinder);
         btCyclinder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +54,7 @@ public class SecurityARShapeCheck extends AppCompatActivity {
 
         });
 
-        Button btCuboid = (Button) findViewById(R.id.btCuboid);
+        btCuboid = (Button) findViewById(R.id.btCuboid);
         btCuboid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

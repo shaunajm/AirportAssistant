@@ -12,6 +12,9 @@ import android.widget.SeekBar;
 
 public class SecurityARCheck extends AppCompatActivity {
 
+    public Button btProgressScan;
+    public Button btSkipStage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,7 @@ public class SecurityARCheck extends AppCompatActivity {
             }
         });
 
-        Button btProgressScan = (Button) findViewById(R.id.btProgressScan);
+        btProgressScan = (Button) findViewById(R.id.btProgressScan);
         btProgressScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +54,7 @@ public class SecurityARCheck extends AppCompatActivity {
 
         });
 
-        Button btSkipStage = (Button) findViewById(R.id.btSkipStage);
+        btSkipStage = (Button) findViewById(R.id.btSkipStage);
         btSkipStage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

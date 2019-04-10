@@ -32,6 +32,8 @@ public class ConfirmJourney extends AppCompatActivity {
     public String scheduledTime;
     public ProgressBar spinner;
     public DatabaseReference mRootRef;
+    public Button btstartJourney;
+    public Button btCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,7 @@ public class ConfirmJourney extends AppCompatActivity {
             }
         });
 
-        Button btstartJourney = (Button) findViewById(R.id.btstartJourney);
+        btstartJourney = (Button) findViewById(R.id.btstartJourney);
         btstartJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +89,7 @@ public class ConfirmJourney extends AppCompatActivity {
             }
         });
 
-        Button btCancel = (Button) findViewById(R.id.btCancel);
+        btCancel = (Button) findViewById(R.id.btCancel);
         btCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -40,6 +40,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
     public String address;
     public double arrivallat;
     public double arrivallng;
+    public Button btProgress;
 
 
     @Override
@@ -61,7 +62,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
         }
 
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

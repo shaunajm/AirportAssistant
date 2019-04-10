@@ -23,6 +23,8 @@ public class CheckIn extends AppCompatActivity {
     public Toast toast;
     public FirebaseAuth mAuth;
     public DatabaseReference mRootRef;
+    public Button btProgress;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,7 @@ public class CheckIn extends AppCompatActivity {
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +93,7 @@ public class CheckIn extends AppCompatActivity {
 
         });
 
-        Button btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo = (Button) findViewById(R.id.btlogo);
         btLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

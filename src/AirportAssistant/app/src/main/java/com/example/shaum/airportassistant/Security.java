@@ -22,6 +22,7 @@ public class Security extends AppCompatActivity {
 
     public ProgressBar spinner;
     public int waitTime;
+    public Button btProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +50,13 @@ public class Security extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Security.this, CheckIn.class);
+                Intent i = new Intent(Security.this, SecurityARCheck.class);
                 startActivity(i);
                 finish();
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

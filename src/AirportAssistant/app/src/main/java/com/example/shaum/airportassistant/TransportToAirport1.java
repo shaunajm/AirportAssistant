@@ -27,6 +27,7 @@ public class TransportToAirport1 extends AppCompatActivity {
     public FirebaseAuth mAuth;
     public String checkInChoice;
     public TextView tvAirportQuestion;
+    public Button btProgress;
 
 
     @Override
@@ -91,7 +92,7 @@ public class TransportToAirport1 extends AppCompatActivity {
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

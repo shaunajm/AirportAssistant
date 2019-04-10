@@ -58,6 +58,7 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
     public double arrivallat;
     public double arrivallng;
     public DatabaseReference mRootRef;
+    public Button btProgress;
 
 
     @Override
@@ -95,7 +96,7 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
         }
 
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

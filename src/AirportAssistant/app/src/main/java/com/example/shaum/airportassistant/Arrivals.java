@@ -25,6 +25,7 @@ public class Arrivals extends AppCompatActivity {
     public TextView tvWhereTravelling;
     public TextView tvHowTravelling;
     public EditText etWhereTravelling;
+    public Button btProgress;
 
 
     @Override
@@ -74,7 +75,7 @@ public class Arrivals extends AppCompatActivity {
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

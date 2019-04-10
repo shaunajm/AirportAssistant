@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity{
     private static int RC_SIGN_IN = 0; //Needs to be assigned a value
     private FirebaseAuth mAuth;
     public DatabaseReference mRootRef;
+    public SignInButton signInButton;
 
 
 
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
+        signInButton = findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

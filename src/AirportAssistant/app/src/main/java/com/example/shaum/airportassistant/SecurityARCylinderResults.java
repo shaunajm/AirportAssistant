@@ -22,6 +22,8 @@ public class SecurityARCylinderResults extends AppCompatActivity {
     public DataSnapshot data;
     public String result;
     public ARUtil arHelper = new ARUtil();
+    public Button btProgress;
+    public Button btRepeatScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class SecurityARCylinderResults extends AppCompatActivity {
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +87,7 @@ public class SecurityARCylinderResults extends AppCompatActivity {
 
         });
 
-        Button btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
+        btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
         btRepeatScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

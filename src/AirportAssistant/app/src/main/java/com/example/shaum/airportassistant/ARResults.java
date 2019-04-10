@@ -23,6 +23,8 @@ public class ARResults extends AppCompatActivity {
     public FirebaseAuth mAuth;
     public DatabaseReference mUserRef;
     public DatabaseReference mRootRef;
+    public Button btRepeatScan;
+    public Button btProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ public class ARResults extends AppCompatActivity {
         });
 
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +92,7 @@ public class ARResults extends AppCompatActivity {
 
         });
 
-        Button btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
+        btRepeatScan = (Button) findViewById(R.id.btRepeatScan);
         btRepeatScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

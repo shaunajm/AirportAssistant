@@ -49,6 +49,9 @@ public class SecurityARCylinderScan extends AppCompatActivity {
     public int n = 0;
     public ArrayList<Float> distlist = new ArrayList<Float>();
     public ArrayList<AnchorNode> nodes = new ArrayList<AnchorNode>();
+    public Button btComplete;
+    public Button btQuit;
+    public Button btClearPoints;
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -141,7 +144,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
                             return null;
                         });
 
-        Button btComplete = (Button) findViewById(R.id.btCompleteScan);
+        btComplete = (Button) findViewById(R.id.btCompleteScan);
         btComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,7 +155,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
 
         });
 
-        Button btQuit = (Button) findViewById(R.id.btQuitScan);
+        btQuit = (Button) findViewById(R.id.btQuitScan);
         btQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +165,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
             }
         });
 
-        Button btClearPoints = (Button) findViewById(R.id.btClearPoints);
+        btClearPoints = (Button) findViewById(R.id.btClearPoints);
         btClearPoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

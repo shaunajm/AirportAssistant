@@ -18,6 +18,7 @@ public class JourneyUpload extends AppCompatActivity {
     public DatabaseReference mUserRef;
     private FirebaseAuth mAuth;
     public EditText editFlightNumber;
+    public Button btUploadJourney;
 
 
     @Override
@@ -50,7 +51,7 @@ public class JourneyUpload extends AppCompatActivity {
 
 
 
-        Button btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
+        btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
         btUploadJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

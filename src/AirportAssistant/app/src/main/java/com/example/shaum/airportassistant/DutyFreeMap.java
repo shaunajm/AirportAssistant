@@ -45,6 +45,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
     public com.google.android.gms.maps.model.LatLng mDefaultLocation;
     private GoogleMap mMap;
     private Bitmap bmp;
+    public Button btProgress;
 
 
     @Override
@@ -69,7 +70,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
         getDeviceLocation();
 
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

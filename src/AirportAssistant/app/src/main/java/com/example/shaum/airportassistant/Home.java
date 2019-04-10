@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Home extends AppCompatActivity {
 
     public FirebaseAuth mAuth;
+    public Button btUploadJourney;
+    public Button btSignOut;
 
 
     @Override
@@ -35,7 +37,7 @@ public class Home extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        Button btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
+        btUploadJourney = (Button) findViewById(R.id.btUploadJourney);
         btUploadJourney.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +49,7 @@ public class Home extends AppCompatActivity {
         });
 
 
-        Button btSignOut = (Button) findViewById(R.id.button_sign_out);
+        btSignOut = (Button) findViewById(R.id.button_sign_out);
         btSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

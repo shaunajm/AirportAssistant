@@ -58,6 +58,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public DataSnapshot data;
     public FirebaseAuth mAuth;
     public String checkInChoice;
+    public Button btProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +96,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             }
         });
 
-        Button btProgress = (Button) findViewById(R.id.btProgress);
+        btProgress = (Button) findViewById(R.id.btProgress);
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
