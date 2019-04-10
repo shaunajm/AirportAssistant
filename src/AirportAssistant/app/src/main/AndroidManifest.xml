@@ -115,6 +115,9 @@
         <activity android:name=".PopUp"
             android:theme="@style/AppTheme.CustomTheme">
         </activity>
+        <activity android:name=".PopUpJourneyComplete"
+                  android:theme="@style/AppTheme.CustomTheme">
+        </activity>
     </application>
 
 </manifest>

@@ -67,11 +67,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
         btProgress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ArrivalsMap.this, "Your journey is complete.",
-                        Toast.LENGTH_LONG).show();
-                Intent i = new Intent(ArrivalsMap.this, Home.class);
-                startActivity(i);
-                finish();
+                startActivity(new Intent(ArrivalsMap.this, PopUpJourneyComplete.class));
             }
 
         });

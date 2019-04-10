@@ -109,10 +109,7 @@ public class Arrivals extends AppCompatActivity {
                                     Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Intent i = new Intent(Arrivals.this, Home.class);
-                        //TAKE IN ATTRIBUTES FROM VARIABLE QUESTIONS//
-                        startActivity(i);
-                        finish();
+                        startActivity(new Intent(Arrivals.this, PopUpJourneyComplete.class));
                     }
                 }
                 else{

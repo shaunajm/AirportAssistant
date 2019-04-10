@@ -51,7 +51,7 @@ public class PopUp extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.87), (int)(height*0.26));
+        getWindow().setLayout((int)(width*0.83), (int)(height*0.26));
     }
 
     public void displayFlightInfo(String flightNumber, String destination, String airline, String scheduledTime){
