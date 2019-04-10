@@ -23,6 +23,7 @@ public class Security extends AppCompatActivity {
     public ProgressBar spinner;
     public int waitTime;
     public Button btProgress;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,14 @@ public class Security extends AppCompatActivity {
                 Intent i = new Intent(Security.this, DutyFreeMap.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Security.this, PopUp.class));
             }
         });
     }

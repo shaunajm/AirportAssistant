@@ -46,6 +46,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
     private GoogleMap mMap;
     private Bitmap bmp;
     public Button btProgress;
+    public Button btLogo;
 
 
     @Override
@@ -79,6 +80,14 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DutyFreeMap.this, PopUp.class));
+            }
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

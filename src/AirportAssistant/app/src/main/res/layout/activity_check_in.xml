@@ -35,7 +35,8 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/smalllogo"
-                android:id="@+id/btlogo" app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/btlogo"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="30dp"/>
 
 

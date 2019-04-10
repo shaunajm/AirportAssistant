@@ -23,6 +23,7 @@ public class DirectionsToGate1 extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public DataSnapshot data;
     public Button btProgress;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,14 @@ public class DirectionsToGate1 extends AppCompatActivity {
                 String resultGateNumber = editGateNumber.getText().toString();
 
                 mUserRef.child(user.getUid()).child("gateNumber").setValue(resultGateNumber);
+            }
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DirectionsToGate1.this, PopUp.class));
             }
         });
     }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <stroke
+            android:width="2dp"
+            android:color="@color/colorActionBar"/>
+    <solid
+            android:color="@color/colorDarkerBlue"/>
+
+
+    // Add your desired padding
+    <padding
+            android:left="28dp"
+            android:top="30dp"
+            android:right="28dp"
+            android:bottom="30dp"    >
+    </padding>
+</shape>

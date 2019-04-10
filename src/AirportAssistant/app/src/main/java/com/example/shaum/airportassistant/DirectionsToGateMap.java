@@ -59,6 +59,7 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
     public double arrivallng;
     public DatabaseReference mRootRef;
     public Button btProgress;
+    public Button btLogo;
 
 
     @Override
@@ -105,6 +106,14 @@ public class DirectionsToGateMap extends FragmentActivity implements OnMapReadyC
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DirectionsToGateMap.this, PopUp.class));
+            }
         });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

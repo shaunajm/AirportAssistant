@@ -25,6 +25,7 @@ public class ARResults extends AppCompatActivity {
     public DatabaseReference mRootRef;
     public Button btRepeatScan;
     public Button btProgress;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,14 @@ public class ARResults extends AppCompatActivity {
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ARResults.this, PopUp.class));
+            }
         });
     }
 

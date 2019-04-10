@@ -28,6 +28,7 @@ public class TransportToAirport1 extends AppCompatActivity {
     public String checkInChoice;
     public TextView tvAirportQuestion;
     public Button btProgress;
+    public Button btLogo;
 
 
     @Override
@@ -133,6 +134,14 @@ public class TransportToAirport1 extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 }
            }
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TransportToAirport1.this, PopUp.class));
+            }
         });
 
     }

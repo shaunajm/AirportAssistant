@@ -23,6 +23,7 @@ public class SecurityARCubeResults extends AppCompatActivity {
     public ARUtil arHelper = new ARUtil();
     public Button btProgress;
     public Button btRepeatScan;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,14 @@ public class SecurityARCubeResults extends AppCompatActivity {
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SecurityARCubeResults.this, PopUp.class));
+            }
         });
     }
 

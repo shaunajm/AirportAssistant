@@ -24,6 +24,7 @@ public class Onboard extends AppCompatActivity {
     public String inflightLink;
     public String destination;
     public Button btProgress;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +99,14 @@ public class Onboard extends AppCompatActivity {
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Onboard.this, PopUp.class));
+            }
         });
 
         mAuth = FirebaseAuth.getInstance();

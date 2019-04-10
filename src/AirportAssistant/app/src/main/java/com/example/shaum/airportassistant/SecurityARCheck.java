@@ -14,6 +14,7 @@ public class SecurityARCheck extends AppCompatActivity {
 
     public Button btProgressScan;
     public Button btSkipStage;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,14 @@ public class SecurityARCheck extends AppCompatActivity {
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SecurityARCheck.this, PopUp.class));
+            }
         });
     }
 }

@@ -41,6 +41,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
     public double arrivallat;
     public double arrivallng;
     public Button btProgress;
+    public Button btLogo;
 
 
     @Override
@@ -73,6 +74,14 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ArrivalsMap.this, PopUp.class));
+            }
         });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

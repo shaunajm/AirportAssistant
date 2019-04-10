@@ -31,11 +31,12 @@
                 android:textColor="@color/colorActionBar"
                 android:id="@+id/toolbar_title"/>
 
-        <ImageView
+        <Button
+                android:text=""
+                android:background="@drawable/smalllogo"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/smalllogo"
-                android:id="@+id/logo" app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/btlogo" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="30dp"/>
 
 

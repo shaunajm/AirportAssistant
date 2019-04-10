@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -97,8 +96,7 @@ public class CheckIn extends AppCompatActivity {
         btLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toast.setGravity(Gravity.CENTER, Gravity.CENTER, Gravity.CENTER);
-                toast.show();
+                startActivity(new Intent(CheckIn.this, PopUp.class));
             }
         });
 

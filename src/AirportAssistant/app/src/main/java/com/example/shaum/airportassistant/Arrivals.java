@@ -26,6 +26,7 @@ public class Arrivals extends AppCompatActivity {
     public TextView tvHowTravelling;
     public EditText etWhereTravelling;
     public Button btProgress;
+    public Button btLogo;
 
 
     @Override
@@ -118,6 +119,14 @@ public class Arrivals extends AppCompatActivity {
                     Toast.makeText(Arrivals.this, "Please select whether you would like directions.",
                             Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Arrivals.this, PopUp.class));
             }
         });
 

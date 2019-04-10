@@ -52,6 +52,7 @@ public class SecurityARCylinderScan extends AppCompatActivity {
     public Button btComplete;
     public Button btQuit;
     public Button btClearPoints;
+    public Button btLogo;
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -170,6 +171,14 @@ public class SecurityARCylinderScan extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 resetAR();
+            }
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SecurityARCylinderScan.this, PopUp.class));
             }
         });
     }

@@ -24,6 +24,7 @@ public class SecurityARCylinderResults extends AppCompatActivity {
     public ARUtil arHelper = new ARUtil();
     public Button btProgress;
     public Button btRepeatScan;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,14 @@ public class SecurityARCylinderResults extends AppCompatActivity {
                 finish();
             }
 
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SecurityARCylinderResults.this, PopUp.class));
+            }
         });
     }
 

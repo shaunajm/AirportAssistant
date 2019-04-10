@@ -59,6 +59,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public FirebaseAuth mAuth;
     public String checkInChoice;
     public Button btProgress;
+    public Button btLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,14 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
                     finish();
 
                 }
+            }
+        });
+
+        btLogo = (Button) findViewById(R.id.btlogo);
+        btLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TransportToAirportMap.this, PopUp.class));
             }
         });
 
