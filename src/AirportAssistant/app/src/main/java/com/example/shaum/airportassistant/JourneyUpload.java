@@ -75,8 +75,8 @@ public class JourneyUpload extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
 
         String resultFlightNumber = editFlightNumber.getText().toString();
-
-        mUserRef.child(user.getUid()).child("flightNumber").setValue(resultFlightNumber);
+        String strippedFlightNumber = resultFlightNumber.trim();
+        mUserRef.child(user.getUid()).child("flightNumber").setValue(strippedFlightNumber);
         }
 }
 

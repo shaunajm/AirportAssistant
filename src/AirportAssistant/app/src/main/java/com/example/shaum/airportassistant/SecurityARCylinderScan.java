@@ -84,7 +84,8 @@ public class SecurityARCylinderScan extends AppCompatActivity {
                         model.setParent(baseNode);
                         model.setRenderable(modelRenderable);
                         model.select();
-                    } else if (n < 2) {
+                        n++;
+                    } else if (n < 3) {
                         AnchorNode node = new AnchorNode(anchor);
                         node.setParent(arFragment.getArSceneView().getScene());
                         nodes.add(node);
@@ -170,7 +171,10 @@ public class SecurityARCylinderScan extends AppCompatActivity {
         btClearPoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetAR();
+
+                if(n > 0){
+                    resetAR();
+                }
             }
         });
 

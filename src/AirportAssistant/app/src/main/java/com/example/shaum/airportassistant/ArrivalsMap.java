@@ -21,6 +21,7 @@ import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.android.PolyUtil;
+import com.google.maps.model.TravelMode;
 import com.google.maps.model.*;
 import org.joda.time.DateTime;
 

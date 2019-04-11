@@ -80,7 +80,8 @@ public class ARCamera extends AppCompatActivity {
                         model.setParent(baseNode);
                         model.setRenderable(modelRenderable);
                         model.select();
-                    } else if (n < 3) {
+                        n++;
+                    } else if (n < 4) {
                         AnchorNode node = new AnchorNode(anchor);
                         node.setParent(arFragment.getArSceneView().getScene());
                         nodes.add(node);
@@ -167,7 +168,9 @@ public class ARCamera extends AppCompatActivity {
         btClearPoints.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetAR();
+                if(n > 0){
+                    resetAR();
+                }
             }
         });
     }
