@@ -13,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,12 +48,15 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
     private Bitmap bmp;
     public Button btProgress;
     public Button btLogo;
+    public ProgressBar spinner;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_duty_free_map);
+
+        ProgressSpinner();
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -136,6 +140,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
                             });
                             thread.start();
                         }
+                        spinner.setVisibility(View.GONE);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -242,6 +247,14 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
         }
+    }
+
+    public void ProgressSpinner(){
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+
+        spinner.setVisibility(View.VISIBLE);
+
     }
 
 }

@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -60,11 +61,14 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     public String checkInChoice;
     public Button btProgress;
     public Button btLogo;
+    public ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport_to_airport_map);
+
+        ProgressSpinner();
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -221,6 +225,7 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
     private void addPolyline(DirectionsResult results) {
         List<LatLng> decodedPath = PolyUtil.decode(results.routes[0].overviewPolyline.getEncodedPath());
         mMap.addPolyline(new PolylineOptions().addAll(decodedPath));
+        spinner.setVisibility(View.GONE);
     }
 
     private void getLocationPermission(){
@@ -313,5 +318,13 @@ public class TransportToAirportMap extends FragmentActivity implements OnMapRead
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
         }
+    }
+
+    public void ProgressSpinner(){
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+
+        spinner.setVisibility(View.VISIBLE);
+
     }
 }

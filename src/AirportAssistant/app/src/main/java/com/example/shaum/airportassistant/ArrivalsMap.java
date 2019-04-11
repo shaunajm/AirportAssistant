@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -15,13 +16,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.*;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.*;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.android.PolyUtil;
-import com.google.maps.model.TravelMode;
 import com.google.maps.model.*;
 import org.joda.time.DateTime;
 
@@ -33,7 +33,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
 
     private GoogleMap mMap;
     public TravelMode travelMode;
-    private static final int DEFAULT_ZOOM = 9;
+    private static final int DEFAULT_ZOOM = 10;
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
     private Bundle bundle = new Bundle();
@@ -43,12 +43,15 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
     public double arrivallng;
     public Button btProgress;
     public Button btLogo;
+    public ProgressBar spinner;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arrivals_map);
+
+        ProgressSpinner();
 
         FusedLocationProviderClient mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -123,7 +126,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
 
                 DirectionsResult dr = getDirectionsResult(origin, destination);
                 com.google.android.gms.maps.model.LatLng target = new com.google.android.gms.maps.model.LatLng(51.4700256, -0.4564895);
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(target,
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target,
                         DEFAULT_ZOOM));
             }
         });
@@ -178,6 +181,7 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
     private void addPolyline(DirectionsResult results) {
         List<LatLng> decodedPath = PolyUtil.decode(results.routes[0].overviewPolyline.getEncodedPath());
         mMap.addPolyline(new PolylineOptions().addAll(decodedPath));
+        spinner.setVisibility(View.GONE);
     }
 
     public void getLocationFromAddress(String strAddress) {
@@ -196,4 +200,13 @@ public class ArrivalsMap extends FragmentActivity implements OnMapReadyCallback 
             e.printStackTrace();
         }
     }
+
+    public void ProgressSpinner(){
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+
+        spinner.setVisibility(View.VISIBLE);
+
+    }
 }
+
