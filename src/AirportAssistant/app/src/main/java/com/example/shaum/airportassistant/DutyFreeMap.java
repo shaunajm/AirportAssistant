@@ -226,7 +226,7 @@ public class DutyFreeMap extends FragmentActivity implements OnMapReadyCallback 
                                 //        new LatLng(mLastKnownLocation.getLatitude(),
                                 //                mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(53.4265547,-6.2463472), DEFAULT_ZOOM));
+                                        new LatLng(53.427,-6.24566), DEFAULT_ZOOM));
                             } else {
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
                                 mMap.getUiSettings().setMyLocationButtonEnabled(false);

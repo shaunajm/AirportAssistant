@@ -371,4 +371,36 @@ Following on from this, I began working on testing. I began writing my testing d
 
 I will also hope to implement a git pipeline. I will devise a plan in the next week for how I will go about finishing off my project. There are a number of loose ends to tie and I also must finish off developing some minor aspects of the functionality. I am hoping to complete the project in the next two weeks so that I can dedicate time to study for and then complete my final exams.
 
-Unfortunately, I am working on an assignment for another module at the moment so I could not dedicate as much time as I would have wished to the project this weekend. I am hoping to have this assignment completed by the beginning of the week at the latest so that I can dedicate all of my time to completing the project. 
+Unfortunately, I am working on an assignment for another module at the moment so I could not dedicate as much time as I would have wished to the project this weekend. I am hoping to have this assignment completed by the beginning of the week at the latest so that I can dedicate all of my time to completing the project.
+
+## Blog 24 - 12/04/2019
+#### Weekly Update
+
+Over the last week of working on this project I have spent time adding some new functionality and also tying up loose ends. I decided to go with the idea that Ray and I had come up with in one of our meetings which was adding AR measurement functionality to the security stage of the application. This means that users can measure the liquids they have brought with them to see if they are below the maximim liquids allowance.
+
+Users are firstly asked if they wish to measure their liquids or not. Following on from this the user is presented with two options cuboid or cyclinder. A guide has also been presented with images to help users select which area their container best fits into.
+
+*Security AR Check*           | *Security AR Shape Check*
+:---------------------------------:|:-------------------------------------:
+![](../media/securityarcheck.jpg) |![](../media/securityARshapecheck.jpg)
+
+
+Once the user selects which shape they wish to progress with they will be provided with a guide for this specific shape. These can be seen below. The user is provided with an image showing them where to place the points on their container. This is complimented by a step by step guide on how to complete the process.
+
+*Cuboid Guide*           | *Cylinder Guide*
+:---------------------------------:|:-------------------------------------:
+![](../media/securityARcubeguide.jpg)|![](../media/securityARcylinderguide.jpg)
+
+Once the user has completed their scan they will then be provided with a pass/fail result for this scan.
+
+Following on from this I began refactoring my code. I started with my AR files and added an ARUtil file and placed functions which applied to majority of the AR files in here and called them from here. I also fixed up my variables and functions in each of my java files. I also began checking functionality such as each of the back buttons of the application to ensure that they went to the correct screen.
+
+Once my code was at a level which I was happy with I began adding some other minor functionality. I decided to add a check details button to reduce stress for the users. This allows user to press the Airport Assistant logo on the top right hand corner of this screen on any page of the application which will provide them with their flight number, flight time and destination. Users can therefore check their flight details at any time throughout the process which will allow them to feel at ease.
+
+I began working on some use case testing after this point. I wrote out each of the use cases of the application and each of the possible variations of these use cases. This allowed me to find a couple of bugs throughout the application. Some examples of these included:
+* The application crashing if the user clicked the clear points button before any points has been placed.
+* The applcation crashing if a user enters a space after their flight number.
+
+Spinners were added to each of the map screens. This allows users to be kept informed about what is happening when a screen is loading. Such functionality is very important to the heuristics of an application.
+
+I also worked on a vast amount of other testing such as unit, integration, instrumented and heuristic testing. This allows me to spot any issues present in my application and amend them. At this stage I am fairly happy with the functionality of the application and am primarily working on the testing, documentation and minor fixes. 

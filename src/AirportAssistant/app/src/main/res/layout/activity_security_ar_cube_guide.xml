@@ -59,15 +59,15 @@
     <ImageView
             android:id="@+id/tutorialScreenshot"
             android:layout_width="170dp"
-            android:layout_height="210dp"
-            android:src="@drawable/tutorialscreenshot"
+            android:layout_height="180dp"
+            android:src="@drawable/cuboidguide"
             android:background="@drawable/textview_border_b"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="4dp"
             app:layout_constraintTop_toTopOf="@+id/progressBar" android:layout_marginTop="48dp"
-            app:layout_constraintHorizontal_bias="0.497" android:layout_marginBottom="8dp"
-            app:layout_constraintVertical_bias="0.0" app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.545" android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.03" app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     <ScrollView
