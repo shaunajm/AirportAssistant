@@ -403,4 +403,9 @@ I began working on some use case testing after this point. I wrote out each of t
 
 Spinners were added to each of the map screens. This allows users to be kept informed about what is happening when a screen is loading. Such functionality is very important to the heuristics of an application.
 
-I also worked on a vast amount of other testing such as unit, integration, instrumented and heuristic testing. This allows me to spot any issues present in my application and amend them. At this stage I am fairly happy with the functionality of the application and am primarily working on the testing, documentation and minor fixes. 
+I also worked on a vast amount of other testing such as unit, integration, instrumented and heuristic testing. This allows me to spot any issues present in my application and amend them. At this stage I am fairly happy with the functionality of the application and am primarily working on the testing, documentation and minor fixes.
+
+## Blog 25 - 16/05/2019
+#### Back to the project
+
+Due to final exams, I had to take a break from the project to concentrate on studying for and completing my exams. Now it is time to get back to the project and make some very minor fix ups, slight documentation changes and film my video walk through before the project is due on Sunday night. I am presenting my project next Wednesday at 2pm in LG26. I am excited to get the last few parts of the project completed and to begin prepping for my demo. 
