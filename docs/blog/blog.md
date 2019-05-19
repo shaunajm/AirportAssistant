@@ -408,4 +408,13 @@ I also worked on a vast amount of other testing such as unit, integration, instr
 ## Blog 25 - 16/05/2019
 #### Back to the project
 
-Due to final exams, I had to take a break from the project to concentrate on studying for and completing my exams. Now it is time to get back to the project and make some very minor fix ups, slight documentation changes and film my video walk through before the project is due on Sunday night. I am presenting my project next Wednesday at 2pm in LG26. I am excited to get the last few parts of the project completed and to begin prepping for my demo. 
+Due to final exams, I had to take a break from the project to concentrate on studying for and completing my exams. Now it is time to get back to the project and make some very minor fix ups, slight documentation changes and film my video walk through before the project is due on Sunday night. I am presenting my project next Wednesday at 2pm in LG26. I am excited to get the last few parts of the project completed and to begin prepping for my demo.
+
+## Blog 26 - 19/05/2019
+#### Time to say goodbye
+
+Today is deadline day and I am taking a final look over my project delieverables. I am confident with what I have developed and am looking forward to demoing it on Wednesday. Yesterday was spent reading over my documentation again and creating my poster for the project expo which can be seen here:
+
+![](../media/FinalProjectPoster.png)
+
+Today I will re-readover my documentation and make sure my code looks well. The next few days will be spent preparing for my demo and the project expo. I have really enjoyed developing this project over the past nine months and am looking forward to showing both the lecturers who are marking my project and the companies at the expo what I have achieved. I am proud of Airport Assistant and have completed all the functionality I had hoped to implement. 
