@@ -71,9 +71,12 @@ public class ARCamera extends AppCompatActivity {
                         return;
                     }
 
+                    //Anchor is where the user taps on the screen
                     Anchor anchor = hitResult.createAnchor();
 
+                    //Checks if a base node has already been placed
                     if (baseNode == null) {
+                        //If no base node, creates a model for the anchor and places it on the plane
                         baseNode = new AnchorNode(anchor);
                         baseNode.setParent(arFragment.getArSceneView().getScene());
                         TransformableNode model = new TransformableNode(arFragment.getTransformationSystem());
@@ -82,6 +85,8 @@ public class ARCamera extends AppCompatActivity {
                         model.select();
                         n++;
                     } else if (n < 4) {
+                        //If a base node has been placed and we havent reached the max amount of nodes,
+                        //Create a model and place it on the plane
                         AnchorNode node = new AnchorNode(anchor);
                         node.setParent(arFragment.getArSceneView().getScene());
                         nodes.add(node);
@@ -90,18 +95,24 @@ public class ARCamera extends AppCompatActivity {
                         model.setRenderable(secondaryModel);
                         model.select();
 
+                        //Get the vector distance between new node and base node
                         final Vector3 diff = Vector3.subtract(baseNode.getWorldPosition(), node.getWorldPosition());
                         final Quaternion rotation = Quaternion.lookRotation(diff, Vector3.up());
+                        //Create the line between these two nodes and assign its colour
                         MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(0, 255, 244))
                                 .thenAccept(material -> {
+                                    //Make the line shape
                                     ModelRenderable mr = ShapeFactory.makeCube(
                                             new Vector3(.01f, .01f, diff.length()),
                                             Vector3.zero(), material);
+                                    //Get the distance between the two nodes and convert this to cm
                                     Float distance = diff.length();
                                     Float distcm = distance * 100;
+                                    //Add this value to the list of distances
                                     distlist.add(distcm);
                                     Log.d("lineBetweenPoints", "distance: " + diff.length());
                                     Log.d("distlist", "distanceList: " + distlist);
+                                    //Place the line on the plane
                                     Node n = new Node();
                                     n.setParent(node);
                                     n.setRenderable(mr);
@@ -110,6 +121,7 @@ public class ARCamera extends AppCompatActivity {
                                 });
                         n++;
                     }
+                    //Sort distlist to allow it to be checked against the airlines ordered dimensions
                     Collections.sort(distlist);
                     Log.d("sorteddistlist", "sorteddistanceList: " + distlist);
 
@@ -117,6 +129,7 @@ public class ARCamera extends AppCompatActivity {
                     mUserRef.child(user.getUid()).child("handluggage").setValue(distlist);
                 });
 
+        //Creates the base node's model
         ModelRenderable.builder()
                 .setSource(this, Uri.parse("redBall.sfb"))
                 .build()
@@ -130,6 +143,7 @@ public class ARCamera extends AppCompatActivity {
                             return null;
                         });
 
+        //Creates the other node's models
         ModelRenderable.builder()
                 .setSource(this, Uri.parse("blueBall.sfb"))
                 .build()
@@ -175,6 +189,7 @@ public class ARCamera extends AppCompatActivity {
         });
     }
 
+    //resets the AR screen by deleting the nodes and clearing the distance list
     public void resetAR() {
         baseNode.setParent(null);
         baseNode = null;
